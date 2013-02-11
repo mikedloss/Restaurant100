@@ -1,10 +1,6 @@
 ﻿Public Class waiter
 
-    Private Sub Button6_Click(sender As System.Object, e As System.EventArgs)
-
-    End Sub
-
-    Private Sub alcoholTab_Click(sender As System.Object, e As System.EventArgs) Handles alcoholTab.Click
+    Private Sub orderTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles orderTextBox.TextChanged
 
     End Sub
 End Class
