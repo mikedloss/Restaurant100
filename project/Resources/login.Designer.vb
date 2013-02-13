@@ -59,6 +59,7 @@ Partial Class login
         '
         Me.usernameLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.usernameLogin.Location = New System.Drawing.Point(12, 572)
+        Me.usernameLogin.MaxLength = 4
         Me.usernameLogin.Name = "usernameLogin"
         Me.usernameLogin.Size = New System.Drawing.Size(486, 38)
         Me.usernameLogin.TabIndex = 2
@@ -67,8 +68,8 @@ Partial Class login
         '
         Me.passwordLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.passwordLogin.Location = New System.Drawing.Point(12, 616)
+        Me.passwordLogin.MaxLength = 4
         Me.passwordLogin.Name = "passwordLogin"
-        Me.passwordLogin.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
         Me.passwordLogin.Size = New System.Drawing.Size(486, 38)
         Me.passwordLogin.TabIndex = 3
         '
@@ -100,7 +101,7 @@ Partial Class login
         '
         Me.dateLoginLabel.AutoSize = True
         Me.dateLoginLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dateLoginLabel.Location = New System.Drawing.Point(12, 340)
+        Me.dateLoginLabel.Location = New System.Drawing.Point(6, 340)
         Me.dateLoginLabel.Name = "dateLoginLabel"
         Me.dateLoginLabel.Size = New System.Drawing.Size(203, 73)
         Me.dateLoginLabel.TabIndex = 7
@@ -110,7 +111,7 @@ Partial Class login
         '
         Me.timeLoginLabel.AutoSize = True
         Me.timeLoginLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.timeLoginLabel.Location = New System.Drawing.Point(12, 413)
+        Me.timeLoginLabel.Location = New System.Drawing.Point(6, 415)
         Me.timeLoginLabel.Name = "timeLoginLabel"
         Me.timeLoginLabel.Size = New System.Drawing.Size(185, 73)
         Me.timeLoginLabel.TabIndex = 8
@@ -240,7 +241,7 @@ Partial Class login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1350, 730)
+        Me.ClientSize = New System.Drawing.Size(1294, 730)
         Me.Controls.Add(Me.loginClearButton)
         Me.Controls.Add(Me.login0KeyButton)
         Me.Controls.Add(Me.login9KeyButton)

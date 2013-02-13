@@ -30,6 +30,7 @@ Partial Class waiter
         Me.appetizerTab = New System.Windows.Forms.TabPage()
         Me.entreeTab = New System.Windows.Forms.TabPage()
         Me.dessertTab = New System.Windows.Forms.TabPage()
+        Me.extrasTab = New System.Windows.Forms.TabPage()
         Me.submitOrderButton = New System.Windows.Forms.Button()
         Me.modifier86Button = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -49,7 +50,6 @@ Partial Class waiter
         Me.orderTextBox.Name = "orderTextBox"
         Me.orderTextBox.Size = New System.Drawing.Size(292, 670)
         Me.orderTextBox.TabIndex = 0
-        Me.orderTextBox.Text = "TEST" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "TEST" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "TESTTESTTEST" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "TESTTESTTESTTEST"
         '
         'Button13
         '
@@ -69,50 +69,54 @@ Partial Class waiter
         Me.tabControlWaiter.Controls.Add(Me.appetizerTab)
         Me.tabControlWaiter.Controls.Add(Me.entreeTab)
         Me.tabControlWaiter.Controls.Add(Me.dessertTab)
-        Me.tabControlWaiter.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabControlWaiter.Controls.Add(Me.extrasTab)
+        Me.tabControlWaiter.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tabControlWaiter.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabControlWaiter.HotTrack = True
         Me.tabControlWaiter.Location = New System.Drawing.Point(422, 12)
         Me.tabControlWaiter.Multiline = True
         Me.tabControlWaiter.Name = "tabControlWaiter"
+        Me.tabControlWaiter.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.tabControlWaiter.SelectedIndex = 0
         Me.tabControlWaiter.Size = New System.Drawing.Size(924, 658)
-        Me.tabControlWaiter.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
+        Me.tabControlWaiter.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.tabControlWaiter.TabIndex = 14
         '
         'alcoholTab
         '
         Me.alcoholTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.alcoholTab.Location = New System.Drawing.Point(4, 30)
+        Me.alcoholTab.Location = New System.Drawing.Point(4, 43)
         Me.alcoholTab.Name = "alcoholTab"
         Me.alcoholTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.alcoholTab.Size = New System.Drawing.Size(916, 624)
+        Me.alcoholTab.Size = New System.Drawing.Size(916, 611)
         Me.alcoholTab.TabIndex = 0
         Me.alcoholTab.Text = "ALCOHOL"
         Me.alcoholTab.UseVisualStyleBackColor = True
         '
         'drinksTab
         '
-        Me.drinksTab.Location = New System.Drawing.Point(4, 30)
+        Me.drinksTab.Location = New System.Drawing.Point(4, 43)
         Me.drinksTab.Name = "drinksTab"
         Me.drinksTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.drinksTab.Size = New System.Drawing.Size(916, 624)
+        Me.drinksTab.Size = New System.Drawing.Size(916, 611)
         Me.drinksTab.TabIndex = 1
         Me.drinksTab.Text = "DRINKS"
         Me.drinksTab.UseVisualStyleBackColor = True
         '
         'appetizerTab
         '
-        Me.appetizerTab.Location = New System.Drawing.Point(4, 30)
+        Me.appetizerTab.Location = New System.Drawing.Point(4, 43)
         Me.appetizerTab.Name = "appetizerTab"
-        Me.appetizerTab.Size = New System.Drawing.Size(916, 624)
+        Me.appetizerTab.Size = New System.Drawing.Size(916, 611)
         Me.appetizerTab.TabIndex = 2
         Me.appetizerTab.Text = "APPETIZERS"
         Me.appetizerTab.UseVisualStyleBackColor = True
         '
         'entreeTab
         '
-        Me.entreeTab.Location = New System.Drawing.Point(4, 30)
+        Me.entreeTab.Location = New System.Drawing.Point(4, 43)
         Me.entreeTab.Name = "entreeTab"
-        Me.entreeTab.Size = New System.Drawing.Size(916, 624)
+        Me.entreeTab.Size = New System.Drawing.Size(916, 611)
         Me.entreeTab.TabIndex = 3
         Me.entreeTab.Text = "ENTREE'S"
         Me.entreeTab.UseVisualStyleBackColor = True
@@ -120,12 +124,21 @@ Partial Class waiter
         'dessertTab
         '
         Me.dessertTab.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dessertTab.Location = New System.Drawing.Point(4, 30)
+        Me.dessertTab.Location = New System.Drawing.Point(4, 43)
         Me.dessertTab.Name = "dessertTab"
-        Me.dessertTab.Size = New System.Drawing.Size(916, 624)
+        Me.dessertTab.Size = New System.Drawing.Size(916, 611)
         Me.dessertTab.TabIndex = 4
         Me.dessertTab.Text = "DESSERTS"
         Me.dessertTab.UseVisualStyleBackColor = True
+        '
+        'extrasTab
+        '
+        Me.extrasTab.Location = New System.Drawing.Point(4, 43)
+        Me.extrasTab.Name = "extrasTab"
+        Me.extrasTab.Size = New System.Drawing.Size(916, 611)
+        Me.extrasTab.TabIndex = 5
+        Me.extrasTab.Text = "EXTRAS"
+        Me.extrasTab.UseVisualStyleBackColor = True
         '
         'submitOrderButton
         '
@@ -246,4 +259,5 @@ Partial Class waiter
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents extrasTab As System.Windows.Forms.TabPage
 End Class

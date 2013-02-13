@@ -73,11 +73,23 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="login.vb">
+    <Compile Include="cook.Designer.vb">
+      <DependentUpon>cook.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cook.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="login.Designer.vb">
+    <Compile Include="Resources\login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\login.Designer.vb">
       <DependentUpon>login.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="manager.Designer.vb">
+      <DependentUpon>manager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="manager.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -109,8 +121,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="login.resx">
+    <EmbeddedResource Include="cook.resx">
+      <DependentUpon>cook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\login.resx">
       <DependentUpon>login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="manager.resx">
+      <DependentUpon>manager.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
