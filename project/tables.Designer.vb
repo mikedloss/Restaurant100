@@ -89,7 +89,12 @@ Partial Class tables
         Me.bartenderPanel = New System.Windows.Forms.Panel()
         Me.bartenderLabel = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.tablesTab = New System.Windows.Forms.TabPage()
+        Me.infoTab = New System.Windows.Forms.TabPage()
         Me.GroupBox1.SuspendLayout()
+        Me.TabControl1.SuspendLayout()
+        Me.tablesTab.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -153,7 +158,7 @@ Partial Class tables
         Me.GroupBox1.Controls.Add(Me.Panel4)
         Me.GroupBox1.Controls.Add(Me.Panel2)
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.GroupBox1.Location = New System.Drawing.Point(1, 0)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(530, 574)
         Me.GroupBox1.TabIndex = 17
@@ -773,7 +778,7 @@ Partial Class tables
         '
         Me.waitress2Panel.BackColor = System.Drawing.Color.White
         Me.waitress2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.waitress2Panel.Location = New System.Drawing.Point(35, 620)
+        Me.waitress2Panel.Location = New System.Drawing.Point(542, 36)
         Me.waitress2Panel.Name = "waitress2Panel"
         Me.waitress2Panel.Size = New System.Drawing.Size(20, 20)
         Me.waitress2Panel.TabIndex = 18
@@ -782,7 +787,7 @@ Partial Class tables
         '
         Me.waitress3Panel.BackColor = System.Drawing.Color.White
         Me.waitress3Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.waitress3Panel.Location = New System.Drawing.Point(35, 650)
+        Me.waitress3Panel.Location = New System.Drawing.Point(542, 66)
         Me.waitress3Panel.Name = "waitress3Panel"
         Me.waitress3Panel.Size = New System.Drawing.Size(20, 20)
         Me.waitress3Panel.TabIndex = 19
@@ -791,7 +796,7 @@ Partial Class tables
         '
         Me.waitress1Panel.BackColor = System.Drawing.Color.White
         Me.waitress1Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.waitress1Panel.Location = New System.Drawing.Point(35, 590)
+        Me.waitress1Panel.Location = New System.Drawing.Point(542, 6)
         Me.waitress1Panel.Name = "waitress1Panel"
         Me.waitress1Panel.Size = New System.Drawing.Size(20, 20)
         Me.waitress1Panel.TabIndex = 20
@@ -800,7 +805,7 @@ Partial Class tables
         '
         Me.waiter1Label.AutoSize = True
         Me.waiter1Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.waiter1Label.Location = New System.Drawing.Point(62, 587)
+        Me.waiter1Label.Location = New System.Drawing.Point(569, 3)
         Me.waiter1Label.Name = "waiter1Label"
         Me.waiter1Label.Size = New System.Drawing.Size(103, 25)
         Me.waiter1Label.TabIndex = 22
@@ -810,7 +815,7 @@ Partial Class tables
         '
         Me.waiter2Label.AutoSize = True
         Me.waiter2Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.waiter2Label.Location = New System.Drawing.Point(62, 617)
+        Me.waiter2Label.Location = New System.Drawing.Point(569, 33)
         Me.waiter2Label.Name = "waiter2Label"
         Me.waiter2Label.Size = New System.Drawing.Size(103, 25)
         Me.waiter2Label.TabIndex = 23
@@ -820,7 +825,7 @@ Partial Class tables
         '
         Me.waiter3Label.AutoSize = True
         Me.waiter3Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.waiter3Label.Location = New System.Drawing.Point(62, 647)
+        Me.waiter3Label.Location = New System.Drawing.Point(569, 63)
         Me.waiter3Label.Name = "waiter3Label"
         Me.waiter3Label.Size = New System.Drawing.Size(103, 25)
         Me.waiter3Label.TabIndex = 24
@@ -830,7 +835,7 @@ Partial Class tables
         '
         Me.bartenderPanel.BackColor = System.Drawing.Color.White
         Me.bartenderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.bartenderPanel.Location = New System.Drawing.Point(35, 680)
+        Me.bartenderPanel.Location = New System.Drawing.Point(542, 96)
         Me.bartenderPanel.Name = "bartenderPanel"
         Me.bartenderPanel.Size = New System.Drawing.Size(20, 20)
         Me.bartenderPanel.TabIndex = 25
@@ -839,7 +844,7 @@ Partial Class tables
         '
         Me.bartenderLabel.AutoSize = True
         Me.bartenderLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.bartenderLabel.Location = New System.Drawing.Point(62, 677)
+        Me.bartenderLabel.Location = New System.Drawing.Point(569, 93)
         Me.bartenderLabel.Name = "bartenderLabel"
         Me.bartenderLabel.Size = New System.Drawing.Size(104, 25)
         Me.bartenderLabel.TabIndex = 26
@@ -855,26 +860,60 @@ Partial Class tables
         Me.Button1.Text = "LOGOUT"
         Me.Button1.UseVisualStyleBackColor = False
         '
+        'TabControl1
+        '
+        Me.TabControl1.Controls.Add(Me.tablesTab)
+        Me.TabControl1.Controls.Add(Me.infoTab)
+        Me.TabControl1.Location = New System.Drawing.Point(12, 12)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(1260, 637)
+        Me.TabControl1.TabIndex = 28
+        '
+        'tablesTab
+        '
+        Me.tablesTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tablesTab.Controls.Add(Me.GroupBox1)
+        Me.tablesTab.Controls.Add(Me.waiter3Label)
+        Me.tablesTab.Controls.Add(Me.bartenderLabel)
+        Me.tablesTab.Controls.Add(Me.bartenderPanel)
+        Me.tablesTab.Controls.Add(Me.waitress2Panel)
+        Me.tablesTab.Controls.Add(Me.waiter2Label)
+        Me.tablesTab.Controls.Add(Me.waitress3Panel)
+        Me.tablesTab.Controls.Add(Me.waiter1Label)
+        Me.tablesTab.Controls.Add(Me.waitress1Panel)
+        Me.tablesTab.Location = New System.Drawing.Point(4, 22)
+        Me.tablesTab.Name = "tablesTab"
+        Me.tablesTab.Padding = New System.Windows.Forms.Padding(3)
+        Me.tablesTab.Size = New System.Drawing.Size(1252, 611)
+        Me.tablesTab.TabIndex = 0
+        Me.tablesTab.Text = "TABLES"
+        '
+        'infoTab
+        '
+        Me.infoTab.Location = New System.Drawing.Point(4, 22)
+        Me.infoTab.Name = "infoTab"
+        Me.infoTab.Padding = New System.Windows.Forms.Padding(3)
+        Me.infoTab.Size = New System.Drawing.Size(1252, 611)
+        Me.infoTab.TabIndex = 1
+        Me.infoTab.Text = "INFO"
+        Me.infoTab.UseVisualStyleBackColor = True
+        '
         'tables
         '
+        Me.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1284, 730)
+        Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.bartenderLabel)
-        Me.Controls.Add(Me.waiter3Label)
-        Me.Controls.Add(Me.waiter2Label)
-        Me.Controls.Add(Me.waiter1Label)
-        Me.Controls.Add(Me.waitress1Panel)
-        Me.Controls.Add(Me.waitress3Panel)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.waitress2Panel)
-        Me.Controls.Add(Me.bartenderPanel)
         Me.Name = "tables"
         Me.Text = "Tables"
         Me.GroupBox1.ResumeLayout(False)
+        Me.TabControl1.ResumeLayout(False)
+        Me.tablesTab.ResumeLayout(False)
+        Me.tablesTab.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -944,4 +983,7 @@ Partial Class tables
     Friend WithEvents bartenderPanel As System.Windows.Forms.Panel
     Friend WithEvents bartenderLabel As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
+    Friend WithEvents tablesTab As System.Windows.Forms.TabPage
+    Friend WithEvents infoTab As System.Windows.Forms.TabPage
 End Class
