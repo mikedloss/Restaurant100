@@ -1,6 +1,16 @@
-﻿Public Class login
+﻿Imports MySql.Data.MySqlClient
+
+Public Class login
+
+    Dim connStr As String = "Database=world;" & _
+                    "Data Source=localhost;" & _
+                    "User Id=root;Password=starwars"
 
     Private Sub login_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        TestConnection()
+        retriveData()
+
+
         'date/time display
         timeLoginLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
         dateLoginLabel.Text = Now.Date
@@ -9,6 +19,17 @@
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.WindowState = FormWindowState.Maximized
 
+    End Sub
+
+    Public Sub TestConnection()
+        Try
+            Dim connection As New MySqlConnection(connStr)
+            connection.Open()
+            connection.Close()
+            MsgBox("Connection is okay.")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub timer_Tick(sender As System.Object, e As System.EventArgs) Handles timer.Tick
@@ -30,6 +51,29 @@
         'End If
         'End If
 
+    End Sub
+
+    Public Sub retriveData()
+        Try
+            Dim query As String = "SELECT * FROM Country"
+            Dim connection As New MySqlConnection(connStr)
+            Dim cmd As New MySqlCommand(query, connection)
+
+            connection.Open()
+
+            Dim reader As MySqlDataReader
+            reader = cmd.ExecuteReader()
+
+            While reader.Read()
+                Console.WriteLine((reader.GetString(0) & ", " & _
+                   reader.GetString(1)))
+            End While
+
+            reader.Close()
+            connection.Close()
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
     End Sub
 
     Private Sub login1KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login1KeyButton.Click
