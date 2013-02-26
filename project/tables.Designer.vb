@@ -88,10 +88,11 @@ Partial Class tables
         Me.waiter3Label = New System.Windows.Forms.Label()
         Me.bartenderPanel = New System.Windows.Forms.Panel()
         Me.bartenderLabel = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.logoutButton = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tablesTab = New System.Windows.Forms.TabPage()
         Me.infoTab = New System.Windows.Forms.TabPage()
+        Me.waitlistTab = New System.Windows.Forms.TabPage()
         Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.tablesTab.SuspendLayout()
@@ -158,6 +159,7 @@ Partial Class tables
         Me.GroupBox1.Controls.Add(Me.Panel4)
         Me.GroupBox1.Controls.Add(Me.Panel2)
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(530, 574)
@@ -713,7 +715,7 @@ Partial Class tables
         '
         'Panel8
         '
-        Me.Panel8.BackColor = System.Drawing.Color.White
+        Me.Panel8.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel8.Location = New System.Drawing.Point(16, 173)
         Me.Panel8.Name = "Panel8"
@@ -722,7 +724,7 @@ Partial Class tables
         '
         'Panel7
         '
-        Me.Panel7.BackColor = System.Drawing.Color.White
+        Me.Panel7.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel7.Location = New System.Drawing.Point(182, 173)
         Me.Panel7.Name = "Panel7"
@@ -731,7 +733,7 @@ Partial Class tables
         '
         'Panel6
         '
-        Me.Panel6.BackColor = System.Drawing.Color.White
+        Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel6.Location = New System.Drawing.Point(16, 300)
         Me.Panel6.Name = "Panel6"
@@ -740,7 +742,7 @@ Partial Class tables
         '
         'Panel5
         '
-        Me.Panel5.BackColor = System.Drawing.Color.White
+        Me.Panel5.BackColor = System.Drawing.Color.Fuchsia
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel5.Location = New System.Drawing.Point(182, 299)
         Me.Panel5.Name = "Panel5"
@@ -749,7 +751,7 @@ Partial Class tables
         '
         'Panel3
         '
-        Me.Panel3.BackColor = System.Drawing.Color.White
+        Me.Panel3.BackColor = System.Drawing.Color.Fuchsia
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Location = New System.Drawing.Point(32, 438)
         Me.Panel3.Name = "Panel3"
@@ -767,7 +769,7 @@ Partial Class tables
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.BackColor = System.Drawing.Color.Yellow
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Location = New System.Drawing.Point(386, 160)
         Me.Panel2.Name = "Panel2"
@@ -776,8 +778,9 @@ Partial Class tables
         '
         'waitress2Panel
         '
-        Me.waitress2Panel.BackColor = System.Drawing.Color.White
+        Me.waitress2Panel.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.waitress2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.waitress2Panel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.waitress2Panel.Location = New System.Drawing.Point(542, 36)
         Me.waitress2Panel.Name = "waitress2Panel"
         Me.waitress2Panel.Size = New System.Drawing.Size(20, 20)
@@ -785,8 +788,9 @@ Partial Class tables
         '
         'waitress3Panel
         '
-        Me.waitress3Panel.BackColor = System.Drawing.Color.White
+        Me.waitress3Panel.BackColor = System.Drawing.Color.Fuchsia
         Me.waitress3Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.waitress3Panel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.waitress3Panel.Location = New System.Drawing.Point(542, 66)
         Me.waitress3Panel.Name = "waitress3Panel"
         Me.waitress3Panel.Size = New System.Drawing.Size(20, 20)
@@ -796,6 +800,7 @@ Partial Class tables
         '
         Me.waitress1Panel.BackColor = System.Drawing.Color.White
         Me.waitress1Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.waitress1Panel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.waitress1Panel.Location = New System.Drawing.Point(542, 6)
         Me.waitress1Panel.Name = "waitress1Panel"
         Me.waitress1Panel.Size = New System.Drawing.Size(20, 20)
@@ -833,8 +838,9 @@ Partial Class tables
         '
         'bartenderPanel
         '
-        Me.bartenderPanel.BackColor = System.Drawing.Color.White
+        Me.bartenderPanel.BackColor = System.Drawing.Color.Yellow
         Me.bartenderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.bartenderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.bartenderPanel.Location = New System.Drawing.Point(542, 96)
         Me.bartenderPanel.Name = "bartenderPanel"
         Me.bartenderPanel.Size = New System.Drawing.Size(20, 20)
@@ -850,24 +856,27 @@ Partial Class tables
         Me.bartenderLabel.TabIndex = 26
         Me.bartenderLabel.Text = "bartender"
         '
-        'Button1
+        'logoutButton
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(1000, 655)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(276, 68)
-        Me.Button1.TabIndex = 27
-        Me.Button1.Text = "LOGOUT"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.logoutButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.logoutButton.Location = New System.Drawing.Point(1062, 655)
+        Me.logoutButton.Name = "logoutButton"
+        Me.logoutButton.Size = New System.Drawing.Size(276, 68)
+        Me.logoutButton.TabIndex = 27
+        Me.logoutButton.Text = "LOGOUT"
+        Me.logoutButton.UseVisualStyleBackColor = True
         '
         'TabControl1
         '
+        Me.TabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons
         Me.TabControl1.Controls.Add(Me.tablesTab)
+        Me.TabControl1.Controls.Add(Me.waitlistTab)
         Me.TabControl1.Controls.Add(Me.infoTab)
+        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabControl1.Location = New System.Drawing.Point(12, 12)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1260, 637)
+        Me.TabControl1.Size = New System.Drawing.Size(1326, 637)
         Me.TabControl1.TabIndex = 28
         '
         'tablesTab
@@ -882,31 +891,40 @@ Partial Class tables
         Me.tablesTab.Controls.Add(Me.waitress3Panel)
         Me.tablesTab.Controls.Add(Me.waiter1Label)
         Me.tablesTab.Controls.Add(Me.waitress1Panel)
-        Me.tablesTab.Location = New System.Drawing.Point(4, 22)
+        Me.tablesTab.Location = New System.Drawing.Point(4, 43)
         Me.tablesTab.Name = "tablesTab"
         Me.tablesTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.tablesTab.Size = New System.Drawing.Size(1252, 611)
+        Me.tablesTab.Size = New System.Drawing.Size(1318, 590)
         Me.tablesTab.TabIndex = 0
         Me.tablesTab.Text = "TABLES"
         '
         'infoTab
         '
-        Me.infoTab.Location = New System.Drawing.Point(4, 22)
+        Me.infoTab.Location = New System.Drawing.Point(4, 43)
         Me.infoTab.Name = "infoTab"
         Me.infoTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.infoTab.Size = New System.Drawing.Size(1252, 611)
+        Me.infoTab.Size = New System.Drawing.Size(1318, 590)
         Me.infoTab.TabIndex = 1
         Me.infoTab.Text = "INFO"
         Me.infoTab.UseVisualStyleBackColor = True
+        '
+        'waitlistTab
+        '
+        Me.waitlistTab.Location = New System.Drawing.Point(4, 43)
+        Me.waitlistTab.Name = "waitlistTab"
+        Me.waitlistTab.Size = New System.Drawing.Size(1318, 590)
+        Me.waitlistTab.TabIndex = 2
+        Me.waitlistTab.Text = "WAITLIST"
+        Me.waitlistTab.UseVisualStyleBackColor = True
         '
         'tables
         '
         Me.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1284, 730)
+        Me.ClientSize = New System.Drawing.Size(1350, 730)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.logoutButton)
         Me.Name = "tables"
         Me.Text = "Tables"
         Me.GroupBox1.ResumeLayout(False)
@@ -982,8 +1000,9 @@ Partial Class tables
     Friend WithEvents waiter3Label As System.Windows.Forms.Label
     Friend WithEvents bartenderPanel As System.Windows.Forms.Panel
     Friend WithEvents bartenderLabel As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents logoutButton As System.Windows.Forms.Button
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents tablesTab As System.Windows.Forms.TabPage
     Friend WithEvents infoTab As System.Windows.Forms.TabPage
+    Friend WithEvents waitlistTab As System.Windows.Forms.TabPage
 End Class

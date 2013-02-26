@@ -42,6 +42,7 @@ Partial Class login
         Me.login9KeyButton = New System.Windows.Forms.Button()
         Me.login0KeyButton = New System.Windows.Forms.Button()
         Me.loginClearButton = New System.Windows.Forms.Button()
+        Me.errorLabel = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -70,6 +71,7 @@ Partial Class login
         Me.passwordLogin.Location = New System.Drawing.Point(12, 616)
         Me.passwordLogin.MaxLength = 4
         Me.passwordLogin.Name = "passwordLogin"
+        Me.passwordLogin.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.passwordLogin.Size = New System.Drawing.Size(486, 38)
         Me.passwordLogin.TabIndex = 3
         '
@@ -237,11 +239,24 @@ Partial Class login
         Me.loginClearButton.Text = "CLEAR"
         Me.loginClearButton.UseVisualStyleBackColor = False
         '
+        'errorLabel
+        '
+        Me.errorLabel.AutoSize = True
+        Me.errorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.errorLabel.ForeColor = System.Drawing.Color.Firebrick
+        Me.errorLabel.Location = New System.Drawing.Point(134, 535)
+        Me.errorLabel.Name = "errorLabel"
+        Me.errorLabel.Size = New System.Drawing.Size(118, 31)
+        Me.errorLabel.TabIndex = 20
+        Me.errorLabel.Text = "ERROR"
+        Me.errorLabel.Visible = False
+        '
         'login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1294, 730)
+        Me.ClientSize = New System.Drawing.Size(1360, 730)
+        Me.Controls.Add(Me.errorLabel)
         Me.Controls.Add(Me.loginClearButton)
         Me.Controls.Add(Me.login0KeyButton)
         Me.Controls.Add(Me.login9KeyButton)
@@ -290,5 +305,6 @@ Partial Class login
     Friend WithEvents login9KeyButton As System.Windows.Forms.Button
     Friend WithEvents login0KeyButton As System.Windows.Forms.Button
     Friend WithEvents loginClearButton As System.Windows.Forms.Button
+    Friend WithEvents errorLabel As System.Windows.Forms.Label
 
 End Class

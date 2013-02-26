@@ -2,9 +2,9 @@
 
 Public Class login
 
-    Dim connStr As String = "Database=world;" & _
-                    "Data Source=localhost;" & _
-                    "User Id=root;Password=starwars"
+    Dim connStr As String = "Database=test;" & _
+                    "Data Source=192.168.1.10:3306;" & _
+                    "User Id=mike;Password=root"
 
     Private Sub login_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         TestConnection()
@@ -39,17 +39,22 @@ Public Class login
     End Sub
 
     Private Sub loginSubmitButton_Click(sender As System.Object, e As System.EventArgs) Handles loginSubmitButton.Click
-        'send data to server and check return values here
 
-        'If usernameLogin.Text = "1234" Then
-        'If passwordLogin.Text = "4321" Then
-
-
-        'connects login form to tables form
-        tables.Show()
-        Me.Hide()
-        'End If
-        'End If
+        If (usernameLogin.Text.Length < 4 Or passwordLogin.Text.Length < 4) Then
+            errorLabel.Text = ""
+            errorLabel.Text = "ERROR: WRONG ID/PW"
+            errorLabel.Visible = True
+            usernameLogin.Text = ""
+            passwordLogin.Text = ""
+        Else
+            'check mysql to see if user is in db
+            tables.Show()
+            Me.Hide()
+            usernameLogin.Text = ""
+            passwordLogin.Text = ""
+            errorLabel.Text = ""
+            errorLabel.Visible = False
+        End If
 
     End Sub
 
@@ -81,6 +86,7 @@ Public Class login
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
             passwordLogin.Text += "1"
+            errorLabel.Visible = False
         ElseIf usernameLogin.Text.Length <> 4 Then
             usernameLogin.Text += "1"
         End If
@@ -91,6 +97,7 @@ Public Class login
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
             passwordLogin.Text += "2"
+            errorLabel.Visible = False
         ElseIf usernameLogin.Text.Length <> 4 Then
             usernameLogin.Text += "2"
         End If
@@ -101,6 +108,7 @@ Public Class login
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
             passwordLogin.Text += "3"
+            errorLabel.Visible = False
         ElseIf usernameLogin.Text.Length <> 4 Then
             usernameLogin.Text += "3"
         End If
@@ -111,6 +119,7 @@ Public Class login
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
             passwordLogin.Text += "4"
+            errorLabel.Visible = False
         ElseIf usernameLogin.Text.Length <> 4 Then
             usernameLogin.Text += "4"
         End If
@@ -121,6 +130,7 @@ Public Class login
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
             passwordLogin.Text += "5"
+            errorLabel.Visible = False
         ElseIf usernameLogin.Text.Length <> 4 Then
             usernameLogin.Text += "5"
         End If
@@ -131,6 +141,7 @@ Public Class login
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
             passwordLogin.Text += "6"
+            errorLabel.Visible = False
         ElseIf usernameLogin.Text.Length <> 4 Then
             usernameLogin.Text += "6"
         End If
@@ -141,6 +152,7 @@ Public Class login
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
             passwordLogin.Text += "7"
+            errorLabel.Visible = False
         ElseIf usernameLogin.Text.Length <> 4 Then
             usernameLogin.Text += "7"
         End If
@@ -151,6 +163,7 @@ Public Class login
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
             passwordLogin.Text += "8"
+            errorLabel.Visible = False
         ElseIf usernameLogin.Text.Length <> 4 Then
             usernameLogin.Text += "8"
         End If
@@ -161,6 +174,7 @@ Public Class login
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
             passwordLogin.Text += "9"
+            errorLabel.Visible = False
         ElseIf usernameLogin.Text.Length <> 4 Then
             usernameLogin.Text += "9"
         End If
@@ -171,6 +185,7 @@ Public Class login
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
             passwordLogin.Text += "0"
+            errorLabel.Visible = False
         ElseIf usernameLogin.Text.Length <> 4 Then
             usernameLogin.Text += "0"
         End If
