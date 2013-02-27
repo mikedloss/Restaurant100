@@ -91,8 +91,8 @@ Partial Class tables
         Me.logoutButton = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tablesTab = New System.Windows.Forms.TabPage()
-        Me.infoTab = New System.Windows.Forms.TabPage()
         Me.waitlistTab = New System.Windows.Forms.TabPage()
+        Me.infoTab = New System.Windows.Forms.TabPage()
         Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.tablesTab.SuspendLayout()
@@ -859,7 +859,7 @@ Partial Class tables
         'logoutButton
         '
         Me.logoutButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.logoutButton.Location = New System.Drawing.Point(1062, 655)
+        Me.logoutButton.Location = New System.Drawing.Point(976, 682)
         Me.logoutButton.Name = "logoutButton"
         Me.logoutButton.Size = New System.Drawing.Size(276, 68)
         Me.logoutButton.TabIndex = 27
@@ -876,7 +876,7 @@ Partial Class tables
         Me.TabControl1.Location = New System.Drawing.Point(12, 12)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1326, 637)
+        Me.TabControl1.Size = New System.Drawing.Size(1240, 637)
         Me.TabControl1.TabIndex = 28
         '
         'tablesTab
@@ -894,9 +894,18 @@ Partial Class tables
         Me.tablesTab.Location = New System.Drawing.Point(4, 43)
         Me.tablesTab.Name = "tablesTab"
         Me.tablesTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.tablesTab.Size = New System.Drawing.Size(1318, 590)
+        Me.tablesTab.Size = New System.Drawing.Size(1232, 590)
         Me.tablesTab.TabIndex = 0
         Me.tablesTab.Text = "TABLES"
+        '
+        'waitlistTab
+        '
+        Me.waitlistTab.Location = New System.Drawing.Point(4, 43)
+        Me.waitlistTab.Name = "waitlistTab"
+        Me.waitlistTab.Size = New System.Drawing.Size(1318, 590)
+        Me.waitlistTab.TabIndex = 2
+        Me.waitlistTab.Text = "WAITLIST"
+        Me.waitlistTab.UseVisualStyleBackColor = True
         '
         'infoTab
         '
@@ -908,21 +917,12 @@ Partial Class tables
         Me.infoTab.Text = "INFO"
         Me.infoTab.UseVisualStyleBackColor = True
         '
-        'waitlistTab
-        '
-        Me.waitlistTab.Location = New System.Drawing.Point(4, 43)
-        Me.waitlistTab.Name = "waitlistTab"
-        Me.waitlistTab.Size = New System.Drawing.Size(1318, 590)
-        Me.waitlistTab.TabIndex = 2
-        Me.waitlistTab.Text = "WAITLIST"
-        Me.waitlistTab.UseVisualStyleBackColor = True
-        '
         'tables
         '
         Me.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1350, 730)
+        Me.ClientSize = New System.Drawing.Size(1264, 762)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.logoutButton)
         Me.Name = "tables"

@@ -5,6 +5,24 @@
     '2 = waiter
     '3 = manager
 
+
+    Dim username As String
+    Dim password As String
+    Dim namee As String
+    Dim address As String
+
+    Public Sub New(ByVal username As String, ByVal password As String)
+        InitializeComponent()
+        Me.namee = username
+        Me.address = password
+        'InitializeComponent()
+
+        waiter1Label.Text = Me.namee
+        waiter2Label.Text = Me.address
+
+    End Sub
+
+
     Private Sub tables_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.WindowState = FormWindowState.Maximized
@@ -355,8 +373,9 @@
     End Sub
 
     Private Sub logoutButton_Click(sender As System.Object, e As System.EventArgs) Handles logoutButton.Click
-        login.Show()
+        'login.Show()
         Me.Close()
+        login.Show()
     End Sub
 
 End Class

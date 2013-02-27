@@ -3,10 +3,11 @@
 Public Class login
 
     Dim connStr As String = "Database=test;" & _
-                    "Data Source=192.168.1.10:3306;" & _
-                    "User Id=mike;Password=root"
+                    "Data Source=localhost;" & _
+                    "User Id=root;Password=root"
 
-    Private Sub login_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+    Private Sub login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         TestConnection()
         retriveData()
 
@@ -32,28 +33,28 @@ Public Class login
         End Try
     End Sub
 
-    Private Sub timer_Tick(sender As System.Object, e As System.EventArgs) Handles timer.Tick
+    Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer.Tick
         'every tick updates time
         timeLoginLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
 
     End Sub
 
-    Private Sub loginSubmitButton_Click(sender As System.Object, e As System.EventArgs) Handles loginSubmitButton.Click
+    Private Sub loginSubmitButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles loginSubmitButton.Click
 
         If (usernameLogin.Text.Length < 4 Or passwordLogin.Text.Length < 4) Then
-            errorLabel.Text = ""
             errorLabel.Text = "ERROR: WRONG ID/PW"
             errorLabel.Visible = True
             usernameLogin.Text = ""
             passwordLogin.Text = ""
         Else
             'check mysql to see if user is in db
-            tables.Show()
-            Me.Hide()
+            Dim tablesForm As New tables(usernameLogin.Text, passwordLogin.Text)
+            'InitializeComponent()
+            tablesForm.Show()
             usernameLogin.Text = ""
             passwordLogin.Text = ""
-            errorLabel.Text = ""
             errorLabel.Visible = False
+            Me.Hide()
         End If
 
     End Sub
@@ -81,7 +82,7 @@ Public Class login
         End Try
     End Sub
 
-    Private Sub login1KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login1KeyButton.Click
+    Private Sub login1KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login1KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
@@ -92,7 +93,7 @@ Public Class login
         End If
     End Sub
 
-    Private Sub login2KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login2KeyButton.Click
+    Private Sub login2KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login2KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
@@ -103,7 +104,7 @@ Public Class login
         End If
     End Sub
 
-    Private Sub login3KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login3KeyButton.Click
+    Private Sub login3KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login3KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
@@ -114,7 +115,7 @@ Public Class login
         End If
     End Sub
 
-    Private Sub login4KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login4KeyButton.Click
+    Private Sub login4KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login4KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
@@ -125,7 +126,7 @@ Public Class login
         End If
     End Sub
 
-    Private Sub login5KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login5KeyButton.Click
+    Private Sub login5KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login5KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
@@ -136,7 +137,7 @@ Public Class login
         End If
     End Sub
 
-    Private Sub login6KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login6KeyButton.Click
+    Private Sub login6KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login6KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
@@ -147,7 +148,7 @@ Public Class login
         End If
     End Sub
 
-    Private Sub login7KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login7KeyButton.Click
+    Private Sub login7KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login7KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
@@ -158,7 +159,7 @@ Public Class login
         End If
     End Sub
 
-    Private Sub login8KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login8KeyButton.Click
+    Private Sub login8KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login8KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
@@ -169,7 +170,7 @@ Public Class login
         End If
     End Sub
 
-    Private Sub login9KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login9KeyButton.Click
+    Private Sub login9KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login9KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
@@ -180,7 +181,7 @@ Public Class login
         End If
     End Sub
 
-    Private Sub login0KeyButton_Click(sender As System.Object, e As System.EventArgs) Handles login0KeyButton.Click
+    Private Sub login0KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login0KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
         ElseIf usernameLogin.Text.Length = 4 Then
@@ -191,8 +192,12 @@ Public Class login
         End If
     End Sub
 
-    Private Sub loginClearButton_Click(sender As System.Object, e As System.EventArgs) Handles loginClearButton.Click
+    Private Sub loginClearButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles loginClearButton.Click
         usernameLogin.Text = ""
         passwordLogin.Text = ""
+    End Sub
+
+    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
+
     End Sub
 End Class
