@@ -23,6 +23,7 @@ Partial Class login
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(login))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.usernameLogin = New System.Windows.Forms.TextBox()
         Me.passwordLogin = New System.Windows.Forms.TextBox()
@@ -43,7 +44,18 @@ Partial Class login
         Me.login0KeyButton = New System.Windows.Forms.Button()
         Me.loginClearButton = New System.Windows.Forms.Button()
         Me.errorLabel = New System.Windows.Forms.Label()
+        Me.xMarkPicture = New System.Windows.Forms.PictureBox()
+        Me.checkmarkPicture = New System.Windows.Forms.PictureBox()
+        Me.statusLabel = New System.Windows.Forms.Label()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.xMarkPicture, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.checkmarkPicture, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabControl1.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label2
@@ -251,11 +263,74 @@ Partial Class login
         Me.errorLabel.Text = "ERROR"
         Me.errorLabel.Visible = False
         '
+        'xMarkPicture
+        '
+        Me.xMarkPicture.Image = CType(resources.GetObject("xMarkPicture.Image"), System.Drawing.Image)
+        Me.xMarkPicture.Location = New System.Drawing.Point(26, 734)
+        Me.xMarkPicture.Name = "xMarkPicture"
+        Me.xMarkPicture.Size = New System.Drawing.Size(28, 28)
+        Me.xMarkPicture.TabIndex = 21
+        Me.xMarkPicture.TabStop = False
+        '
+        'checkmarkPicture
+        '
+        Me.checkmarkPicture.Image = CType(resources.GetObject("checkmarkPicture.Image"), System.Drawing.Image)
+        Me.checkmarkPicture.Location = New System.Drawing.Point(26, 734)
+        Me.checkmarkPicture.Name = "checkmarkPicture"
+        Me.checkmarkPicture.Size = New System.Drawing.Size(28, 28)
+        Me.checkmarkPicture.TabIndex = 22
+        Me.checkmarkPicture.TabStop = False
+        Me.checkmarkPicture.Visible = False
+        '
+        'statusLabel
+        '
+        Me.statusLabel.AutoSize = True
+        Me.statusLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.statusLabel.Location = New System.Drawing.Point(60, 742)
+        Me.statusLabel.Name = "statusLabel"
+        Me.statusLabel.Size = New System.Drawing.Size(59, 20)
+        Me.statusLabel.TabIndex = 23
+        Me.statusLabel.Text = "status"
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Location = New System.Drawing.Point(9, 12)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(578, 325)
+        Me.TabControl1.TabIndex = 24
+        '
+        'TabPage1
+        '
+        Me.TabPage1.Controls.Add(Me.DataGridView1)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(570, 299)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "TabPage1"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(-1, 0)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(568, 299)
+        Me.DataGridView1.TabIndex = 0
+        '
         'login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 772)
+        Me.Controls.Add(Me.TabControl1)
+        Me.Controls.Add(Me.statusLabel)
+        Me.Controls.Add(Me.checkmarkPicture)
+        Me.Controls.Add(Me.xMarkPicture)
         Me.Controls.Add(Me.errorLabel)
         Me.Controls.Add(Me.loginClearButton)
         Me.Controls.Add(Me.login0KeyButton)
@@ -282,6 +357,11 @@ Partial Class login
         Me.Name = "login"
         Me.Text = "Login"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.xMarkPicture, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.checkmarkPicture, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabControl1.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -306,5 +386,11 @@ Partial Class login
     Friend WithEvents login0KeyButton As System.Windows.Forms.Button
     Friend WithEvents loginClearButton As System.Windows.Forms.Button
     Friend WithEvents errorLabel As System.Windows.Forms.Label
+    Friend WithEvents xMarkPicture As System.Windows.Forms.PictureBox
+    Friend WithEvents checkmarkPicture As System.Windows.Forms.PictureBox
+    Friend WithEvents statusLabel As System.Windows.Forms.Label
+    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
+    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
 
 End Class

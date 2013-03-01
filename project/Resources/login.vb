@@ -1,24 +1,40 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Data
+Imports System.Data.SqlClient
 
 Public Class login
 
-    Dim connStr As String = "Database=test;" & _
+    Public connStr As String = "Database=test;" & _
                     "Data Source=localhost;" & _
-                    "User Id=root;Password=root"
-
+                    "User Id=root;Password=starwars"
+    Dim connflag As Boolean = False
 
     Private Sub login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'tests the connection to make sure it works
         TestConnection()
-        retriveData()
+
+        retrieveTest()
 
 
         'date/time display
         timeLoginLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
         dateLoginLabel.Text = Now.Date
 
+        'status message below un/pw input
+        If (connflag = True) Then
+            checkmarkPicture.Visible = True
+            statusLabel.Text = "connected"
+            statusLabel.ForeColor = Color.Green
+        Else
+            statusLabel.Text = "not connected"
+            statusLabel.ForeColor = Color.Red
+        End If
+
         'forces fullscreen
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.WindowState = FormWindowState.Maximized
+
+        retriveDataToDataGrid()
 
     End Sub
 
@@ -28,6 +44,8 @@ Public Class login
             connection.Open()
             connection.Close()
             MsgBox("Connection is okay.")
+            connflag = True
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -36,27 +54,81 @@ Public Class login
     Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer.Tick
         'every tick updates time
         timeLoginLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
-
     End Sub
 
     Private Sub loginSubmitButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles loginSubmitButton.Click
-
-        If (usernameLogin.Text.Length < 4 Or passwordLogin.Text.Length < 4) Then
+        If (connflag = False) Then
+            errorLabel.Text = "ERROR: NOT CONNECTED"
+            errorLabel.Visible = True
+            usernameLogin.Text = ""
+            passwordLogin.Text = ""
+        ElseIf (usernameLogin.Text.Length < 4 Or passwordLogin.Text.Length < 4) Then
             errorLabel.Text = "ERROR: WRONG ID/PW"
             errorLabel.Visible = True
             usernameLogin.Text = ""
             passwordLogin.Text = ""
-        Else
-            'check mysql to see if user is in db
-            Dim tablesForm As New tables(usernameLogin.Text, passwordLogin.Text)
-            'InitializeComponent()
-            tablesForm.Show()
-            usernameLogin.Text = ""
-            passwordLogin.Text = ""
-            errorLabel.Visible = False
-            Me.Hide()
-        End If
+            Else
+                'check mysql to see if user is in db
+            retrieveTest()
+                Dim tablesForm As New tables(usernameLogin.Text, passwordLogin.Text)
+                'InitializeComponent()
+                tablesForm.Show()
+                usernameLogin.Text = ""
+                passwordLogin.Text = ""
+                errorLabel.Visible = False
+                Me.Hide()
+            End If
+    End Sub
 
+    Public Sub retrieveTest()
+        Try
+            Dim query1 As String = "SELECT * FROM test WHERE un="
+            Dim query1input As String = usernameLogin.Text
+            Dim query2 As String = "SELECT * FROM test WHERE pw="
+            Dim query2input As String = passwordLogin.Text
+            Dim connection As New MySqlConnection(connStr)
+            Dim cmd1 As New MySqlCommand(query1, connection)
+            Dim cmd2 As New MySqlCommand(query2, connection)
+            Dim reader1 As MySqlDataReader
+            Dim reader2 As MySqlDataReader
+
+            connection.Open()
+            reader1 = cmd1.ExecuteReader()
+            While reader1.Read()
+                Console.WriteLine(reader1.GetInt32(0))
+            End While
+            reader1.Close()
+
+            '         reader2 = cmd2.ExecuteReader()
+            '         While reader1.Read()
+            ' Console.WriteLine(reader2.GetInt32(0))
+            ' End While
+            ' reader2.Close()
+
+
+
+            connection.Close()
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub retriveDataToDataGrid()
+        Try
+            Dim query As String = "SELECT * FROM employee"
+            Dim connection As New MySqlConnection(connStr)
+            Dim da As New MySqlDataAdapter(query, connection)
+            Dim ds As New DataSet()
+
+            If da.Fill(ds) Then
+                DataGridView1.DataSource = ds.Tables(0)
+            End If
+
+            connection.Close()
+
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
     End Sub
 
     Public Sub retriveData()
@@ -72,7 +144,7 @@ Public Class login
 
             While reader.Read()
                 Console.WriteLine((reader.GetString(0) & ", " & _
-                   reader.GetString(1)))
+                   reader.GetString(2)))
             End While
 
             reader.Close()
@@ -195,9 +267,5 @@ Public Class login
     Private Sub loginClearButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles loginClearButton.Click
         usernameLogin.Text = ""
         passwordLogin.Text = ""
-    End Sub
-
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
-
     End Sub
 End Class
