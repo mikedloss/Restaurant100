@@ -902,7 +902,7 @@ Partial Class tables
         '
         Me.waitlistTab.Location = New System.Drawing.Point(4, 43)
         Me.waitlistTab.Name = "waitlistTab"
-        Me.waitlistTab.Size = New System.Drawing.Size(1318, 590)
+        Me.waitlistTab.Size = New System.Drawing.Size(1232, 590)
         Me.waitlistTab.TabIndex = 2
         Me.waitlistTab.Text = "WAITLIST"
         Me.waitlistTab.UseVisualStyleBackColor = True
@@ -912,7 +912,7 @@ Partial Class tables
         Me.infoTab.Location = New System.Drawing.Point(4, 43)
         Me.infoTab.Name = "infoTab"
         Me.infoTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.infoTab.Size = New System.Drawing.Size(1318, 590)
+        Me.infoTab.Size = New System.Drawing.Size(1232, 590)
         Me.infoTab.TabIndex = 1
         Me.infoTab.Text = "INFO"
         Me.infoTab.UseVisualStyleBackColor = True

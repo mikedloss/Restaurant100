@@ -8,13 +8,15 @@ Public Class login
                     "Data Source=localhost;" & _
                     "User Id=root;Password=starwars"
     Dim connflag As Boolean = False
+    Dim returnanswer As Boolean = False
+    Dim queryresultusername As Int32
 
     Private Sub login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'tests the connection to make sure it works
         TestConnection()
 
-        retrieveTest()
-
+        'test display of table data
+        retriveDataToDataGrid()
 
         'date/time display
         timeLoginLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
@@ -33,9 +35,6 @@ Public Class login
         'forces fullscreen
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.WindowState = FormWindowState.Maximized
-
-        retriveDataToDataGrid()
-
     End Sub
 
     Public Sub TestConnection()
@@ -57,6 +56,10 @@ Public Class login
     End Sub
 
     Private Sub loginSubmitButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles loginSubmitButton.Click
+
+        'retriveDataToDataGrid()
+        Dim uinput As Int32
+        Dim pinput As Int32
         If (connflag = False) Then
             errorLabel.Text = "ERROR: NOT CONNECTED"
             errorLabel.Visible = True
@@ -67,55 +70,68 @@ Public Class login
             errorLabel.Visible = True
             usernameLogin.Text = ""
             passwordLogin.Text = ""
-            Else
-                'check mysql to see if user is in db
-            retrieveTest()
-                Dim tablesForm As New tables(usernameLogin.Text, passwordLogin.Text)
-                'InitializeComponent()
-                tablesForm.Show()
-                usernameLogin.Text = ""
-                passwordLogin.Text = ""
-                errorLabel.Visible = False
-                Me.Hide()
-            End If
+        Else
+            uinput = Convert.ToInt32(usernameLogin.Text)
+            pinput = Convert.ToInt32(passwordLogin.Text)
+            'check mysql to see if user is in db
+            'retrieveTest(uinput, pinput)
+            Dim tablesForm As New tables(usernameLogin.Text, passwordLogin.Text)
+            tablesForm.Show()
+            usernameLogin.Text = ""
+            passwordLogin.Text = ""
+            errorLabel.Visible = False
+            Me.Hide()
+        End If
     End Sub
 
-    Public Sub retrieveTest()
+    Public Function retrieveTest()
+        'ByVal queryinput1 As Int32, ByVal queryinput2 As Int32
         Try
-            Dim query1 As String = "SELECT * FROM test WHERE un="
-            Dim query1input As String = usernameLogin.Text
-            Dim query2 As String = "SELECT * FROM test WHERE pw="
-            Dim query2input As String = passwordLogin.Text
-            Dim connection As New MySqlConnection(connStr)
-            Dim cmd1 As New MySqlCommand(query1, connection)
-            Dim cmd2 As New MySqlCommand(query2, connection)
-            Dim reader1 As MySqlDataReader
+            Dim query1 As String = "SELECT * FROM test.employee WHERE un=" + usernameLogin.Text
+            Dim query2 As String = "SELECT * FROM test.employee WHERE pw=" + passwordLogin.Text
+
+            'Dim connection As New MySqlConnection(connStr)
+            'Dim cmd1 As MySqlCommand = New MySqlCommand(query1, connection)
+            'Dim cmd2 As MySqlCommand = New MySqlCommand(query2, connection)
+
             Dim reader2 As MySqlDataReader
-
-            connection.Open()
-            reader1 = cmd1.ExecuteReader()
-            While reader1.Read()
-                Console.WriteLine(reader1.GetInt32(0))
-            End While
-            reader1.Close()
-
-            '         reader2 = cmd2.ExecuteReader()
-            '         While reader1.Read()
-            ' Console.WriteLine(reader2.GetInt32(0))
-            ' End While
-            ' reader2.Close()
+            Using connection As New MySqlConnection(connStr)
+                Dim cmd1 As New MySqlCommand(query1, connection)
+                connection.Open()
+                Try
+                    queryresultusername = Convert.ToInt32(cmd1.ExecuteScalar())
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+                connection.Close()
+            End Using
 
 
 
-            connection.Close()
+            'Dim reader1 As MySqlDataReader = cmd1.ExecuteReader()
+            'While reader1.Read()
+            'Console.WriteLine(reader1.GetInt32(0))
+            'End While
+            'reader1.Close()
+
+            'reader2 = cmd2.ExecuteReader()
+            'While reader1.Read()
+            '   Console.WriteLine(reader2.GetInt32(0))
+            'End While
+            'reader2.Close()
+
+            'connection.Close()
+
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
-    End Sub
+        Return returnanswer
+    End Function
 
     Public Sub retriveDataToDataGrid()
         Try
-            Dim query As String = "SELECT * FROM employee"
+            Dim query As String = "SELECT * FROM employee WHERE un=" + usernameLogin.Text
+
             Dim connection As New MySqlConnection(connStr)
             Dim da As New MySqlDataAdapter(query, connection)
             Dim ds As New DataSet()
@@ -265,7 +281,11 @@ Public Class login
     End Sub
 
     Private Sub loginClearButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles loginClearButton.Click
-        usernameLogin.Text = ""
-        passwordLogin.Text = ""
+        'usernameLogin.Text = ""
+        'passwordLogin.Text = ""
+        retriveDataToDataGrid()
+        retrieveTest()
+        TextBox1.Text = queryresultusername
+
     End Sub
 End Class

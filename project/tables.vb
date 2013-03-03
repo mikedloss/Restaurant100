@@ -16,10 +16,8 @@
         Me.namee = username
         Me.address = password
         'InitializeComponent()
-
         waiter1Label.Text = Me.namee
         waiter2Label.Text = Me.address
-
     End Sub
 
 
@@ -377,5 +375,4 @@
         Me.Close()
         login.Show()
     End Sub
-
 End Class
