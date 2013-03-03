@@ -286,6 +286,32 @@ Public Class login
         retriveDataToDataGrid()
         retrieveTest()
         TextBox1.Text = queryresultusername
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+        'blah
+
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
     End Sub
 End Class
