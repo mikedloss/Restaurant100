@@ -1,9 +1,10 @@
 ﻿Public Class tables
 
-    Dim userType As Integer = 2
+    Dim userType As Int32
     '1 = host
     '2 = waiter
     '3 = manager
+    '4 = the best person in the world
 
 
     Dim username As String
@@ -11,13 +12,10 @@
     Dim namee As String
     Dim address As String
 
-    Public Sub New(ByVal username As String, ByVal password As String)
+    'Public Sub New(ByVal username As String, ByVal password As String)
+    Public Sub New(ByVal userType As Int32)
         InitializeComponent()
-        Me.namee = username
-        Me.address = password
-        'InitializeComponent()
-        waiter1Label.Text = Me.namee
-        waiter2Label.Text = Me.address
+        waiter1Label.Text = Convert.ToString(userType)
     End Sub
 
 
