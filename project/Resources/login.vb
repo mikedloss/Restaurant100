@@ -6,7 +6,7 @@ Public Class login
 
     Public connStr As String = "Database=test;" & _
                     "Data Source=localhost;" & _
-                    "User Id=root;Password=starwars"
+                    "User Id=root;Password=root"
     Dim connFlag As Boolean = False
     Dim returnAnswer As Boolean = False
     Dim queryResult As Int32
