@@ -1,21 +1,23 @@
 ﻿Public Class tables
 
-    Dim userType As Integer
+    Dim userType As Integer = 2
     '1 = host
     '2 = waiter
     '3 = manager
+
 
     Dim username As String
     Dim password As String
     Dim namee As String
     Dim address As String
 
-    'Public Sub New(ByVal username As String, ByVal password As String)
-    Public Sub New(ByVal userType As Integer)
+    Public Sub New(ByVal username As String, ByVal password As String)
         InitializeComponent()
-        'Me.namee = username
+        Me.namee = username
+        Me.address = password
         'InitializeComponent()
-        waiter1Label.Text = Convert.ToString(userType)
+        waiter1Label.Text = Me.namee
+        waiter2Label.Text = Me.address
     End Sub
 
 
