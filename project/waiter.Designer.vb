@@ -64,18 +64,18 @@ Partial Class waiter
         'orderTextBox
         '
         Me.orderTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.orderTextBox.Location = New System.Drawing.Point(2, 0)
+        Me.orderTextBox.Location = New System.Drawing.Point(12, 12)
         Me.orderTextBox.Multiline = True
         Me.orderTextBox.Name = "orderTextBox"
-        Me.orderTextBox.Size = New System.Drawing.Size(292, 670)
+        Me.orderTextBox.Size = New System.Drawing.Size(302, 605)
         Me.orderTextBox.TabIndex = 0
         '
         'clearButton
         '
         Me.clearButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.clearButton.Location = New System.Drawing.Point(12, 676)
+        Me.clearButton.Location = New System.Drawing.Point(12, 626)
         Me.clearButton.Name = "clearButton"
-        Me.clearButton.Size = New System.Drawing.Size(282, 42)
+        Me.clearButton.Size = New System.Drawing.Size(408, 42)
         Me.clearButton.TabIndex = 13
         Me.clearButton.Text = "CLEAR"
         Me.clearButton.UseVisualStyleBackColor = True
@@ -90,14 +90,14 @@ Partial Class waiter
         Me.tabControlWaiter.Controls.Add(Me.dessertTab)
         Me.tabControlWaiter.Controls.Add(Me.extrasTab)
         Me.tabControlWaiter.Cursor = System.Windows.Forms.Cursors.Default
-        Me.tabControlWaiter.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabControlWaiter.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabControlWaiter.HotTrack = True
-        Me.tabControlWaiter.Location = New System.Drawing.Point(422, 12)
+        Me.tabControlWaiter.Location = New System.Drawing.Point(426, 12)
         Me.tabControlWaiter.Multiline = True
         Me.tabControlWaiter.Name = "tabControlWaiter"
         Me.tabControlWaiter.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.tabControlWaiter.SelectedIndex = 0
-        Me.tabControlWaiter.Size = New System.Drawing.Size(924, 658)
+        Me.tabControlWaiter.Size = New System.Drawing.Size(826, 605)
         Me.tabControlWaiter.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.tabControlWaiter.TabIndex = 14
         '
@@ -309,9 +309,9 @@ Partial Class waiter
         '
         'extrasTab
         '
-        Me.extrasTab.Location = New System.Drawing.Point(4, 43)
+        Me.extrasTab.Location = New System.Drawing.Point(4, 37)
         Me.extrasTab.Name = "extrasTab"
-        Me.extrasTab.Size = New System.Drawing.Size(916, 611)
+        Me.extrasTab.Size = New System.Drawing.Size(818, 564)
         Me.extrasTab.TabIndex = 5
         Me.extrasTab.Text = "EXTRAS"
         Me.extrasTab.UseVisualStyleBackColor = True
@@ -319,9 +319,9 @@ Partial Class waiter
         'submitOrderButton
         '
         Me.submitOrderButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.submitOrderButton.Location = New System.Drawing.Point(300, 676)
+        Me.submitOrderButton.Location = New System.Drawing.Point(426, 626)
         Me.submitOrderButton.Name = "submitOrderButton"
-        Me.submitOrderButton.Size = New System.Drawing.Size(1046, 42)
+        Me.submitOrderButton.Size = New System.Drawing.Size(826, 42)
         Me.submitOrderButton.TabIndex = 15
         Me.submitOrderButton.Text = "SUBMIT ORDER"
         Me.submitOrderButton.UseVisualStyleBackColor = True
@@ -329,7 +329,7 @@ Partial Class waiter
         'modifier86Button
         '
         Me.modifier86Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.modifier86Button.Location = New System.Drawing.Point(310, 48)
+        Me.modifier86Button.Location = New System.Drawing.Point(320, 49)
         Me.modifier86Button.Name = "modifier86Button"
         Me.modifier86Button.Size = New System.Drawing.Size(100, 70)
         Me.modifier86Button.TabIndex = 16
@@ -339,7 +339,7 @@ Partial Class waiter
         'addModifierButton
         '
         Me.addModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.addModifierButton.Location = New System.Drawing.Point(310, 130)
+        Me.addModifierButton.Location = New System.Drawing.Point(320, 125)
         Me.addModifierButton.Name = "addModifierButton"
         Me.addModifierButton.Size = New System.Drawing.Size(100, 70)
         Me.addModifierButton.TabIndex = 17
@@ -349,7 +349,7 @@ Partial Class waiter
         'lightModifierButton
         '
         Me.lightModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lightModifierButton.Location = New System.Drawing.Point(310, 213)
+        Me.lightModifierButton.Location = New System.Drawing.Point(320, 201)
         Me.lightModifierButton.Name = "lightModifierButton"
         Me.lightModifierButton.Size = New System.Drawing.Size(100, 70)
         Me.lightModifierButton.TabIndex = 18
@@ -359,7 +359,7 @@ Partial Class waiter
         'crispyModifierButton
         '
         Me.crispyModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.crispyModifierButton.Location = New System.Drawing.Point(310, 298)
+        Me.crispyModifierButton.Location = New System.Drawing.Point(320, 277)
         Me.crispyModifierButton.Name = "crispyModifierButton"
         Me.crispyModifierButton.Size = New System.Drawing.Size(100, 70)
         Me.crispyModifierButton.TabIndex = 19
@@ -369,7 +369,7 @@ Partial Class waiter
         'onsideModifierButton
         '
         Me.onsideModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.onsideModifierButton.Location = New System.Drawing.Point(310, 385)
+        Me.onsideModifierButton.Location = New System.Drawing.Point(320, 353)
         Me.onsideModifierButton.Name = "onsideModifierButton"
         Me.onsideModifierButton.Size = New System.Drawing.Size(100, 70)
         Me.onsideModifierButton.TabIndex = 20
@@ -379,7 +379,7 @@ Partial Class waiter
         'sideofModifierButton
         '
         Me.sideofModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.sideofModifierButton.Location = New System.Drawing.Point(310, 471)
+        Me.sideofModifierButton.Location = New System.Drawing.Point(320, 429)
         Me.sideofModifierButton.Name = "sideofModifierButton"
         Me.sideofModifierButton.Size = New System.Drawing.Size(100, 70)
         Me.sideofModifierButton.TabIndex = 21
@@ -389,7 +389,7 @@ Partial Class waiter
         'extraModifierButton
         '
         Me.extraModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.extraModifierButton.Location = New System.Drawing.Point(310, 558)
+        Me.extraModifierButton.Location = New System.Drawing.Point(320, 505)
         Me.extraModifierButton.Name = "extraModifierButton"
         Me.extraModifierButton.Size = New System.Drawing.Size(100, 70)
         Me.extraModifierButton.TabIndex = 22
@@ -400,7 +400,7 @@ Partial Class waiter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1350, 730)
+        Me.ClientSize = New System.Drawing.Size(1264, 680)
         Me.Controls.Add(Me.extraModifierButton)
         Me.Controls.Add(Me.sideofModifierButton)
         Me.Controls.Add(Me.onsideModifierButton)

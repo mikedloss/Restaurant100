@@ -4,13 +4,14 @@ Imports System.Data.SqlClient
 
 Public Class login
 
-    Public connStr As String = "Database=test;" & _
-                    "Data Source=localhost;" & _
-                    "User Id=root;Password=root"
+    Public connStr As String = "Database=restaurant;" & _
+                    "Data Source=192.168.1.2;" & _
+                    "User Id=root;"
     Dim connFlag As Boolean = False
     Dim returnAnswer As Boolean = False
     Dim queryResult As Int32
     Dim queryTypeResult As Int32
+    Dim queryDisplayName As String
 
 
 
@@ -84,26 +85,34 @@ Public Class login
             usernameLogin.Text = ""
             passwordLogin.Text = ""
         Else
-            Dim tablesForm As New tables(queryTypeResult)
-            tablesForm.Show()
+            If (queryTypeResult = 1 Or queryTypeResult = 2) Then
+                Dim tablesForm As New tables(queryTypeResult, queryDisplayName)
+                tablesForm.Show()
+                'Me.Hide()
+            ElseIf (queryTypeResult = 3) Then
+                MsgBox("you are a cook")
+            ElseIf (queryTypeResult = 4) Then
+                MsgBox("you are a manager")
+            End If
             usernameLogin.Text = ""
             passwordLogin.Text = ""
             errorLabel.Visible = False
-            Me.Hide()
-        End If
+            End If
     End Sub
 
     Public Function retrieveTest()
         Try
             'these strings are the commands send to the mySQL command line
-            Dim queryUsername As String = "SELECT pw FROM employee WHERE un IN('" + usernameLogin.Text
-            Dim qUAddon As String = "');"
-            Dim queryType As String = "SELECT type FROM employee WHERE un IN ('" + usernameLogin.Text
+            Dim queryUsername As String = "SELECT pw FROM restaurant.employeeinfo WHERE un IN('" + usernameLogin.Text
+            Dim qAddon As String = "');"
+            Dim queryType As String = "SELECT type FROM restaurant.employeeinfo WHERE un IN ('" + usernameLogin.Text
+            Dim queryName As String = "SELECT displayname FROM restaurant.employeeinfo WHERE un IN ('" + usernameLogin.Text
             Dim pLoginHold As Int32 = Convert.ToInt32(passwordLogin.Text) 'holding the user password
 
             'adding on the '); to the queries so that they execute
-            queryUsername += qUAddon
-            queryType += qUAddon
+            queryUsername += qAddon
+            queryType += qAddon
+            queryName += qAddon
 
             'opens connection to mySQL server
             Using connection As New MySqlConnection(connStr)
@@ -111,7 +120,7 @@ Public Class login
                 connection.Open()                                       'open connection
 
                 Try
-                    queryResult = Convert.ToInt32(cmd.ExecuteScalar())  'takes column1 table1 of returned result
+                    queryResult = Convert.ToInt32(cmd.ExecuteScalar())  'takes column1 row1 of returned result
                     'if nothing is found, queryResult = 0
 
                 Catch ex As Exception
@@ -122,7 +131,7 @@ Public Class login
 
             If queryResult <> 0 Then                                    'checks if something was RETURNED (since 0 = nothing found)
                 If pLoginHold = queryResult Then                        'checks user password input to what was found in database
-                    returnAnswer = True                                 'flag to say everything is good to go!
+
                     Using connection As New MySqlConnection(connStr)    'same as before but this time will be getting the type of employee
                         Dim cmd As New MySqlCommand(queryType, connection)
                         connection.Open()
@@ -131,7 +140,15 @@ Public Class login
                         Catch ex As Exception
                             Console.WriteLine(ex.Message)
                         End Try
+                        cmd = New MySqlCommand(queryName, connection)
+                        Try
+                            queryDisplayName = Convert.ToString(cmd.ExecuteScalar())
+                        Catch ex As Exception
+                            Console.WriteLine(ex.Message)
+                        End Try
+                        'cmd = New MySqlCommand(
                         connection.Close()
+                        returnAnswer = True                             'flag to say everything is good to go!
                     End Using
                 End If
             End If
@@ -148,7 +165,7 @@ Public Class login
         'it will display what was found from user input in a datagrid (unhide the tab control over restaurant picture)
 
         Try
-            Dim query As String = "SELECT * FROM employee WHERE un=" + usernameLogin.Text
+            Dim query As String = "SELECT * FROM restaurant.employeeinfo WHERE un=" + usernameLogin.Text
 
             Dim connection As New MySqlConnection(connStr)
             Dim da As New MySqlDataAdapter(query, connection)
@@ -277,11 +294,29 @@ Public Class login
 
     Private Sub loginClearButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles loginClearButton.Click
         'BELOW CODE IS FOR DEBUGGING
-        retriveDataToDataGrid()
-        retrieveTest()
-        TextBox1.Text = queryResult
+        'retriveDataToDataGrid()
+        'retrieveTest()
+        'TextBox1.Text = queryResult
         'ABOVE CODE IS FOR DEBUGGING, COMMENT OUT NEXT 2 LINES
         usernameLogin.Text = ""
         passwordLogin.Text = ""
+    End Sub
+
+    Private Sub reconnectButton_Click(sender As Object, e As EventArgs) Handles reconnectButton.Click
+        Try
+            Dim connection As New MySqlConnection(connStr)
+            connection.Open()
+            connection.Close()
+            connFlag = True
+            checkmarkPicture.Visible = True
+            statusLabel.Text = "connected"
+            statusLabel.ForeColor = Color.Green
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            checkmarkPicture.Visible = False
+            statusLabel.Text = "not connected"
+            statusLabel.ForeColor = Color.Red
+        End Try
     End Sub
 End Class

@@ -1,299 +1,233 @@
-﻿Public Class tables
+﻿Imports MySql.Data.MySqlClient
+Imports System.Data
+Imports System.Data.SqlClient
 
-    Dim userType As Int32
+Public Class tables
+
+    Dim employeeType As Integer
     '1 = host
     '2 = waiter
-    '3 = manager
-    '4 = the best person in the world
+    '3 = cook/qa
+    '4 = manager
+    '5 = the best person in the world
 
+    Dim displayName As String
 
-    Dim username As String
-    Dim password As String
-    Dim namee As String
-    Dim address As String
+    Public connStr As String = "Database=restaurant;" & _
+                    "Data Source=192.168.1.2;" & _
+                    "User Id=root;"
 
-    'Public Sub New(ByVal username As String, ByVal password As String)
-    Public Sub New(ByVal userType As Int32)
+    Public Sub New(ByVal type As Int32, ByVal name As String)
         InitializeComponent()
-        waiter1Label.Text = Convert.ToString(userType)
+        employeeType = type
+        displayName = name
     End Sub
 
 
     Private Sub tables_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.WindowState = FormWindowState.Maximized
-
+        waiter1Label.Text = ""
+        waiter2Label.Text = ""
+        waiter3Label.Text = ""
+        bartenderLabel.Text = ""
+        waiter1Label.Text = Convert.ToString(displayName)
+        retriveWaitlistData()
     End Sub
 
-    Private Sub table1seat1Button_Click(sender As System.Object, e As System.EventArgs) Handles table1seat1Button.Click
-        If (userType = 1) Then
-            If (table1seat1Button.BackColor = Color.PaleGreen) Then
-                table1seat1Button.BackColor = Color.LightSalmon
+    Private Sub table1Button_Click(sender As Object, e As EventArgs) Handles table1Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 1
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
+        Else
+            If (table1Button.BackColor = Color.PaleGreen) Then
+                table1Button.BackColor = Color.LightSalmon
             Else
-                table1seat1Button.BackColor = Color.PaleGreen
+                table1Button.BackColor = Color.PaleGreen
             End If
-        ElseIf (userType = 2) Then
-            waiter.Show()
-            Me.Hide()
         End If
     End Sub
-    Private Sub table1seat2Button_Click(sender As System.Object, e As System.EventArgs) Handles table1seat2Button.Click
-        If (table1seat2Button.BackColor = Color.PaleGreen) Then
-            table1seat2Button.BackColor = Color.LightSalmon
+    Private Sub table2Button_Click(sender As Object, e As EventArgs) Handles table2Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 2
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table1seat2Button.BackColor = Color.PaleGreen
+            If (table2Button.BackColor = Color.PaleGreen) Then
+                table2Button.BackColor = Color.LightSalmon
+            Else
+                table2Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table1seat3Button_Click(sender As System.Object, e As System.EventArgs) Handles table1seat3Button.Click
-        If (table1seat3Button.BackColor = Color.PaleGreen) Then
-            table1seat3Button.BackColor = Color.LightSalmon
+    Private Sub table3Button_Click(sender As Object, e As EventArgs) Handles table3Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 3
+            Dim waiterform As New waiter(tableNum)
+
         Else
-            table1seat3Button.BackColor = Color.PaleGreen
+            If (table3Button.BackColor = Color.PaleGreen) Then
+                table3Button.BackColor = Color.LightSalmon
+            Else
+                table3Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table1seat4Button_Click(sender As System.Object, e As System.EventArgs) Handles table1seat4Button.Click
-        If (table1seat4Button.BackColor = Color.PaleGreen) Then
-            table1seat4Button.BackColor = Color.LightSalmon
+    Private Sub table4Button_Click(sender As Object, e As EventArgs) Handles table4Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 4
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table1seat4Button.BackColor = Color.PaleGreen
+            If (table4Button.BackColor = Color.PaleGreen) Then
+                table4Button.BackColor = Color.LightSalmon
+            Else
+                table4Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table2seat1Button_Click(sender As System.Object, e As System.EventArgs) Handles table2seat1Button.Click
-        If (table2seat1Button.BackColor = Color.PaleGreen) Then
-            table2seat1Button.BackColor = Color.LightSalmon
+    Private Sub table5Button_Click(sender As Object, e As EventArgs) Handles table5Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 5
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table2seat1Button.BackColor = Color.PaleGreen
+            If (table5Button.BackColor = Color.PaleGreen) Then
+                table5Button.BackColor = Color.LightSalmon
+            Else
+                table5Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table2seat2Button_Click(sender As System.Object, e As System.EventArgs) Handles table2seat2Button.Click
-        If (table2seat2Button.BackColor = Color.PaleGreen) Then
-            table2seat2Button.BackColor = Color.LightSalmon
+    Private Sub table6Button_Click(sender As Object, e As EventArgs) Handles table6Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 6
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table2seat2Button.BackColor = Color.PaleGreen
+            If (table6Button.BackColor = Color.PaleGreen) Then
+                table6Button.BackColor = Color.LightSalmon
+            Else
+                table6Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table2seat3Button_Click(sender As System.Object, e As System.EventArgs) Handles table2seat3Button.Click
-        If (table2seat3Button.BackColor = Color.PaleGreen) Then
-            table2seat3Button.BackColor = Color.LightSalmon
+    Private Sub table7Button_Click(sender As Object, e As EventArgs) Handles table7Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 7
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table2seat3Button.BackColor = Color.PaleGreen
+            If (table7Button.BackColor = Color.PaleGreen) Then
+                table7Button.BackColor = Color.LightSalmon
+            Else
+                table7Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table2seat4Button_Click(sender As System.Object, e As System.EventArgs) Handles table2seat4Button.Click
-        If (table2seat4Button.BackColor = Color.PaleGreen) Then
-            table2seat4Button.BackColor = Color.LightSalmon
+    Private Sub table8Button_Click(sender As Object, e As EventArgs) Handles table8Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 8
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table2seat4Button.BackColor = Color.PaleGreen
+            If (table8Button.BackColor = Color.PaleGreen) Then
+                table8Button.BackColor = Color.LightSalmon
+            Else
+                table8Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table3seat1Button_Click(sender As System.Object, e As System.EventArgs) Handles table3seat1Button.Click
-        If (table3seat1Button.BackColor = Color.PaleGreen) Then
-            table3seat1Button.BackColor = Color.LightSalmon
+    Private Sub table9Button_Click(sender As Object, e As EventArgs) Handles table9Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 9
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table3seat1Button.BackColor = Color.PaleGreen
+            If (table9Button.BackColor = Color.PaleGreen) Then
+                table9Button.BackColor = Color.LightSalmon
+            Else
+                table9Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table3seat2Button_Click(sender As System.Object, e As System.EventArgs) Handles table3seat2Button.Click
-        If (table3seat2Button.BackColor = Color.PaleGreen) Then
-            table3seat2Button.BackColor = Color.LightSalmon
+    Private Sub table10Button_Click(sender As Object, e As EventArgs) Handles table10Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 10
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table3seat2Button.BackColor = Color.PaleGreen
+            If (table10Button.BackColor = Color.PaleGreen) Then
+                table10Button.BackColor = Color.LightSalmon
+            Else
+                table10Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table3seat3Button_Click(sender As System.Object, e As System.EventArgs) Handles table3seat3Button.Click
-        If (table3seat3Button.BackColor = Color.PaleGreen) Then
-            table3seat3Button.BackColor = Color.LightSalmon
+    Private Sub table11Button_Click(sender As Object, e As EventArgs) Handles table11Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 11
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table3seat3Button.BackColor = Color.PaleGreen
+            If (table11Button.BackColor = Color.PaleGreen) Then
+                table11Button.BackColor = Color.LightSalmon
+            Else
+                table11Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table3seat4Button_Click(sender As System.Object, e As System.EventArgs) Handles table3seat4Button.Click
-        If (table3seat4Button.BackColor = Color.PaleGreen) Then
-            table3seat4Button.BackColor = Color.LightSalmon
+    Private Sub table12Button_Click(sender As Object, e As EventArgs) Handles table12Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 12
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table3seat4Button.BackColor = Color.PaleGreen
+            If (table12Button.BackColor = Color.PaleGreen) Then
+                table12Button.BackColor = Color.LightSalmon
+            Else
+                table12Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table4seat1Button_Click(sender As System.Object, e As System.EventArgs) Handles table4seat1Button.Click
-        If (table4seat1Button.BackColor = Color.PaleGreen) Then
-            table4seat1Button.BackColor = Color.LightSalmon
+    Private Sub table13Button_Click(sender As Object, e As EventArgs) Handles table13Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 13
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table4seat1Button.BackColor = Color.PaleGreen
+            If (table13Button.BackColor = Color.PaleGreen) Then
+                table13Button.BackColor = Color.LightSalmon
+            Else
+                table13Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table4seat2Button_Click(sender As System.Object, e As System.EventArgs) Handles table4seat2Button.Click
-        If (table4seat2Button.BackColor = Color.PaleGreen) Then
-            table4seat2Button.BackColor = Color.LightSalmon
+    Private Sub table14Button_Click(sender As Object, e As EventArgs) Handles table14Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 14
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table4seat2Button.BackColor = Color.PaleGreen
+            If (table14Button.BackColor = Color.PaleGreen) Then
+                table14Button.BackColor = Color.LightSalmon
+            Else
+                table14Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
-    Private Sub table4seat3Button_Click(sender As System.Object, e As System.EventArgs) Handles table4seat3Button.Click
-        If (table4seat3Button.BackColor = Color.PaleGreen) Then
-            table4seat3Button.BackColor = Color.LightSalmon
+    Private Sub table15Button_Click(sender As Object, e As EventArgs) Handles table15Button.Click
+        If (employeeType = 2) Then
+            Dim tableNum As Integer = 15
+            Dim waiterform As New waiter(tableNum)
+            waiterform.Show()
         Else
-            table4seat3Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table4seat4Button_Click(sender As System.Object, e As System.EventArgs) Handles table4seat4Button.Click
-        If (table4seat4Button.BackColor = Color.PaleGreen) Then
-            table4seat4Button.BackColor = Color.LightSalmon
-        Else
-            table4seat4Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table5seat1Button_Click(sender As System.Object, e As System.EventArgs) Handles table5seat1Button.Click
-        If (table5seat1Button.BackColor = Color.PaleGreen) Then
-            table5seat1Button.BackColor = Color.LightSalmon
-        Else
-            table5seat1Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table5seat2Button_Click(sender As System.Object, e As System.EventArgs) Handles table5seat2Button.Click
-        If (table5seat2Button.BackColor = Color.PaleGreen) Then
-            table5seat2Button.BackColor = Color.LightSalmon
-        Else
-            table5seat2Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table5seat3Button_Click(sender As System.Object, e As System.EventArgs) Handles table5seat3Button.Click
-        If (table5seat3Button.BackColor = Color.PaleGreen) Then
-            table5seat3Button.BackColor = Color.LightSalmon
-        Else
-            table5seat3Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table5seat4Button_Click(sender As System.Object, e As System.EventArgs) Handles table5seat4Button.Click
-        If (table5seat4Button.BackColor = Color.PaleGreen) Then
-            table5seat4Button.BackColor = Color.LightSalmon
-        Else
-            table5seat4Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table6seat1Button_Click(sender As System.Object, e As System.EventArgs) Handles table6seat1Button.Click
-        If (table6seat1Button.BackColor = Color.PaleGreen) Then
-            table6seat1Button.BackColor = Color.LightSalmon
-        Else
-            table6seat1Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table6seat2Button_Click(sender As System.Object, e As System.EventArgs) Handles table6seat2Button.Click
-        If (table6seat2Button.BackColor = Color.PaleGreen) Then
-            table6seat2Button.BackColor = Color.LightSalmon
-        Else
-            table6seat2Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table6seat3Button_Click(sender As System.Object, e As System.EventArgs) Handles table6seat3Button.Click
-        If (table6seat3Button.BackColor = Color.PaleGreen) Then
-            table6seat3Button.BackColor = Color.LightSalmon
-        Else
-            table6seat3Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table6seat4Button_Click(sender As System.Object, e As System.EventArgs) Handles table6seat4Button.Click
-        If (table6seat4Button.BackColor = Color.PaleGreen) Then
-            table6seat4Button.BackColor = Color.LightSalmon
-        Else
-            table6seat4Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table7seat1Button_Click(sender As System.Object, e As System.EventArgs) Handles table7seat1Button.Click
-        If (table7seat1Button.BackColor = Color.PaleGreen) Then
-            table7seat1Button.BackColor = Color.LightSalmon
-        Else
-            table7seat1Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table7seat2Button_Click(sender As System.Object, e As System.EventArgs) Handles table7seat2Button.Click
-        If (table7seat2Button.BackColor = Color.PaleGreen) Then
-            table7seat2Button.BackColor = Color.LightSalmon
-        Else
-            table7seat2Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table7seat3Button_Click(sender As System.Object, e As System.EventArgs) Handles table7seat3Button.Click
-        If (table7seat3Button.BackColor = Color.PaleGreen) Then
-            table7seat3Button.BackColor = Color.LightSalmon
-        Else
-            table7seat3Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table7seat4Button_Click(sender As System.Object, e As System.EventArgs) Handles table7seat4Button.Click
-        If (table7seat4Button.BackColor = Color.PaleGreen) Then
-            table7seat4Button.BackColor = Color.LightSalmon
-        Else
-            table7seat4Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table7seat5Button_Click(sender As System.Object, e As System.EventArgs) Handles table7seat5Button.Click
-        If (table7seat5Button.BackColor = Color.PaleGreen) Then
-            table7seat5Button.BackColor = Color.LightSalmon
-        Else
-            table7seat5Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table7seat6Button_Click(sender As System.Object, e As System.EventArgs) Handles table7seat6Button.Click
-        If (table7seat6Button.BackColor = Color.PaleGreen) Then
-            table7seat6Button.BackColor = Color.LightSalmon
-        Else
-            table7seat6Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table7seat7Button_Click(sender As System.Object, e As System.EventArgs) Handles table7seat7Button.Click
-        If (table7seat7Button.BackColor = Color.PaleGreen) Then
-            table7seat7Button.BackColor = Color.LightSalmon
-        Else
-            table7seat7Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table7seat8Button_Click(sender As System.Object, e As System.EventArgs) Handles table7seat8Button.Click
-        If (table7seat8Button.BackColor = Color.PaleGreen) Then
-            table7seat8Button.BackColor = Color.LightSalmon
-        Else
-            table7seat8Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table7seat9Button_Click(sender As System.Object, e As System.EventArgs) Handles table7seat9Button.Click
-        If (table7seat9Button.BackColor = Color.PaleGreen) Then
-            table7seat9Button.BackColor = Color.LightSalmon
-        Else
-            table7seat9Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table7seat10Button_Click(sender As System.Object, e As System.EventArgs) Handles table7seat10Button.Click
-        If (table7seat10Button.BackColor = Color.PaleGreen) Then
-            table7seat10Button.BackColor = Color.LightSalmon
-        Else
-            table7seat10Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table8seat1Button_Click(sender As System.Object, e As System.EventArgs) Handles table8seat1Button.Click
-        If (table8seat1Button.BackColor = Color.PaleGreen) Then
-            table8seat1Button.BackColor = Color.LightSalmon
-        Else
-            table8seat1Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table8seat2Button_Click(sender As System.Object, e As System.EventArgs) Handles table8seat2Button.Click
-        If (table8seat2Button.BackColor = Color.PaleGreen) Then
-            table8seat2Button.BackColor = Color.LightSalmon
-        Else
-            table8seat2Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table8seat3Button_Click(sender As System.Object, e As System.EventArgs) Handles table8seat3Button.Click
-        If (table8seat3Button.BackColor = Color.PaleGreen) Then
-            table8seat3Button.BackColor = Color.LightSalmon
-        Else
-            table8seat3Button.BackColor = Color.PaleGreen
-        End If
-    End Sub
-    Private Sub table8seat4Button_Click(sender As System.Object, e As System.EventArgs) Handles table8seat4Button.Click
-        If (table8seat4Button.BackColor = Color.PaleGreen) Then
-            table8seat4Button.BackColor = Color.LightSalmon
-        Else
-            table8seat4Button.BackColor = Color.PaleGreen
+            If (table15Button.BackColor = Color.PaleGreen) Then
+                table15Button.BackColor = Color.LightSalmon
+            Else
+                table15Button.BackColor = Color.PaleGreen
+            End If
         End If
     End Sub
     Private Sub barSeat1Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat1Button.Click
@@ -359,7 +293,6 @@
             barSeat9Button.BackColor = Color.PaleGreen
         End If
     End Sub
-
     Private Sub barSeat10Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat10Button.Click
         If (barSeat10Button.BackColor = Color.PaleGreen) Then
             barSeat10Button.BackColor = Color.LightSalmon
@@ -372,5 +305,31 @@
         'login.Show()
         Me.Close()
         login.Show()
+    End Sub
+
+    Public Sub retriveWaitlistData()
+        Try
+            Dim query As String = "SELECT * FROM restaurant.tablewaitlist;"
+            Dim connection As New MySqlConnection(connStr)
+            Dim da As New MySqlDataAdapter(query, connection)
+            Dim ds As New DataSet()
+
+            connection.Open()
+            If da.Fill(ds) Then
+                DataGridView1.DataSource = ds.Tables(0)
+            End If
+            connection.Close()
+
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub retrieveInfoData()
+        Try
+            Dim query1 As String = "SELECT * FROM restaurant.schedule;"
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
     End Sub
 End Class

@@ -52,6 +52,7 @@ Partial Class login
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.reconnectButton = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.xMarkPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.checkmarkPicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,7 +65,7 @@ Partial Class login
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 532)
+        Me.Label2.Location = New System.Drawing.Point(12, 502)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(96, 37)
         Me.Label2.TabIndex = 1
@@ -73,7 +74,7 @@ Partial Class login
         'usernameLogin
         '
         Me.usernameLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.usernameLogin.Location = New System.Drawing.Point(12, 572)
+        Me.usernameLogin.Location = New System.Drawing.Point(12, 542)
         Me.usernameLogin.MaxLength = 4
         Me.usernameLogin.Name = "usernameLogin"
         Me.usernameLogin.Size = New System.Drawing.Size(486, 38)
@@ -82,7 +83,7 @@ Partial Class login
         'passwordLogin
         '
         Me.passwordLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.passwordLogin.Location = New System.Drawing.Point(12, 616)
+        Me.passwordLogin.Location = New System.Drawing.Point(12, 586)
         Me.passwordLogin.MaxLength = 4
         Me.passwordLogin.Name = "passwordLogin"
         Me.passwordLogin.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -92,7 +93,7 @@ Partial Class login
         'loginSubmitButton
         '
         Me.loginSubmitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.loginSubmitButton.Location = New System.Drawing.Point(12, 660)
+        Me.loginSubmitButton.Location = New System.Drawing.Point(12, 630)
         Me.loginSubmitButton.Name = "loginSubmitButton"
         Me.loginSubmitButton.Size = New System.Drawing.Size(240, 45)
         Me.loginSubmitButton.TabIndex = 4
@@ -102,7 +103,7 @@ Partial Class login
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.project.My.Resources.Resources.Restaurant3
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(575, 325)
         Me.PictureBox1.TabIndex = 6
@@ -117,7 +118,7 @@ Partial Class login
         '
         Me.dateLoginLabel.AutoSize = True
         Me.dateLoginLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dateLoginLabel.Location = New System.Drawing.Point(6, 340)
+        Me.dateLoginLabel.Location = New System.Drawing.Point(-1, 328)
         Me.dateLoginLabel.Name = "dateLoginLabel"
         Me.dateLoginLabel.Size = New System.Drawing.Size(203, 73)
         Me.dateLoginLabel.TabIndex = 7
@@ -127,7 +128,7 @@ Partial Class login
         '
         Me.timeLoginLabel.AutoSize = True
         Me.timeLoginLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.timeLoginLabel.Location = New System.Drawing.Point(6, 415)
+        Me.timeLoginLabel.Location = New System.Drawing.Point(-1, 392)
         Me.timeLoginLabel.Name = "timeLoginLabel"
         Me.timeLoginLabel.Size = New System.Drawing.Size(185, 73)
         Me.timeLoginLabel.TabIndex = 8
@@ -137,7 +138,7 @@ Partial Class login
         '
         Me.login1KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login1KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.login1KeyButton.Location = New System.Drawing.Point(725, 20)
+        Me.login1KeyButton.Location = New System.Drawing.Point(754, 6)
         Me.login1KeyButton.Name = "login1KeyButton"
         Me.login1KeyButton.Size = New System.Drawing.Size(150, 150)
         Me.login1KeyButton.TabIndex = 9
@@ -148,7 +149,7 @@ Partial Class login
         '
         Me.login2KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login2KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.login2KeyButton.Location = New System.Drawing.Point(900, 20)
+        Me.login2KeyButton.Location = New System.Drawing.Point(929, 6)
         Me.login2KeyButton.Name = "login2KeyButton"
         Me.login2KeyButton.Size = New System.Drawing.Size(150, 150)
         Me.login2KeyButton.TabIndex = 10
@@ -159,7 +160,7 @@ Partial Class login
         '
         Me.login3KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login3KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.login3KeyButton.Location = New System.Drawing.Point(1075, 20)
+        Me.login3KeyButton.Location = New System.Drawing.Point(1104, 6)
         Me.login3KeyButton.Name = "login3KeyButton"
         Me.login3KeyButton.Size = New System.Drawing.Size(150, 150)
         Me.login3KeyButton.TabIndex = 11
@@ -170,7 +171,7 @@ Partial Class login
         '
         Me.login4KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login4KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.login4KeyButton.Location = New System.Drawing.Point(725, 195)
+        Me.login4KeyButton.Location = New System.Drawing.Point(754, 181)
         Me.login4KeyButton.Name = "login4KeyButton"
         Me.login4KeyButton.Size = New System.Drawing.Size(150, 150)
         Me.login4KeyButton.TabIndex = 12
@@ -181,7 +182,7 @@ Partial Class login
         '
         Me.login5KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login5KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.login5KeyButton.Location = New System.Drawing.Point(900, 195)
+        Me.login5KeyButton.Location = New System.Drawing.Point(929, 181)
         Me.login5KeyButton.Name = "login5KeyButton"
         Me.login5KeyButton.Size = New System.Drawing.Size(150, 150)
         Me.login5KeyButton.TabIndex = 13
@@ -192,7 +193,7 @@ Partial Class login
         '
         Me.login6KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login6KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.login6KeyButton.Location = New System.Drawing.Point(1075, 195)
+        Me.login6KeyButton.Location = New System.Drawing.Point(1104, 181)
         Me.login6KeyButton.Name = "login6KeyButton"
         Me.login6KeyButton.Size = New System.Drawing.Size(150, 150)
         Me.login6KeyButton.TabIndex = 14
@@ -203,7 +204,7 @@ Partial Class login
         '
         Me.login7KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login7KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.login7KeyButton.Location = New System.Drawing.Point(725, 365)
+        Me.login7KeyButton.Location = New System.Drawing.Point(754, 351)
         Me.login7KeyButton.Name = "login7KeyButton"
         Me.login7KeyButton.Size = New System.Drawing.Size(150, 150)
         Me.login7KeyButton.TabIndex = 15
@@ -214,7 +215,7 @@ Partial Class login
         '
         Me.login8KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login8KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.login8KeyButton.Location = New System.Drawing.Point(900, 365)
+        Me.login8KeyButton.Location = New System.Drawing.Point(929, 351)
         Me.login8KeyButton.Name = "login8KeyButton"
         Me.login8KeyButton.Size = New System.Drawing.Size(150, 150)
         Me.login8KeyButton.TabIndex = 16
@@ -225,7 +226,7 @@ Partial Class login
         '
         Me.login9KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login9KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.login9KeyButton.Location = New System.Drawing.Point(1075, 365)
+        Me.login9KeyButton.Location = New System.Drawing.Point(1104, 351)
         Me.login9KeyButton.Name = "login9KeyButton"
         Me.login9KeyButton.Size = New System.Drawing.Size(150, 150)
         Me.login9KeyButton.TabIndex = 17
@@ -236,7 +237,7 @@ Partial Class login
         '
         Me.login0KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login0KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.login0KeyButton.Location = New System.Drawing.Point(900, 540)
+        Me.login0KeyButton.Location = New System.Drawing.Point(929, 526)
         Me.login0KeyButton.Name = "login0KeyButton"
         Me.login0KeyButton.Size = New System.Drawing.Size(150, 150)
         Me.login0KeyButton.TabIndex = 18
@@ -246,7 +247,7 @@ Partial Class login
         'loginClearButton
         '
         Me.loginClearButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.loginClearButton.Location = New System.Drawing.Point(258, 660)
+        Me.loginClearButton.Location = New System.Drawing.Point(258, 630)
         Me.loginClearButton.Name = "loginClearButton"
         Me.loginClearButton.Size = New System.Drawing.Size(240, 45)
         Me.loginClearButton.TabIndex = 19
@@ -258,7 +259,7 @@ Partial Class login
         Me.errorLabel.AutoSize = True
         Me.errorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.errorLabel.ForeColor = System.Drawing.Color.Firebrick
-        Me.errorLabel.Location = New System.Drawing.Point(134, 535)
+        Me.errorLabel.Location = New System.Drawing.Point(134, 505)
         Me.errorLabel.Name = "errorLabel"
         Me.errorLabel.Size = New System.Drawing.Size(118, 31)
         Me.errorLabel.TabIndex = 20
@@ -268,7 +269,7 @@ Partial Class login
         'xMarkPicture
         '
         Me.xMarkPicture.Image = CType(resources.GetObject("xMarkPicture.Image"), System.Drawing.Image)
-        Me.xMarkPicture.Location = New System.Drawing.Point(26, 734)
+        Me.xMarkPicture.Location = New System.Drawing.Point(504, 647)
         Me.xMarkPicture.Name = "xMarkPicture"
         Me.xMarkPicture.Size = New System.Drawing.Size(28, 28)
         Me.xMarkPicture.TabIndex = 21
@@ -277,7 +278,7 @@ Partial Class login
         'checkmarkPicture
         '
         Me.checkmarkPicture.Image = CType(resources.GetObject("checkmarkPicture.Image"), System.Drawing.Image)
-        Me.checkmarkPicture.Location = New System.Drawing.Point(26, 734)
+        Me.checkmarkPicture.Location = New System.Drawing.Point(504, 647)
         Me.checkmarkPicture.Name = "checkmarkPicture"
         Me.checkmarkPicture.Size = New System.Drawing.Size(28, 28)
         Me.checkmarkPicture.TabIndex = 22
@@ -288,7 +289,7 @@ Partial Class login
         '
         Me.statusLabel.AutoSize = True
         Me.statusLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.statusLabel.Location = New System.Drawing.Point(60, 742)
+        Me.statusLabel.Location = New System.Drawing.Point(538, 655)
         Me.statusLabel.Name = "statusLabel"
         Me.statusLabel.Size = New System.Drawing.Size(59, 20)
         Me.statusLabel.TabIndex = 23
@@ -326,7 +327,7 @@ Partial Class login
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(504, 685)
+        Me.TextBox1.Location = New System.Drawing.Point(504, 655)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(276, 20)
         Me.TextBox1.TabIndex = 25
@@ -335,23 +336,33 @@ Partial Class login
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(504, 669)
+        Me.Label1.Location = New System.Drawing.Point(504, 639)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(72, 13)
         Me.Label1.TabIndex = 26
         Me.Label1.Text = "for debugging"
         Me.Label1.Visible = False
         '
+        'reconnectButton
+        '
+        Me.reconnectButton.Location = New System.Drawing.Point(538, 630)
+        Me.reconnectButton.Name = "reconnectButton"
+        Me.reconnectButton.Size = New System.Drawing.Size(75, 23)
+        Me.reconnectButton.TabIndex = 27
+        Me.reconnectButton.Text = "reconnect"
+        Me.reconnectButton.UseVisualStyleBackColor = True
+        '
         'login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1274, 772)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.ClientSize = New System.Drawing.Size(1264, 680)
+        Me.Controls.Add(Me.reconnectButton)
         Me.Controls.Add(Me.statusLabel)
         Me.Controls.Add(Me.checkmarkPicture)
         Me.Controls.Add(Me.xMarkPicture)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.errorLabel)
         Me.Controls.Add(Me.loginClearButton)
         Me.Controls.Add(Me.login0KeyButton)
@@ -416,5 +427,6 @@ Partial Class login
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents reconnectButton As System.Windows.Forms.Button
 
 End Class
