@@ -13,8 +13,6 @@ Public Class login
     Dim queryTypeResult As Int32
     Dim queryDisplayName As String
 
-
-
     Private Sub login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'tests the connection to make sure it works
         TestConnection()
@@ -103,16 +101,10 @@ Public Class login
     Public Function retrieveTest()
         Try
             'these strings are the commands send to the mySQL command line
-            Dim queryUsername As String = "SELECT pw FROM restaurant.employeeinfo WHERE un IN('" + usernameLogin.Text
-            Dim qAddon As String = "');"
-            Dim queryType As String = "SELECT type FROM restaurant.employeeinfo WHERE un IN ('" + usernameLogin.Text
-            Dim queryName As String = "SELECT displayname FROM restaurant.employeeinfo WHERE un IN ('" + usernameLogin.Text
+            Dim queryUsername As String = "SELECT pw FROM restaurant.employeeinfo WHERE un IN('" + usernameLogin.Text + "');"
+            Dim queryType As String = "SELECT type FROM restaurant.employeeinfo WHERE un IN ('" + usernameLogin.Text + "');"
+            Dim queryName As String = "SELECT displayname FROM restaurant.employeeinfo WHERE un IN ('" + usernameLogin.Text + "');"
             Dim pLoginHold As Int32 = Convert.ToInt32(passwordLogin.Text) 'holding the user password
-
-            'adding on the '); to the queries so that they execute
-            queryUsername += qAddon
-            queryType += qAddon
-            queryName += qAddon
 
             'opens connection to mySQL server
             Using connection As New MySqlConnection(connStr)

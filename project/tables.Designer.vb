@@ -75,13 +75,16 @@ Partial Class tables
         Me.logoutButton = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tablesTab = New System.Windows.Forms.TabPage()
-        Me.waitress4Label = New System.Windows.Forms.Label()
+        Me.waiter4Label = New System.Windows.Forms.Label()
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.waitlistTab = New System.Windows.Forms.TabPage()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.sizeTextbox = New System.Windows.Forms.TextBox()
+        Me.nameTextbox = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.infoTab = New System.Windows.Forms.TabPage()
+        Me.addToWaitlistButton = New System.Windows.Forms.Button()
+        Me.deleteFromWaitlistButton = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.Panel17.SuspendLayout()
         Me.Panel15.SuspendLayout()
@@ -682,7 +685,7 @@ Partial Class tables
         'tablesTab
         '
         Me.tablesTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.tablesTab.Controls.Add(Me.waitress4Label)
+        Me.tablesTab.Controls.Add(Me.waiter4Label)
         Me.tablesTab.Controls.Add(Me.Panel16)
         Me.tablesTab.Controls.Add(Me.GroupBox1)
         Me.tablesTab.Controls.Add(Me.waiter3Label)
@@ -700,15 +703,15 @@ Partial Class tables
         Me.tablesTab.TabIndex = 0
         Me.tablesTab.Text = "TABLES"
         '
-        'waitress4Label
+        'waiter4Label
         '
-        Me.waitress4Label.AutoSize = True
-        Me.waitress4Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.waitress4Label.Location = New System.Drawing.Point(540, 425)
-        Me.waitress4Label.Name = "waitress4Label"
-        Me.waitress4Label.Size = New System.Drawing.Size(103, 25)
-        Me.waitress4Label.TabIndex = 135
-        Me.waitress4Label.Text = "waitress4"
+        Me.waiter4Label.AutoSize = True
+        Me.waiter4Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.waiter4Label.Location = New System.Drawing.Point(540, 425)
+        Me.waiter4Label.Name = "waiter4Label"
+        Me.waiter4Label.Size = New System.Drawing.Size(103, 25)
+        Me.waiter4Label.TabIndex = 135
+        Me.waiter4Label.Text = "waitress4"
         '
         'Panel16
         '
@@ -722,8 +725,11 @@ Partial Class tables
         '
         'waitlistTab
         '
-        Me.waitlistTab.Controls.Add(Me.TextBox2)
         Me.waitlistTab.Controls.Add(Me.TextBox1)
+        Me.waitlistTab.Controls.Add(Me.deleteFromWaitlistButton)
+        Me.waitlistTab.Controls.Add(Me.addToWaitlistButton)
+        Me.waitlistTab.Controls.Add(Me.sizeTextbox)
+        Me.waitlistTab.Controls.Add(Me.nameTextbox)
         Me.waitlistTab.Controls.Add(Me.DataGridView1)
         Me.waitlistTab.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.waitlistTab.Location = New System.Drawing.Point(4, 43)
@@ -733,19 +739,19 @@ Partial Class tables
         Me.waitlistTab.Text = "WAITLIST"
         Me.waitlistTab.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'sizeTextbox
         '
-        Me.TextBox2.Location = New System.Drawing.Point(378, 60)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(259, 26)
-        Me.TextBox2.TabIndex = 12
+        Me.sizeTextbox.Location = New System.Drawing.Point(265, 35)
+        Me.sizeTextbox.Name = "sizeTextbox"
+        Me.sizeTextbox.Size = New System.Drawing.Size(259, 26)
+        Me.sizeTextbox.TabIndex = 12
         '
-        'TextBox1
+        'nameTextbox
         '
-        Me.TextBox1.Location = New System.Drawing.Point(378, 28)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(259, 26)
-        Me.TextBox1.TabIndex = 11
+        Me.nameTextbox.Location = New System.Drawing.Point(265, 3)
+        Me.nameTextbox.Name = "nameTextbox"
+        Me.nameTextbox.Size = New System.Drawing.Size(259, 26)
+        Me.nameTextbox.TabIndex = 11
         '
         'DataGridView1
         '
@@ -756,12 +762,17 @@ Partial Class tables
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.ColumnHeadersVisible = False
+        Me.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridView1.Location = New System.Drawing.Point(3, 3)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DataGridView1.Size = New System.Drawing.Size(256, 523)
         Me.DataGridView1.TabIndex = 10
         '
@@ -774,6 +785,31 @@ Partial Class tables
         Me.infoTab.TabIndex = 1
         Me.infoTab.Text = "INFO"
         Me.infoTab.UseVisualStyleBackColor = True
+        '
+        'addToWaitlistButton
+        '
+        Me.addToWaitlistButton.Location = New System.Drawing.Point(519, 430)
+        Me.addToWaitlistButton.Name = "addToWaitlistButton"
+        Me.addToWaitlistButton.Size = New System.Drawing.Size(248, 90)
+        Me.addToWaitlistButton.TabIndex = 13
+        Me.addToWaitlistButton.Text = "Add guest to waitlist"
+        Me.addToWaitlistButton.UseVisualStyleBackColor = True
+        '
+        'deleteFromWaitlistButton
+        '
+        Me.deleteFromWaitlistButton.Location = New System.Drawing.Point(265, 430)
+        Me.deleteFromWaitlistButton.Name = "deleteFromWaitlistButton"
+        Me.deleteFromWaitlistButton.Size = New System.Drawing.Size(248, 90)
+        Me.deleteFromWaitlistButton.TabIndex = 14
+        Me.deleteFromWaitlistButton.Text = "Remove guest from waitlist"
+        Me.deleteFromWaitlistButton.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(530, 35)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 26)
+        Me.TextBox1.TabIndex = 15
         '
         'tables
         '
@@ -837,8 +873,8 @@ Partial Class tables
     Friend WithEvents infoTab As System.Windows.Forms.TabPage
     Friend WithEvents waitlistTab As System.Windows.Forms.TabPage
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents sizeTextbox As System.Windows.Forms.TextBox
+    Friend WithEvents nameTextbox As System.Windows.Forms.TextBox
     Friend WithEvents Panel15 As System.Windows.Forms.Panel
     Friend WithEvents table12Button As System.Windows.Forms.Button
     Friend WithEvents Panel14 As System.Windows.Forms.Panel
@@ -860,7 +896,7 @@ Partial Class tables
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
     Friend WithEvents table7Button As System.Windows.Forms.Button
     Friend WithEvents Panel8 As System.Windows.Forms.Panel
-    Friend WithEvents waitress4Label As System.Windows.Forms.Label
+    Friend WithEvents waiter4Label As System.Windows.Forms.Label
     Friend WithEvents Panel16 As System.Windows.Forms.Panel
     Friend WithEvents Panel17 As System.Windows.Forms.Panel
     Friend WithEvents table6Button As System.Windows.Forms.Button
@@ -870,4 +906,7 @@ Partial Class tables
     Friend WithEvents table4Button As System.Windows.Forms.Button
     Friend WithEvents table3Button As System.Windows.Forms.Button
     Friend WithEvents table1Button As System.Windows.Forms.Button
+    Friend WithEvents addToWaitlistButton As System.Windows.Forms.Button
+    Friend WithEvents deleteFromWaitlistButton As System.Windows.Forms.Button
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 End Class

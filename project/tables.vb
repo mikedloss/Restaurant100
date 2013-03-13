@@ -30,9 +30,10 @@ Public Class tables
         waiter1Label.Text = ""
         waiter2Label.Text = ""
         waiter3Label.Text = ""
+        waiter4Label.Text = ""
         bartenderLabel.Text = ""
         waiter1Label.Text = Convert.ToString(displayName)
-        retriveWaitlistData()
+        retrieveWaitlistData()
     End Sub
 
     Private Sub table1Button_Click(sender As Object, e As EventArgs) Handles table1Button.Click
@@ -307,7 +308,7 @@ Public Class tables
         login.Show()
     End Sub
 
-    Public Sub retriveWaitlistData()
+    Public Sub retrieveWaitlistData()
         Try
             Dim query As String = "SELECT * FROM restaurant.tablewaitlist;"
             Dim connection As New MySqlConnection(connStr)
@@ -319,7 +320,7 @@ Public Class tables
                 DataGridView1.DataSource = ds.Tables(0)
             End If
             connection.Close()
-
+            'DataGridView1.Columns(0).Visible = False
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
@@ -331,5 +332,79 @@ Public Class tables
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
+    End Sub
+
+    Private Sub addToWaitlistButton_Click(sender As Object, e As EventArgs) Handles addToWaitlistButton.Click
+        Using connection As New MySqlConnection(connStr)
+            Using Command As New MySqlCommand()
+                With Command
+                    .CommandText = "INSERT INTO restaurant.tablewaitlist (`name`, `size`) VALUES (@name,@size);"
+                    .Connection = connection
+                    .CommandType = CommandType.Text
+                    .Parameters.AddWithValue("@name", nameTextbox.Text)
+                    .Parameters.AddWithValue("@size", sizeTextbox.Text)
+                End With
+                Try
+                    connection.Open()
+                    Command.ExecuteNonQuery()
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                    'MsgBox ex.Message.ToString
+                Finally
+                    connection.Close()
+                    retrieveWaitlistData()
+                End Try
+            End Using
+        End Using
+        sizeTextbox.Text = ""
+        nameTextbox.Text = ""
+    End Sub
+
+    Private Sub deleteFromWaitlistButton_Click(sender As Object, e As EventArgs) Handles deleteFromWaitlistButton.Click
+        'Dim holdname As String = ""
+        'Dim holdsize As String = ""
+        Dim maths As Integer = 0
+        'Dim queryName As String = "SELECT name FROM restaurant.tablewaitlist LIMIT " + Convert.ToString(DataGridView1.CurrentCell.RowIndex) + ",1;"
+        'Dim querySize As String = "SELECT size FROM restaurant.tablewaitlist LIMIT " + Convert.ToString(DataGridView1.CurrentCell.RowIndex) + ",1;"
+        ''Dim queryDelete As String = "DELETE FROM restaurant.tablewaitlist WHERE name='" + Convert.ToString(holdname) + "' AND size=" + Convert.ToString(holdsize) + ";"
+        maths = DataGridView1.CurrentCell.RowIndex + 1
+        sizeTextbox.Text = ""
+        Using connection As New MySqlConnection(connStr)
+            'Dim cmd As New MySqlCommand(queryName, connection)
+            'connection.Open()
+            'Try
+            'holdname = Convert.ToString(cmd.ExecuteScalar())
+            'Catch ex As Exception
+            'Console.WriteLine(ex.Message)
+            'End Try
+            'cmd = New MySqlCommand(querySize, connection)
+            'Try
+            'holdsize = Convert.ToString(cmd.ExecuteScalar())
+            'Catch ex As Exception
+            'Console.WriteLine(ex.Message)
+            'Finally
+            'connection.Close()
+            'End Try
+            Using deleteCommand As New MySqlCommand()
+                With deleteCommand
+                    '.CommandText = "DELETE FROM restaurant.tablewaitlist WHERE name=@name AND size=@size;"
+                    .CommandText = "DELETE FROM restaurant.tablewaitlist WHERE n=@id;"
+                    .Connection = connection
+                    .CommandType = CommandType.Text
+                    '.Parameters.AddWithValue("@name", Convert.ToString(holdname))
+                    '.Parameters.AddWithValue("@size", Convert.ToString(holdsize))
+                    .Parameters.AddWithValue("@id", Convert.ToString(maths))
+                End With
+                Try
+                    connection.Open()
+                    deleteCommand.ExecuteNonQuery()
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                Finally
+                    connection.Close()
+                    retrieveWaitlistData()
+                End Try
+            End Using
+        End Using
     End Sub
 End Class
