@@ -320,7 +320,7 @@ Public Class tables
                 DataGridView1.DataSource = ds.Tables(0)
             End If
             connection.Close()
-            'DataGridView1.Columns(0).Visible = False
+            DataGridView1.Columns(0).Visible = False
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
@@ -361,50 +361,49 @@ Public Class tables
     End Sub
 
     Private Sub deleteFromWaitlistButton_Click(sender As Object, e As EventArgs) Handles deleteFromWaitlistButton.Click
-        'Dim holdname As String = ""
-        'Dim holdsize As String = ""
-        Dim maths As Integer = 0
-        'Dim queryName As String = "SELECT name FROM restaurant.tablewaitlist LIMIT " + Convert.ToString(DataGridView1.CurrentCell.RowIndex) + ",1;"
-        'Dim querySize As String = "SELECT size FROM restaurant.tablewaitlist LIMIT " + Convert.ToString(DataGridView1.CurrentCell.RowIndex) + ",1;"
-        ''Dim queryDelete As String = "DELETE FROM restaurant.tablewaitlist WHERE name='" + Convert.ToString(holdname) + "' AND size=" + Convert.ToString(holdsize) + ";"
-        maths = DataGridView1.CurrentCell.RowIndex + 1
-        sizeTextbox.Text = ""
+        Dim holdn As String = "" 'this is where the value in column n is stored in the table
+        Dim queryN As String = "SELECT n FROM restaurant.tablewaitlist LIMIT " + Convert.ToString(DataGridView1.CurrentCell.RowIndex) + ",1;"
+        '^^looks at column n in table and selects the value from the row
+        'id of whatever is selected in the datagridview in the application
+
+        Dim queryDropN As String = "ALTER TABLE restaurant.tablewaitlist DROP n;"   'first step in renumbering the column n
         Using connection As New MySqlConnection(connStr)
-            'Dim cmd As New MySqlCommand(queryName, connection)
-            'connection.Open()
-            'Try
-            'holdname = Convert.ToString(cmd.ExecuteScalar())
-            'Catch ex As Exception
-            'Console.WriteLine(ex.Message)
-            'End Try
-            'cmd = New MySqlCommand(querySize, connection)
-            'Try
-            'holdsize = Convert.ToString(cmd.ExecuteScalar())
-            'Catch ex As Exception
-            'Console.WriteLine(ex.Message)
-            'Finally
-            'connection.Close()
-            'End Try
-            Using deleteCommand As New MySqlCommand()
-                With deleteCommand
-                    '.CommandText = "DELETE FROM restaurant.tablewaitlist WHERE name=@name AND size=@size;"
-                    .CommandText = "DELETE FROM restaurant.tablewaitlist WHERE n=@id;"
-                    .Connection = connection
-                    .CommandType = CommandType.Text
-                    '.Parameters.AddWithValue("@name", Convert.ToString(holdname))
-                    '.Parameters.AddWithValue("@size", Convert.ToString(holdsize))
-                    .Parameters.AddWithValue("@id", Convert.ToString(maths))
-                End With
-                Try
-                    connection.Open()
-                    deleteCommand.ExecuteNonQuery()
-                Catch ex As Exception
-                    Console.WriteLine(ex.Message)
-                Finally
-                    connection.Close()
-                    retrieveWaitlistData()
-                End Try
-            End Using
+            Dim getcmd As New MySqlCommand(queryN, connection)
+            connection.Open()
+            Try
+                holdn = Convert.ToString(getcmd.ExecuteScalar())                'puts whatever was found from column n into a local variable
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+            Dim queryDelete As String = "DELETE FROM restaurant.tablewaitlist WHERE n=" + holdn + ";"                   'this is deleting the entry that was selected in the datagridview
+            Dim delcmd As New MySqlCommand(queryDelete, connection)
+            Try
+                delcmd.ExecuteNonQuery()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+
+            'these next 2 commands drop column n, and then re-add the column with certain
+            'parameters, and make it a primary key (i.e. it is an auto incrementing value necessary for
+            'all new entries added into the table). without renumbering the table, whenever something
+            'is added to the table, n will keep increasing, so you might have values in n like
+            '1 2 6 11 30 31 60 105 etc etc BUT they will still be in order "technically"
+            Dim dropcoln As New MySqlCommand(queryDropN, connection)
+            Dim renumbercmd As New MySqlCommand()
+            With renumbercmd
+                .CommandText = "ALTER TABLE restaurant.tablewaitlist" & vbCrLf & "ADD n INT UNSIGNED NOT NULL AUTO_INCREMENT FIRST," & vbCrLf & "ADD PRIMARY KEY (n);"
+                .Connection = connection
+                .CommandType = CommandType.Text
+            End With
+            Try
+                dropcoln.ExecuteNonQuery()
+                renumbercmd.ExecuteNonQuery()
+            Finally
+                connection.Close()
+                retrieveWaitlistData()
+            End Try
         End Using
+        sizeTextbox.Text = ""
+        nameTextbox.Text = ""
     End Sub
 End Class

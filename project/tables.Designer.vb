@@ -78,13 +78,12 @@ Partial Class tables
         Me.waiter4Label = New System.Windows.Forms.Label()
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.waitlistTab = New System.Windows.Forms.TabPage()
+        Me.deleteFromWaitlistButton = New System.Windows.Forms.Button()
+        Me.addToWaitlistButton = New System.Windows.Forms.Button()
         Me.sizeTextbox = New System.Windows.Forms.TextBox()
         Me.nameTextbox = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.infoTab = New System.Windows.Forms.TabPage()
-        Me.addToWaitlistButton = New System.Windows.Forms.Button()
-        Me.deleteFromWaitlistButton = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.Panel17.SuspendLayout()
         Me.Panel15.SuspendLayout()
@@ -725,7 +724,6 @@ Partial Class tables
         '
         'waitlistTab
         '
-        Me.waitlistTab.Controls.Add(Me.TextBox1)
         Me.waitlistTab.Controls.Add(Me.deleteFromWaitlistButton)
         Me.waitlistTab.Controls.Add(Me.addToWaitlistButton)
         Me.waitlistTab.Controls.Add(Me.sizeTextbox)
@@ -738,6 +736,24 @@ Partial Class tables
         Me.waitlistTab.TabIndex = 2
         Me.waitlistTab.Text = "WAITLIST"
         Me.waitlistTab.UseVisualStyleBackColor = True
+        '
+        'deleteFromWaitlistButton
+        '
+        Me.deleteFromWaitlistButton.Location = New System.Drawing.Point(265, 430)
+        Me.deleteFromWaitlistButton.Name = "deleteFromWaitlistButton"
+        Me.deleteFromWaitlistButton.Size = New System.Drawing.Size(248, 90)
+        Me.deleteFromWaitlistButton.TabIndex = 14
+        Me.deleteFromWaitlistButton.Text = "Remove guest from waitlist"
+        Me.deleteFromWaitlistButton.UseVisualStyleBackColor = True
+        '
+        'addToWaitlistButton
+        '
+        Me.addToWaitlistButton.Location = New System.Drawing.Point(519, 430)
+        Me.addToWaitlistButton.Name = "addToWaitlistButton"
+        Me.addToWaitlistButton.Size = New System.Drawing.Size(248, 90)
+        Me.addToWaitlistButton.TabIndex = 13
+        Me.addToWaitlistButton.Text = "Add guest to waitlist"
+        Me.addToWaitlistButton.UseVisualStyleBackColor = True
         '
         'sizeTextbox
         '
@@ -785,31 +801,6 @@ Partial Class tables
         Me.infoTab.TabIndex = 1
         Me.infoTab.Text = "INFO"
         Me.infoTab.UseVisualStyleBackColor = True
-        '
-        'addToWaitlistButton
-        '
-        Me.addToWaitlistButton.Location = New System.Drawing.Point(519, 430)
-        Me.addToWaitlistButton.Name = "addToWaitlistButton"
-        Me.addToWaitlistButton.Size = New System.Drawing.Size(248, 90)
-        Me.addToWaitlistButton.TabIndex = 13
-        Me.addToWaitlistButton.Text = "Add guest to waitlist"
-        Me.addToWaitlistButton.UseVisualStyleBackColor = True
-        '
-        'deleteFromWaitlistButton
-        '
-        Me.deleteFromWaitlistButton.Location = New System.Drawing.Point(265, 430)
-        Me.deleteFromWaitlistButton.Name = "deleteFromWaitlistButton"
-        Me.deleteFromWaitlistButton.Size = New System.Drawing.Size(248, 90)
-        Me.deleteFromWaitlistButton.TabIndex = 14
-        Me.deleteFromWaitlistButton.Text = "Remove guest from waitlist"
-        Me.deleteFromWaitlistButton.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(530, 35)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox1.TabIndex = 15
         '
         'tables
         '
@@ -908,5 +899,4 @@ Partial Class tables
     Friend WithEvents table1Button As System.Windows.Forms.Button
     Friend WithEvents addToWaitlistButton As System.Windows.Forms.Button
     Friend WithEvents deleteFromWaitlistButton As System.Windows.Forms.Button
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 End Class
