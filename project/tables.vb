@@ -17,6 +17,8 @@ Public Class tables
                     "Data Source=192.168.1.2;" & _
                     "User Id=root;"
 
+    Dim keyboardLastFocus As String = "name"
+
     Public Sub New(ByVal type As Int32, ByVal name As String)
         InitializeComponent()
         employeeType = type
@@ -321,6 +323,8 @@ Public Class tables
             End If
             connection.Close()
             DataGridView1.Columns(0).Visible = False
+            DataGridView1.Columns(1).Width = 200
+            DataGridView1.Columns(2).Width = 198
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
@@ -335,6 +339,7 @@ Public Class tables
     End Sub
 
     Private Sub addToWaitlistButton_Click(sender As Object, e As EventArgs) Handles addToWaitlistButton.Click
+        errorLabel.Visible = False
         Using connection As New MySqlConnection(connStr)
             Using Command As New MySqlCommand()
                 With Command
@@ -345,11 +350,19 @@ Public Class tables
                     .Parameters.AddWithValue("@size", sizeTextbox.Text)
                 End With
                 Try
+                    If sizeTextbox.Text = "" Or nameTextbox.Text = "" Then
+                        errorLabel.Text = "You need to enter a name AND table size!"
+                        errorLabel.Visible = True
+                        Exit Try
+                    ElseIf IsNumeric(sizeTextbox.Text) = False Then
+                        errorLabel.Text = "Table size cannot include letters"
+                        errorLabel.Visible = True
+                        Exit Try
+                    End If
                     connection.Open()
                     Command.ExecuteNonQuery()
                 Catch ex As Exception
                     Console.WriteLine(ex.Message)
-                    'MsgBox ex.Message.ToString
                 Finally
                     connection.Close()
                     retrieveWaitlistData()
@@ -405,5 +418,305 @@ Public Class tables
         End Using
         sizeTextbox.Text = ""
         nameTextbox.Text = ""
+    End Sub
+
+    Private Sub nameTextBox_Focus(sender As Object, e As EventArgs) Handles nameTextbox.Enter
+        keyboardLastFocus = "name"
+    End Sub
+
+    Private Sub sizeTextBox_Focus(sender As Object, e As EventArgs) Handles sizeTextbox.Enter
+        keyboardLastFocus = "size"
+    End Sub
+    Private Sub oneButton_Click(sender As Object, e As EventArgs) Handles oneButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "1"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "1"
+        End If
+    End Sub
+
+    Private Sub twoButton_Click(sender As Object, e As EventArgs) Handles twoButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "2"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "2"
+        End If
+    End Sub
+    Private Sub threeButton_Click(sender As Object, e As EventArgs) Handles threeButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "3"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "3"
+        End If
+    End Sub
+    Private Sub fourButton_Click(sender As Object, e As EventArgs) Handles fourButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "4"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "4"
+        End If
+    End Sub
+    Private Sub fiveButton_Click(sender As Object, e As EventArgs) Handles fiveButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "5"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "5"
+        End If
+    End Sub
+    Private Sub sixButton_Click(sender As Object, e As EventArgs) Handles sixButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "6"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "6"
+        End If
+    End Sub
+    Private Sub sevenButton_Click(sender As Object, e As EventArgs) Handles sevenButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "7"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "7"
+        End If
+    End Sub
+    Private Sub eightButton_Click(sender As Object, e As EventArgs) Handles eightButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "8"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "8"
+        End If
+    End Sub
+    Private Sub nineButton_Click(sender As Object, e As EventArgs) Handles nineButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "9"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "9"
+        End If
+    End Sub
+    Private Sub zeroButton_Click(sender As Object, e As EventArgs) Handles zeroButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "0"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "0"
+        End If
+    End Sub
+
+    Private Sub qButton_Click(sender As Object, e As EventArgs) Handles qButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "Q"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "Q"
+        End If
+    End Sub
+
+    Private Sub wButton_Click(sender As Object, e As EventArgs) Handles wButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "W"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "W"
+        End If
+    End Sub
+
+    Private Sub eButton_Click(sender As Object, e As EventArgs) Handles eButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "E"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "E"
+        End If
+    End Sub
+
+    Private Sub rButton_Click(sender As Object, e As EventArgs) Handles rButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "R"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "R"
+        End If
+    End Sub
+
+    Private Sub tButton_Click(sender As Object, e As EventArgs) Handles tButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "T"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "T"
+        End If
+    End Sub
+
+    Private Sub yButton_Click(sender As Object, e As EventArgs) Handles yButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "Y"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "Y"
+        End If
+    End Sub
+
+    Private Sub uButton_Click(sender As Object, e As EventArgs) Handles uButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "U"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "U"
+        End If
+    End Sub
+
+    Private Sub iButton_Click(sender As Object, e As EventArgs) Handles iButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "I"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "I"
+        End If
+    End Sub
+
+    Private Sub oButton_Click(sender As Object, e As EventArgs) Handles oButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "O"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "O"
+        End If
+    End Sub
+
+    Private Sub pButton_Click(sender As Object, e As EventArgs) Handles pButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "P"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "P"
+        End If
+    End Sub
+
+    Private Sub aButton_Click(sender As Object, e As EventArgs) Handles aButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "A"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "A"
+        End If
+    End Sub
+
+    Private Sub sButton_Click(sender As Object, e As EventArgs) Handles sButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "S"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "S"
+        End If
+    End Sub
+
+    Private Sub dButton_Click(sender As Object, e As EventArgs) Handles dButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "D"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "D"
+        End If
+    End Sub
+
+    Private Sub fButton_Click(sender As Object, e As EventArgs) Handles fButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "F"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "F"
+        End If
+    End Sub
+
+    Private Sub gButton_Click(sender As Object, e As EventArgs) Handles gButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "G"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "G"
+        End If
+    End Sub
+
+    Private Sub hButton_Click(sender As Object, e As EventArgs) Handles hButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "H"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "H"
+        End If
+    End Sub
+
+    Private Sub jButton_Click(sender As Object, e As EventArgs) Handles jButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "J"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "J"
+        End If
+    End Sub
+
+    Private Sub kButton_Click(sender As Object, e As EventArgs) Handles kButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "K"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "K"
+        End If
+    End Sub
+
+    Private Sub lButton_Click(sender As Object, e As EventArgs) Handles lButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "L"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "L"
+        End If
+    End Sub
+
+    Private Sub zButton_Click(sender As Object, e As EventArgs) Handles zButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "Z"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "Z"
+        End If
+    End Sub
+
+    Private Sub xButton_Click(sender As Object, e As EventArgs) Handles xButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "X"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "X"
+        End If
+    End Sub
+
+    Private Sub cButton_Click(sender As Object, e As EventArgs) Handles cButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "C"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "C"
+        End If
+    End Sub
+
+    Private Sub vButton_Click(sender As Object, e As EventArgs) Handles vButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "V"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "V"
+        End If
+    End Sub
+
+    Private Sub bButton_Click(sender As Object, e As EventArgs) Handles bButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "B"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "B"
+        End If
+    End Sub
+
+    Private Sub nButton_Click(sender As Object, e As EventArgs) Handles nButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "N"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "N"
+        End If
+    End Sub
+
+    Private Sub mButton_Click(sender As Object, e As EventArgs) Handles mButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += "M"
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += "M"
+        End If
+    End Sub
+
+    Private Sub spaceButton_Click(sender As Object, e As EventArgs) Handles spaceButton.Click
+        If keyboardLastFocus = "name" Then
+            nameTextbox.Text += " "
+        ElseIf keyboardLastFocus = "size" Then
+            sizeTextbox.Text += " "
+        End If
+    End Sub
+
+    Private Sub clearButton_Click(sender As Object, e As EventArgs) Handles clearButton.Click
+        nameTextbox.Text = ""
+        sizeTextbox.Text = ""
     End Sub
 End Class

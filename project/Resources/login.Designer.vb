@@ -136,7 +136,6 @@ Partial Class login
         '
         'login1KeyButton
         '
-        Me.login1KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login1KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login1KeyButton.Location = New System.Drawing.Point(754, 6)
         Me.login1KeyButton.Name = "login1KeyButton"
@@ -147,7 +146,6 @@ Partial Class login
         '
         'login2KeyButton
         '
-        Me.login2KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login2KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login2KeyButton.Location = New System.Drawing.Point(929, 6)
         Me.login2KeyButton.Name = "login2KeyButton"
@@ -158,7 +156,6 @@ Partial Class login
         '
         'login3KeyButton
         '
-        Me.login3KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login3KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login3KeyButton.Location = New System.Drawing.Point(1104, 6)
         Me.login3KeyButton.Name = "login3KeyButton"
@@ -169,7 +166,6 @@ Partial Class login
         '
         'login4KeyButton
         '
-        Me.login4KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login4KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login4KeyButton.Location = New System.Drawing.Point(754, 181)
         Me.login4KeyButton.Name = "login4KeyButton"
@@ -180,7 +176,6 @@ Partial Class login
         '
         'login5KeyButton
         '
-        Me.login5KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login5KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login5KeyButton.Location = New System.Drawing.Point(929, 181)
         Me.login5KeyButton.Name = "login5KeyButton"
@@ -191,7 +186,6 @@ Partial Class login
         '
         'login6KeyButton
         '
-        Me.login6KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login6KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login6KeyButton.Location = New System.Drawing.Point(1104, 181)
         Me.login6KeyButton.Name = "login6KeyButton"
@@ -202,7 +196,6 @@ Partial Class login
         '
         'login7KeyButton
         '
-        Me.login7KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login7KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login7KeyButton.Location = New System.Drawing.Point(754, 351)
         Me.login7KeyButton.Name = "login7KeyButton"
@@ -213,7 +206,6 @@ Partial Class login
         '
         'login8KeyButton
         '
-        Me.login8KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login8KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login8KeyButton.Location = New System.Drawing.Point(929, 351)
         Me.login8KeyButton.Name = "login8KeyButton"
@@ -224,7 +216,6 @@ Partial Class login
         '
         'login9KeyButton
         '
-        Me.login9KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login9KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login9KeyButton.Location = New System.Drawing.Point(1104, 351)
         Me.login9KeyButton.Name = "login9KeyButton"
@@ -235,7 +226,6 @@ Partial Class login
         '
         'login0KeyButton
         '
-        Me.login0KeyButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.login0KeyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.login0KeyButton.Location = New System.Drawing.Point(929, 526)
         Me.login0KeyButton.Name = "login0KeyButton"

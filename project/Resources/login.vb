@@ -292,6 +292,8 @@ Public Class login
         'ABOVE CODE IS FOR DEBUGGING, COMMENT OUT NEXT 2 LINES
         usernameLogin.Text = ""
         passwordLogin.Text = ""
+        'get rid of below code
+        Me.Close()
     End Sub
 
     Private Sub reconnectButton_Click(sender As Object, e As EventArgs) Handles reconnectButton.Click

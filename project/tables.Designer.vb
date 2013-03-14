@@ -22,6 +22,7 @@ Partial Class tables
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Panel17 = New System.Windows.Forms.Panel()
         Me.table6Button = New System.Windows.Forms.Button()
@@ -78,12 +79,55 @@ Partial Class tables
         Me.waiter4Label = New System.Windows.Forms.Label()
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.waitlistTab = New System.Windows.Forms.TabPage()
+        Me.clearButton = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.lButton = New System.Windows.Forms.Button()
+        Me.spaceButton = New System.Windows.Forms.Button()
+        Me.zeroButton = New System.Windows.Forms.Button()
+        Me.nineButton = New System.Windows.Forms.Button()
+        Me.eightButton = New System.Windows.Forms.Button()
+        Me.sevenButton = New System.Windows.Forms.Button()
+        Me.sixButton = New System.Windows.Forms.Button()
+        Me.fiveButton = New System.Windows.Forms.Button()
+        Me.fourButton = New System.Windows.Forms.Button()
+        Me.threeButton = New System.Windows.Forms.Button()
+        Me.twoButton = New System.Windows.Forms.Button()
+        Me.oneButton = New System.Windows.Forms.Button()
+        Me.mButton = New System.Windows.Forms.Button()
+        Me.nButton = New System.Windows.Forms.Button()
+        Me.bButton = New System.Windows.Forms.Button()
+        Me.vButton = New System.Windows.Forms.Button()
+        Me.cButton = New System.Windows.Forms.Button()
+        Me.xButton = New System.Windows.Forms.Button()
+        Me.zButton = New System.Windows.Forms.Button()
+        Me.kButton = New System.Windows.Forms.Button()
+        Me.jButton = New System.Windows.Forms.Button()
+        Me.hButton = New System.Windows.Forms.Button()
+        Me.gButton = New System.Windows.Forms.Button()
+        Me.fButton = New System.Windows.Forms.Button()
+        Me.dButton = New System.Windows.Forms.Button()
+        Me.sButton = New System.Windows.Forms.Button()
+        Me.aButton = New System.Windows.Forms.Button()
+        Me.pButton = New System.Windows.Forms.Button()
+        Me.oButton = New System.Windows.Forms.Button()
+        Me.iButton = New System.Windows.Forms.Button()
+        Me.uButton = New System.Windows.Forms.Button()
+        Me.yButton = New System.Windows.Forms.Button()
+        Me.tButton = New System.Windows.Forms.Button()
+        Me.rButton = New System.Windows.Forms.Button()
+        Me.eButton = New System.Windows.Forms.Button()
+        Me.wButton = New System.Windows.Forms.Button()
+        Me.qButton = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.nameLabel = New System.Windows.Forms.Label()
         Me.deleteFromWaitlistButton = New System.Windows.Forms.Button()
         Me.addToWaitlistButton = New System.Windows.Forms.Button()
         Me.sizeTextbox = New System.Windows.Forms.TextBox()
         Me.nameTextbox = New System.Windows.Forms.TextBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.infoTab = New System.Windows.Forms.TabPage()
+        Me.errorLabel = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.Panel17.SuspendLayout()
         Me.Panel15.SuspendLayout()
@@ -724,11 +768,54 @@ Partial Class tables
         '
         'waitlistTab
         '
+        Me.waitlistTab.Controls.Add(Me.errorLabel)
+        Me.waitlistTab.Controls.Add(Me.clearButton)
+        Me.waitlistTab.Controls.Add(Me.Label3)
+        Me.waitlistTab.Controls.Add(Me.Label1)
+        Me.waitlistTab.Controls.Add(Me.DataGridView1)
+        Me.waitlistTab.Controls.Add(Me.lButton)
+        Me.waitlistTab.Controls.Add(Me.spaceButton)
+        Me.waitlistTab.Controls.Add(Me.zeroButton)
+        Me.waitlistTab.Controls.Add(Me.nineButton)
+        Me.waitlistTab.Controls.Add(Me.eightButton)
+        Me.waitlistTab.Controls.Add(Me.sevenButton)
+        Me.waitlistTab.Controls.Add(Me.sixButton)
+        Me.waitlistTab.Controls.Add(Me.fiveButton)
+        Me.waitlistTab.Controls.Add(Me.fourButton)
+        Me.waitlistTab.Controls.Add(Me.threeButton)
+        Me.waitlistTab.Controls.Add(Me.twoButton)
+        Me.waitlistTab.Controls.Add(Me.oneButton)
+        Me.waitlistTab.Controls.Add(Me.mButton)
+        Me.waitlistTab.Controls.Add(Me.nButton)
+        Me.waitlistTab.Controls.Add(Me.bButton)
+        Me.waitlistTab.Controls.Add(Me.vButton)
+        Me.waitlistTab.Controls.Add(Me.cButton)
+        Me.waitlistTab.Controls.Add(Me.xButton)
+        Me.waitlistTab.Controls.Add(Me.zButton)
+        Me.waitlistTab.Controls.Add(Me.kButton)
+        Me.waitlistTab.Controls.Add(Me.jButton)
+        Me.waitlistTab.Controls.Add(Me.hButton)
+        Me.waitlistTab.Controls.Add(Me.gButton)
+        Me.waitlistTab.Controls.Add(Me.fButton)
+        Me.waitlistTab.Controls.Add(Me.dButton)
+        Me.waitlistTab.Controls.Add(Me.sButton)
+        Me.waitlistTab.Controls.Add(Me.aButton)
+        Me.waitlistTab.Controls.Add(Me.pButton)
+        Me.waitlistTab.Controls.Add(Me.oButton)
+        Me.waitlistTab.Controls.Add(Me.iButton)
+        Me.waitlistTab.Controls.Add(Me.uButton)
+        Me.waitlistTab.Controls.Add(Me.yButton)
+        Me.waitlistTab.Controls.Add(Me.tButton)
+        Me.waitlistTab.Controls.Add(Me.rButton)
+        Me.waitlistTab.Controls.Add(Me.eButton)
+        Me.waitlistTab.Controls.Add(Me.wButton)
+        Me.waitlistTab.Controls.Add(Me.qButton)
+        Me.waitlistTab.Controls.Add(Me.Label2)
+        Me.waitlistTab.Controls.Add(Me.nameLabel)
         Me.waitlistTab.Controls.Add(Me.deleteFromWaitlistButton)
         Me.waitlistTab.Controls.Add(Me.addToWaitlistButton)
         Me.waitlistTab.Controls.Add(Me.sizeTextbox)
         Me.waitlistTab.Controls.Add(Me.nameTextbox)
-        Me.waitlistTab.Controls.Add(Me.DataGridView1)
         Me.waitlistTab.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.waitlistTab.Location = New System.Drawing.Point(4, 43)
         Me.waitlistTab.Name = "waitlistTab"
@@ -737,37 +824,33 @@ Partial Class tables
         Me.waitlistTab.Text = "WAITLIST"
         Me.waitlistTab.UseVisualStyleBackColor = True
         '
-        'deleteFromWaitlistButton
+        'clearButton
         '
-        Me.deleteFromWaitlistButton.Location = New System.Drawing.Point(265, 430)
-        Me.deleteFromWaitlistButton.Name = "deleteFromWaitlistButton"
-        Me.deleteFromWaitlistButton.Size = New System.Drawing.Size(248, 90)
-        Me.deleteFromWaitlistButton.TabIndex = 14
-        Me.deleteFromWaitlistButton.Text = "Remove guest from waitlist"
-        Me.deleteFromWaitlistButton.UseVisualStyleBackColor = True
+        Me.clearButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.clearButton.Location = New System.Drawing.Point(1130, 344)
+        Me.clearButton.Name = "clearButton"
+        Me.clearButton.Size = New System.Drawing.Size(94, 50)
+        Me.clearButton.TabIndex = 82
+        Me.clearButton.Text = "CLEAR"
+        Me.clearButton.UseVisualStyleBackColor = True
         '
-        'addToWaitlistButton
+        'Label3
         '
-        Me.addToWaitlistButton.Location = New System.Drawing.Point(519, 430)
-        Me.addToWaitlistButton.Name = "addToWaitlistButton"
-        Me.addToWaitlistButton.Size = New System.Drawing.Size(248, 90)
-        Me.addToWaitlistButton.TabIndex = 13
-        Me.addToWaitlistButton.Text = "Add guest to waitlist"
-        Me.addToWaitlistButton.UseVisualStyleBackColor = True
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(205, 9)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(83, 20)
+        Me.Label3.TabIndex = 81
+        Me.Label3.Text = "Table Size"
         '
-        'sizeTextbox
+        'Label1
         '
-        Me.sizeTextbox.Location = New System.Drawing.Point(265, 35)
-        Me.sizeTextbox.Name = "sizeTextbox"
-        Me.sizeTextbox.Size = New System.Drawing.Size(259, 26)
-        Me.sizeTextbox.TabIndex = 12
-        '
-        'nameTextbox
-        '
-        Me.nameTextbox.Location = New System.Drawing.Point(265, 3)
-        Me.nameTextbox.Name = "nameTextbox"
-        Me.nameTextbox.Size = New System.Drawing.Size(259, 26)
-        Me.nameTextbox.TabIndex = 11
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(5, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(117, 20)
+        Me.Label1.TabIndex = 80
+        Me.Label1.Text = "Name of Guest"
         '
         'DataGridView1
         '
@@ -775,22 +858,449 @@ Partial Class tables
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToResizeColumns = False
         Me.DataGridView1.AllowUserToResizeRows = False
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SkyBlue
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.ColumnHeadersVisible = False
-        Me.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 3)
-        Me.DataGridView1.MultiSelect = False
+        Me.DataGridView1.EnableHeadersVisualStyles = False
+        Me.DataGridView1.GridColor = System.Drawing.SystemColors.Control
+        Me.DataGridView1.Location = New System.Drawing.Point(3, 32)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(256, 523)
-        Me.DataGridView1.TabIndex = 10
+        Me.DataGridView1.RowHeadersWidth = 80
+        Me.DataGridView1.Size = New System.Drawing.Size(400, 494)
+        Me.DataGridView1.TabIndex = 79
+        '
+        'lButton
+        '
+        Me.lButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lButton.Location = New System.Drawing.Point(1047, 232)
+        Me.lButton.Name = "lButton"
+        Me.lButton.Size = New System.Drawing.Size(50, 50)
+        Me.lButton.TabIndex = 78
+        Me.lButton.Text = "L"
+        Me.lButton.UseVisualStyleBackColor = True
+        '
+        'spaceButton
+        '
+        Me.spaceButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spaceButton.Location = New System.Drawing.Point(542, 344)
+        Me.spaceButton.Name = "spaceButton"
+        Me.spaceButton.Size = New System.Drawing.Size(582, 50)
+        Me.spaceButton.TabIndex = 77
+        Me.spaceButton.Text = "SPACE"
+        Me.spaceButton.UseVisualStyleBackColor = True
+        '
+        'zeroButton
+        '
+        Me.zeroButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zeroButton.Location = New System.Drawing.Point(1047, 120)
+        Me.zeroButton.Name = "zeroButton"
+        Me.zeroButton.Size = New System.Drawing.Size(50, 50)
+        Me.zeroButton.TabIndex = 52
+        Me.zeroButton.Text = "0"
+        Me.zeroButton.UseVisualStyleBackColor = True
+        '
+        'nineButton
+        '
+        Me.nineButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.nineButton.Location = New System.Drawing.Point(991, 120)
+        Me.nineButton.Name = "nineButton"
+        Me.nineButton.Size = New System.Drawing.Size(50, 50)
+        Me.nineButton.TabIndex = 51
+        Me.nineButton.Text = "9"
+        Me.nineButton.UseVisualStyleBackColor = True
+        '
+        'eightButton
+        '
+        Me.eightButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.eightButton.Location = New System.Drawing.Point(935, 120)
+        Me.eightButton.Name = "eightButton"
+        Me.eightButton.Size = New System.Drawing.Size(50, 50)
+        Me.eightButton.TabIndex = 50
+        Me.eightButton.Text = "8"
+        Me.eightButton.UseVisualStyleBackColor = True
+        '
+        'sevenButton
+        '
+        Me.sevenButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.sevenButton.Location = New System.Drawing.Point(879, 120)
+        Me.sevenButton.Name = "sevenButton"
+        Me.sevenButton.Size = New System.Drawing.Size(50, 50)
+        Me.sevenButton.TabIndex = 49
+        Me.sevenButton.Text = "7"
+        Me.sevenButton.UseVisualStyleBackColor = True
+        '
+        'sixButton
+        '
+        Me.sixButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.sixButton.Location = New System.Drawing.Point(823, 120)
+        Me.sixButton.Name = "sixButton"
+        Me.sixButton.Size = New System.Drawing.Size(50, 50)
+        Me.sixButton.TabIndex = 48
+        Me.sixButton.Text = "6"
+        Me.sixButton.UseVisualStyleBackColor = True
+        '
+        'fiveButton
+        '
+        Me.fiveButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.fiveButton.Location = New System.Drawing.Point(767, 120)
+        Me.fiveButton.Name = "fiveButton"
+        Me.fiveButton.Size = New System.Drawing.Size(50, 50)
+        Me.fiveButton.TabIndex = 47
+        Me.fiveButton.Text = "5"
+        Me.fiveButton.UseVisualStyleBackColor = True
+        '
+        'fourButton
+        '
+        Me.fourButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.fourButton.Location = New System.Drawing.Point(711, 120)
+        Me.fourButton.Name = "fourButton"
+        Me.fourButton.Size = New System.Drawing.Size(50, 50)
+        Me.fourButton.TabIndex = 46
+        Me.fourButton.Text = "4"
+        Me.fourButton.UseVisualStyleBackColor = True
+        '
+        'threeButton
+        '
+        Me.threeButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.threeButton.Location = New System.Drawing.Point(655, 120)
+        Me.threeButton.Name = "threeButton"
+        Me.threeButton.Size = New System.Drawing.Size(50, 50)
+        Me.threeButton.TabIndex = 45
+        Me.threeButton.Text = "3"
+        Me.threeButton.UseVisualStyleBackColor = True
+        '
+        'twoButton
+        '
+        Me.twoButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.twoButton.Location = New System.Drawing.Point(598, 120)
+        Me.twoButton.Name = "twoButton"
+        Me.twoButton.Size = New System.Drawing.Size(50, 50)
+        Me.twoButton.TabIndex = 44
+        Me.twoButton.Text = "2"
+        Me.twoButton.UseVisualStyleBackColor = True
+        '
+        'oneButton
+        '
+        Me.oneButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.oneButton.Location = New System.Drawing.Point(542, 120)
+        Me.oneButton.Name = "oneButton"
+        Me.oneButton.Size = New System.Drawing.Size(50, 50)
+        Me.oneButton.TabIndex = 43
+        Me.oneButton.Text = "1"
+        Me.oneButton.UseVisualStyleBackColor = True
+        '
+        'mButton
+        '
+        Me.mButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mButton.Location = New System.Drawing.Point(954, 288)
+        Me.mButton.Name = "mButton"
+        Me.mButton.Size = New System.Drawing.Size(50, 50)
+        Me.mButton.TabIndex = 42
+        Me.mButton.Text = "M"
+        Me.mButton.UseVisualStyleBackColor = True
+        '
+        'nButton
+        '
+        Me.nButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.nButton.Location = New System.Drawing.Point(898, 288)
+        Me.nButton.Name = "nButton"
+        Me.nButton.Size = New System.Drawing.Size(50, 50)
+        Me.nButton.TabIndex = 41
+        Me.nButton.Text = "N"
+        Me.nButton.UseVisualStyleBackColor = True
+        '
+        'bButton
+        '
+        Me.bButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bButton.Location = New System.Drawing.Point(842, 288)
+        Me.bButton.Name = "bButton"
+        Me.bButton.Size = New System.Drawing.Size(50, 50)
+        Me.bButton.TabIndex = 40
+        Me.bButton.Text = "B"
+        Me.bButton.UseVisualStyleBackColor = True
+        '
+        'vButton
+        '
+        Me.vButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.vButton.Location = New System.Drawing.Point(786, 288)
+        Me.vButton.Name = "vButton"
+        Me.vButton.Size = New System.Drawing.Size(50, 50)
+        Me.vButton.TabIndex = 39
+        Me.vButton.Text = "V"
+        Me.vButton.UseVisualStyleBackColor = True
+        '
+        'cButton
+        '
+        Me.cButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cButton.Location = New System.Drawing.Point(730, 288)
+        Me.cButton.Name = "cButton"
+        Me.cButton.Size = New System.Drawing.Size(50, 50)
+        Me.cButton.TabIndex = 38
+        Me.cButton.Text = "C"
+        Me.cButton.UseVisualStyleBackColor = True
+        '
+        'xButton
+        '
+        Me.xButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.xButton.Location = New System.Drawing.Point(674, 288)
+        Me.xButton.Name = "xButton"
+        Me.xButton.Size = New System.Drawing.Size(50, 50)
+        Me.xButton.TabIndex = 37
+        Me.xButton.Text = "X"
+        Me.xButton.UseVisualStyleBackColor = True
+        '
+        'zButton
+        '
+        Me.zButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zButton.Location = New System.Drawing.Point(618, 288)
+        Me.zButton.Name = "zButton"
+        Me.zButton.Size = New System.Drawing.Size(50, 50)
+        Me.zButton.TabIndex = 36
+        Me.zButton.Text = "Z"
+        Me.zButton.UseVisualStyleBackColor = True
+        '
+        'kButton
+        '
+        Me.kButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.kButton.Location = New System.Drawing.Point(991, 232)
+        Me.kButton.Name = "kButton"
+        Me.kButton.Size = New System.Drawing.Size(50, 50)
+        Me.kButton.TabIndex = 34
+        Me.kButton.Text = "K"
+        Me.kButton.UseVisualStyleBackColor = True
+        '
+        'jButton
+        '
+        Me.jButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.jButton.Location = New System.Drawing.Point(935, 232)
+        Me.jButton.Name = "jButton"
+        Me.jButton.Size = New System.Drawing.Size(50, 50)
+        Me.jButton.TabIndex = 33
+        Me.jButton.Text = "J"
+        Me.jButton.UseVisualStyleBackColor = True
+        '
+        'hButton
+        '
+        Me.hButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.hButton.Location = New System.Drawing.Point(879, 232)
+        Me.hButton.Name = "hButton"
+        Me.hButton.Size = New System.Drawing.Size(50, 50)
+        Me.hButton.TabIndex = 32
+        Me.hButton.Text = "H"
+        Me.hButton.UseVisualStyleBackColor = True
+        '
+        'gButton
+        '
+        Me.gButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gButton.Location = New System.Drawing.Point(823, 232)
+        Me.gButton.Name = "gButton"
+        Me.gButton.Size = New System.Drawing.Size(50, 50)
+        Me.gButton.TabIndex = 31
+        Me.gButton.Text = "G"
+        Me.gButton.UseVisualStyleBackColor = True
+        '
+        'fButton
+        '
+        Me.fButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.fButton.Location = New System.Drawing.Point(767, 232)
+        Me.fButton.Name = "fButton"
+        Me.fButton.Size = New System.Drawing.Size(50, 50)
+        Me.fButton.TabIndex = 30
+        Me.fButton.Text = "F"
+        Me.fButton.UseVisualStyleBackColor = True
+        '
+        'dButton
+        '
+        Me.dButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dButton.Location = New System.Drawing.Point(709, 232)
+        Me.dButton.Name = "dButton"
+        Me.dButton.Size = New System.Drawing.Size(50, 50)
+        Me.dButton.TabIndex = 29
+        Me.dButton.Text = "D"
+        Me.dButton.UseVisualStyleBackColor = True
+        '
+        'sButton
+        '
+        Me.sButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.sButton.Location = New System.Drawing.Point(654, 232)
+        Me.sButton.Name = "sButton"
+        Me.sButton.Size = New System.Drawing.Size(50, 50)
+        Me.sButton.TabIndex = 28
+        Me.sButton.Text = "S"
+        Me.sButton.UseVisualStyleBackColor = True
+        '
+        'aButton
+        '
+        Me.aButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.aButton.Location = New System.Drawing.Point(598, 232)
+        Me.aButton.Name = "aButton"
+        Me.aButton.Size = New System.Drawing.Size(50, 50)
+        Me.aButton.TabIndex = 27
+        Me.aButton.Text = "A"
+        Me.aButton.UseVisualStyleBackColor = True
+        '
+        'pButton
+        '
+        Me.pButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.pButton.Location = New System.Drawing.Point(1074, 176)
+        Me.pButton.Name = "pButton"
+        Me.pButton.Size = New System.Drawing.Size(50, 50)
+        Me.pButton.TabIndex = 26
+        Me.pButton.Text = "P"
+        Me.pButton.UseVisualStyleBackColor = True
+        '
+        'oButton
+        '
+        Me.oButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.oButton.Location = New System.Drawing.Point(1018, 176)
+        Me.oButton.Name = "oButton"
+        Me.oButton.Size = New System.Drawing.Size(50, 50)
+        Me.oButton.TabIndex = 25
+        Me.oButton.Text = "O"
+        Me.oButton.UseVisualStyleBackColor = True
+        '
+        'iButton
+        '
+        Me.iButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.iButton.Location = New System.Drawing.Point(962, 176)
+        Me.iButton.Name = "iButton"
+        Me.iButton.Size = New System.Drawing.Size(50, 50)
+        Me.iButton.TabIndex = 24
+        Me.iButton.Text = "I"
+        Me.iButton.UseVisualStyleBackColor = True
+        '
+        'uButton
+        '
+        Me.uButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.uButton.Location = New System.Drawing.Point(906, 176)
+        Me.uButton.Name = "uButton"
+        Me.uButton.Size = New System.Drawing.Size(50, 50)
+        Me.uButton.TabIndex = 23
+        Me.uButton.Text = "U"
+        Me.uButton.UseVisualStyleBackColor = True
+        '
+        'yButton
+        '
+        Me.yButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.yButton.Location = New System.Drawing.Point(850, 176)
+        Me.yButton.Name = "yButton"
+        Me.yButton.Size = New System.Drawing.Size(50, 50)
+        Me.yButton.TabIndex = 22
+        Me.yButton.Text = "Y"
+        Me.yButton.UseVisualStyleBackColor = True
+        '
+        'tButton
+        '
+        Me.tButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tButton.Location = New System.Drawing.Point(794, 176)
+        Me.tButton.Name = "tButton"
+        Me.tButton.Size = New System.Drawing.Size(50, 50)
+        Me.tButton.TabIndex = 21
+        Me.tButton.Text = "T"
+        Me.tButton.UseVisualStyleBackColor = True
+        '
+        'rButton
+        '
+        Me.rButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rButton.Location = New System.Drawing.Point(737, 176)
+        Me.rButton.Name = "rButton"
+        Me.rButton.Size = New System.Drawing.Size(50, 50)
+        Me.rButton.TabIndex = 20
+        Me.rButton.Text = "R"
+        Me.rButton.UseVisualStyleBackColor = True
+        '
+        'eButton
+        '
+        Me.eButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.eButton.Location = New System.Drawing.Point(681, 176)
+        Me.eButton.Name = "eButton"
+        Me.eButton.Size = New System.Drawing.Size(50, 50)
+        Me.eButton.TabIndex = 19
+        Me.eButton.Text = "E"
+        Me.eButton.UseVisualStyleBackColor = True
+        '
+        'wButton
+        '
+        Me.wButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.wButton.Location = New System.Drawing.Point(625, 176)
+        Me.wButton.Name = "wButton"
+        Me.wButton.Size = New System.Drawing.Size(50, 50)
+        Me.wButton.TabIndex = 18
+        Me.wButton.Text = "W"
+        Me.wButton.UseVisualStyleBackColor = True
+        '
+        'qButton
+        '
+        Me.qButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.qButton.Location = New System.Drawing.Point(569, 176)
+        Me.qButton.Name = "qButton"
+        Me.qButton.Size = New System.Drawing.Size(50, 50)
+        Me.qButton.TabIndex = 17
+        Me.qButton.Text = "Q"
+        Me.qButton.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(861, 47)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(98, 20)
+        Me.Label2.TabIndex = 16
+        Me.Label2.Text = "Table Size:"
+        '
+        'nameLabel
+        '
+        Me.nameLabel.AutoSize = True
+        Me.nameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.nameLabel.Location = New System.Drawing.Point(861, 15)
+        Me.nameLabel.Name = "nameLabel"
+        Me.nameLabel.Size = New System.Drawing.Size(60, 20)
+        Me.nameLabel.TabIndex = 15
+        Me.nameLabel.Text = "Name:"
+        '
+        'deleteFromWaitlistButton
+        '
+        Me.deleteFromWaitlistButton.Location = New System.Drawing.Point(418, 436)
+        Me.deleteFromWaitlistButton.Name = "deleteFromWaitlistButton"
+        Me.deleteFromWaitlistButton.Size = New System.Drawing.Size(400, 90)
+        Me.deleteFromWaitlistButton.TabIndex = 14
+        Me.deleteFromWaitlistButton.Text = "Remove guest from waitlist"
+        Me.deleteFromWaitlistButton.UseVisualStyleBackColor = True
+        '
+        'addToWaitlistButton
+        '
+        Me.addToWaitlistButton.Location = New System.Drawing.Point(824, 436)
+        Me.addToWaitlistButton.Name = "addToWaitlistButton"
+        Me.addToWaitlistButton.Size = New System.Drawing.Size(400, 90)
+        Me.addToWaitlistButton.TabIndex = 13
+        Me.addToWaitlistButton.Text = "Add guest to waitlist"
+        Me.addToWaitlistButton.UseVisualStyleBackColor = True
+        '
+        'sizeTextbox
+        '
+        Me.sizeTextbox.Location = New System.Drawing.Point(965, 47)
+        Me.sizeTextbox.Name = "sizeTextbox"
+        Me.sizeTextbox.Size = New System.Drawing.Size(259, 26)
+        Me.sizeTextbox.TabIndex = 12
+        '
+        'nameTextbox
+        '
+        Me.nameTextbox.Location = New System.Drawing.Point(965, 9)
+        Me.nameTextbox.Name = "nameTextbox"
+        Me.nameTextbox.Size = New System.Drawing.Size(259, 26)
+        Me.nameTextbox.TabIndex = 11
         '
         'infoTab
         '
@@ -801,6 +1311,18 @@ Partial Class tables
         Me.infoTab.TabIndex = 1
         Me.infoTab.Text = "INFO"
         Me.infoTab.UseVisualStyleBackColor = True
+        '
+        'errorLabel
+        '
+        Me.errorLabel.AutoSize = True
+        Me.errorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.errorLabel.ForeColor = System.Drawing.Color.Firebrick
+        Me.errorLabel.Location = New System.Drawing.Point(861, 85)
+        Me.errorLabel.Name = "errorLabel"
+        Me.errorLabel.Size = New System.Drawing.Size(47, 20)
+        Me.errorLabel.TabIndex = 83
+        Me.errorLabel.Text = "error"
+        Me.errorLabel.Visible = False
         '
         'tables
         '
@@ -863,7 +1385,6 @@ Partial Class tables
     Friend WithEvents tablesTab As System.Windows.Forms.TabPage
     Friend WithEvents infoTab As System.Windows.Forms.TabPage
     Friend WithEvents waitlistTab As System.Windows.Forms.TabPage
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents sizeTextbox As System.Windows.Forms.TextBox
     Friend WithEvents nameTextbox As System.Windows.Forms.TextBox
     Friend WithEvents Panel15 As System.Windows.Forms.Panel
@@ -899,4 +1420,48 @@ Partial Class tables
     Friend WithEvents table1Button As System.Windows.Forms.Button
     Friend WithEvents addToWaitlistButton As System.Windows.Forms.Button
     Friend WithEvents deleteFromWaitlistButton As System.Windows.Forms.Button
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents nameLabel As System.Windows.Forms.Label
+    Friend WithEvents spaceButton As System.Windows.Forms.Button
+    Friend WithEvents zeroButton As System.Windows.Forms.Button
+    Friend WithEvents nineButton As System.Windows.Forms.Button
+    Friend WithEvents eightButton As System.Windows.Forms.Button
+    Friend WithEvents sevenButton As System.Windows.Forms.Button
+    Friend WithEvents sixButton As System.Windows.Forms.Button
+    Friend WithEvents fiveButton As System.Windows.Forms.Button
+    Friend WithEvents fourButton As System.Windows.Forms.Button
+    Friend WithEvents threeButton As System.Windows.Forms.Button
+    Friend WithEvents twoButton As System.Windows.Forms.Button
+    Friend WithEvents oneButton As System.Windows.Forms.Button
+    Friend WithEvents mButton As System.Windows.Forms.Button
+    Friend WithEvents nButton As System.Windows.Forms.Button
+    Friend WithEvents bButton As System.Windows.Forms.Button
+    Friend WithEvents vButton As System.Windows.Forms.Button
+    Friend WithEvents cButton As System.Windows.Forms.Button
+    Friend WithEvents xButton As System.Windows.Forms.Button
+    Friend WithEvents zButton As System.Windows.Forms.Button
+    Friend WithEvents kButton As System.Windows.Forms.Button
+    Friend WithEvents jButton As System.Windows.Forms.Button
+    Friend WithEvents hButton As System.Windows.Forms.Button
+    Friend WithEvents gButton As System.Windows.Forms.Button
+    Friend WithEvents fButton As System.Windows.Forms.Button
+    Friend WithEvents dButton As System.Windows.Forms.Button
+    Friend WithEvents sButton As System.Windows.Forms.Button
+    Friend WithEvents aButton As System.Windows.Forms.Button
+    Friend WithEvents pButton As System.Windows.Forms.Button
+    Friend WithEvents oButton As System.Windows.Forms.Button
+    Friend WithEvents iButton As System.Windows.Forms.Button
+    Friend WithEvents uButton As System.Windows.Forms.Button
+    Friend WithEvents yButton As System.Windows.Forms.Button
+    Friend WithEvents tButton As System.Windows.Forms.Button
+    Friend WithEvents rButton As System.Windows.Forms.Button
+    Friend WithEvents eButton As System.Windows.Forms.Button
+    Friend WithEvents wButton As System.Windows.Forms.Button
+    Friend WithEvents qButton As System.Windows.Forms.Button
+    Friend WithEvents lButton As System.Windows.Forms.Button
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents clearButton As System.Windows.Forms.Button
+    Friend WithEvents errorLabel As System.Windows.Forms.Label
 End Class
