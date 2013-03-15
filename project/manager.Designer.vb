@@ -34,20 +34,20 @@ Partial Class manager
         Me.TabControl1.Controls.Add(Me.employeeTab)
         Me.TabControl1.Controls.Add(Me.inventoryTab)
         Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(15, 15)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.TabControl1.Location = New System.Drawing.Point(5, 5)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(6)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1320, 700)
+        Me.TabControl1.Size = New System.Drawing.Size(1257, 674)
         Me.TabControl1.TabIndex = 0
         '
         'employeeTab
         '
         Me.employeeTab.Location = New System.Drawing.Point(4, 43)
-        Me.employeeTab.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.employeeTab.Margin = New System.Windows.Forms.Padding(6)
         Me.employeeTab.Name = "employeeTab"
-        Me.employeeTab.Padding = New System.Windows.Forms.Padding(6, 6, 6, 6)
-        Me.employeeTab.Size = New System.Drawing.Size(1312, 653)
+        Me.employeeTab.Padding = New System.Windows.Forms.Padding(6)
+        Me.employeeTab.Size = New System.Drawing.Size(1249, 627)
         Me.employeeTab.TabIndex = 0
         Me.employeeTab.Text = "EMPLOYEES"
         Me.employeeTab.UseVisualStyleBackColor = True
@@ -55,10 +55,10 @@ Partial Class manager
         'inventoryTab
         '
         Me.inventoryTab.Location = New System.Drawing.Point(4, 43)
-        Me.inventoryTab.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.inventoryTab.Margin = New System.Windows.Forms.Padding(6)
         Me.inventoryTab.Name = "inventoryTab"
-        Me.inventoryTab.Padding = New System.Windows.Forms.Padding(6, 6, 6, 6)
-        Me.inventoryTab.Size = New System.Drawing.Size(2644, 1311)
+        Me.inventoryTab.Padding = New System.Windows.Forms.Padding(6)
+        Me.inventoryTab.Size = New System.Drawing.Size(1312, 653)
         Me.inventoryTab.TabIndex = 1
         Me.inventoryTab.Text = "INVENTORY"
         Me.inventoryTab.UseVisualStyleBackColor = True
@@ -67,10 +67,10 @@ Partial Class manager
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1350, 730)
+        Me.ClientSize = New System.Drawing.Size(1264, 680)
         Me.Controls.Add(Me.TabControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.Margin = New System.Windows.Forms.Padding(6)
         Me.Name = "manager"
         Me.Text = "manager"
         Me.TabControl1.ResumeLayout(False)

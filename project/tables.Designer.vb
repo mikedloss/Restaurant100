@@ -22,7 +22,7 @@ Partial Class tables
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Panel17 = New System.Windows.Forms.Panel()
         Me.table6Button = New System.Windows.Forms.Button()
@@ -79,6 +79,8 @@ Partial Class tables
         Me.waiter4Label = New System.Windows.Forms.Label()
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.waitlistTab = New System.Windows.Forms.TabPage()
+        Me.deleteKey = New System.Windows.Forms.Button()
+        Me.errorLabel = New System.Windows.Forms.Label()
         Me.clearButton = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -127,7 +129,6 @@ Partial Class tables
         Me.sizeTextbox = New System.Windows.Forms.TextBox()
         Me.nameTextbox = New System.Windows.Forms.TextBox()
         Me.infoTab = New System.Windows.Forms.TabPage()
-        Me.errorLabel = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.Panel17.SuspendLayout()
         Me.Panel15.SuspendLayout()
@@ -719,10 +720,10 @@ Partial Class tables
         Me.TabControl1.Controls.Add(Me.waitlistTab)
         Me.TabControl1.Controls.Add(Me.infoTab)
         Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(12, 12)
+        Me.TabControl1.Location = New System.Drawing.Point(5, 5)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1240, 576)
+        Me.TabControl1.Size = New System.Drawing.Size(1242, 576)
         Me.TabControl1.TabIndex = 28
         '
         'tablesTab
@@ -742,7 +743,7 @@ Partial Class tables
         Me.tablesTab.Location = New System.Drawing.Point(4, 43)
         Me.tablesTab.Name = "tablesTab"
         Me.tablesTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.tablesTab.Size = New System.Drawing.Size(1232, 529)
+        Me.tablesTab.Size = New System.Drawing.Size(1234, 529)
         Me.tablesTab.TabIndex = 0
         Me.tablesTab.Text = "TABLES"
         '
@@ -768,6 +769,7 @@ Partial Class tables
         '
         'waitlistTab
         '
+        Me.waitlistTab.Controls.Add(Me.deleteKey)
         Me.waitlistTab.Controls.Add(Me.errorLabel)
         Me.waitlistTab.Controls.Add(Me.clearButton)
         Me.waitlistTab.Controls.Add(Me.Label3)
@@ -824,6 +826,28 @@ Partial Class tables
         Me.waitlistTab.Text = "WAITLIST"
         Me.waitlistTab.UseVisualStyleBackColor = True
         '
+        'deleteKey
+        '
+        Me.deleteKey.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.deleteKey.Location = New System.Drawing.Point(1103, 120)
+        Me.deleteKey.Name = "deleteKey"
+        Me.deleteKey.Size = New System.Drawing.Size(94, 50)
+        Me.deleteKey.TabIndex = 84
+        Me.deleteKey.Text = "DELETE"
+        Me.deleteKey.UseVisualStyleBackColor = True
+        '
+        'errorLabel
+        '
+        Me.errorLabel.AutoSize = True
+        Me.errorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.errorLabel.ForeColor = System.Drawing.Color.Firebrick
+        Me.errorLabel.Location = New System.Drawing.Point(861, 85)
+        Me.errorLabel.Name = "errorLabel"
+        Me.errorLabel.Size = New System.Drawing.Size(47, 20)
+        Me.errorLabel.TabIndex = 83
+        Me.errorLabel.Text = "error"
+        Me.errorLabel.Visible = False
+        '
         'clearButton
         '
         Me.clearButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -860,14 +884,14 @@ Partial Class tables
         Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SkyBlue
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SkyBlue
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.ColumnHeadersVisible = False
         Me.DataGridView1.EnableHeadersVisualStyles = False
@@ -1312,18 +1336,6 @@ Partial Class tables
         Me.infoTab.Text = "INFO"
         Me.infoTab.UseVisualStyleBackColor = True
         '
-        'errorLabel
-        '
-        Me.errorLabel.AutoSize = True
-        Me.errorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.errorLabel.ForeColor = System.Drawing.Color.Firebrick
-        Me.errorLabel.Location = New System.Drawing.Point(861, 85)
-        Me.errorLabel.Name = "errorLabel"
-        Me.errorLabel.Size = New System.Drawing.Size(47, 20)
-        Me.errorLabel.TabIndex = 83
-        Me.errorLabel.Text = "error"
-        Me.errorLabel.Visible = False
-        '
         'tables
         '
         Me.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar
@@ -1464,4 +1476,5 @@ Partial Class tables
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents clearButton As System.Windows.Forms.Button
     Friend WithEvents errorLabel As System.Windows.Forms.Label
+    Friend WithEvents deleteKey As System.Windows.Forms.Button
 End Class

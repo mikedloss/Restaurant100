@@ -325,6 +325,7 @@ Public Class tables
             DataGridView1.Columns(0).Visible = False
             DataGridView1.Columns(1).Width = 200
             DataGridView1.Columns(2).Width = 198
+            keyboardLastFocus = "name"
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
@@ -395,12 +396,6 @@ Public Class tables
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
             End Try
-
-            'these next 2 commands drop column n, and then re-add the column with certain
-            'parameters, and make it a primary key (i.e. it is an auto incrementing value necessary for
-            'all new entries added into the table). without renumbering the table, whenever something
-            'is added to the table, n will keep increasing, so you might have values in n like
-            '1 2 6 11 30 31 60 105 etc etc BUT they will still be in order "technically"
             Dim dropcoln As New MySqlCommand(queryDropN, connection)
             Dim renumbercmd As New MySqlCommand()
             With renumbercmd
@@ -423,7 +418,6 @@ Public Class tables
     Private Sub nameTextBox_Focus(sender As Object, e As EventArgs) Handles nameTextbox.Enter
         keyboardLastFocus = "name"
     End Sub
-
     Private Sub sizeTextBox_Focus(sender As Object, e As EventArgs) Handles sizeTextbox.Enter
         keyboardLastFocus = "size"
     End Sub
@@ -434,7 +428,6 @@ Public Class tables
             sizeTextbox.Text += "1"
         End If
     End Sub
-
     Private Sub twoButton_Click(sender As Object, e As EventArgs) Handles twoButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "2"
@@ -498,7 +491,6 @@ Public Class tables
             sizeTextbox.Text += "0"
         End If
     End Sub
-
     Private Sub qButton_Click(sender As Object, e As EventArgs) Handles qButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "Q"
@@ -506,7 +498,6 @@ Public Class tables
             sizeTextbox.Text += "Q"
         End If
     End Sub
-
     Private Sub wButton_Click(sender As Object, e As EventArgs) Handles wButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "W"
@@ -514,7 +505,6 @@ Public Class tables
             sizeTextbox.Text += "W"
         End If
     End Sub
-
     Private Sub eButton_Click(sender As Object, e As EventArgs) Handles eButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "E"
@@ -522,7 +512,6 @@ Public Class tables
             sizeTextbox.Text += "E"
         End If
     End Sub
-
     Private Sub rButton_Click(sender As Object, e As EventArgs) Handles rButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "R"
@@ -530,7 +519,6 @@ Public Class tables
             sizeTextbox.Text += "R"
         End If
     End Sub
-
     Private Sub tButton_Click(sender As Object, e As EventArgs) Handles tButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "T"
@@ -538,7 +526,6 @@ Public Class tables
             sizeTextbox.Text += "T"
         End If
     End Sub
-
     Private Sub yButton_Click(sender As Object, e As EventArgs) Handles yButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "Y"
@@ -546,7 +533,6 @@ Public Class tables
             sizeTextbox.Text += "Y"
         End If
     End Sub
-
     Private Sub uButton_Click(sender As Object, e As EventArgs) Handles uButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "U"
@@ -554,7 +540,6 @@ Public Class tables
             sizeTextbox.Text += "U"
         End If
     End Sub
-
     Private Sub iButton_Click(sender As Object, e As EventArgs) Handles iButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "I"
@@ -562,7 +547,6 @@ Public Class tables
             sizeTextbox.Text += "I"
         End If
     End Sub
-
     Private Sub oButton_Click(sender As Object, e As EventArgs) Handles oButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "O"
@@ -570,7 +554,6 @@ Public Class tables
             sizeTextbox.Text += "O"
         End If
     End Sub
-
     Private Sub pButton_Click(sender As Object, e As EventArgs) Handles pButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "P"
@@ -578,7 +561,6 @@ Public Class tables
             sizeTextbox.Text += "P"
         End If
     End Sub
-
     Private Sub aButton_Click(sender As Object, e As EventArgs) Handles aButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "A"
@@ -586,7 +568,6 @@ Public Class tables
             sizeTextbox.Text += "A"
         End If
     End Sub
-
     Private Sub sButton_Click(sender As Object, e As EventArgs) Handles sButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "S"
@@ -594,7 +575,6 @@ Public Class tables
             sizeTextbox.Text += "S"
         End If
     End Sub
-
     Private Sub dButton_Click(sender As Object, e As EventArgs) Handles dButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "D"
@@ -602,7 +582,6 @@ Public Class tables
             sizeTextbox.Text += "D"
         End If
     End Sub
-
     Private Sub fButton_Click(sender As Object, e As EventArgs) Handles fButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "F"
@@ -610,7 +589,6 @@ Public Class tables
             sizeTextbox.Text += "F"
         End If
     End Sub
-
     Private Sub gButton_Click(sender As Object, e As EventArgs) Handles gButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "G"
@@ -618,7 +596,6 @@ Public Class tables
             sizeTextbox.Text += "G"
         End If
     End Sub
-
     Private Sub hButton_Click(sender As Object, e As EventArgs) Handles hButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "H"
@@ -626,7 +603,6 @@ Public Class tables
             sizeTextbox.Text += "H"
         End If
     End Sub
-
     Private Sub jButton_Click(sender As Object, e As EventArgs) Handles jButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "J"
@@ -634,7 +610,6 @@ Public Class tables
             sizeTextbox.Text += "J"
         End If
     End Sub
-
     Private Sub kButton_Click(sender As Object, e As EventArgs) Handles kButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "K"
@@ -642,7 +617,6 @@ Public Class tables
             sizeTextbox.Text += "K"
         End If
     End Sub
-
     Private Sub lButton_Click(sender As Object, e As EventArgs) Handles lButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "L"
@@ -650,7 +624,6 @@ Public Class tables
             sizeTextbox.Text += "L"
         End If
     End Sub
-
     Private Sub zButton_Click(sender As Object, e As EventArgs) Handles zButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "Z"
@@ -658,7 +631,6 @@ Public Class tables
             sizeTextbox.Text += "Z"
         End If
     End Sub
-
     Private Sub xButton_Click(sender As Object, e As EventArgs) Handles xButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "X"
@@ -666,7 +638,6 @@ Public Class tables
             sizeTextbox.Text += "X"
         End If
     End Sub
-
     Private Sub cButton_Click(sender As Object, e As EventArgs) Handles cButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "C"
@@ -674,7 +645,6 @@ Public Class tables
             sizeTextbox.Text += "C"
         End If
     End Sub
-
     Private Sub vButton_Click(sender As Object, e As EventArgs) Handles vButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "V"
@@ -682,7 +652,6 @@ Public Class tables
             sizeTextbox.Text += "V"
         End If
     End Sub
-
     Private Sub bButton_Click(sender As Object, e As EventArgs) Handles bButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "B"
@@ -690,7 +659,6 @@ Public Class tables
             sizeTextbox.Text += "B"
         End If
     End Sub
-
     Private Sub nButton_Click(sender As Object, e As EventArgs) Handles nButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "N"
@@ -698,7 +666,6 @@ Public Class tables
             sizeTextbox.Text += "N"
         End If
     End Sub
-
     Private Sub mButton_Click(sender As Object, e As EventArgs) Handles mButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += "M"
@@ -706,7 +673,6 @@ Public Class tables
             sizeTextbox.Text += "M"
         End If
     End Sub
-
     Private Sub spaceButton_Click(sender As Object, e As EventArgs) Handles spaceButton.Click
         If keyboardLastFocus = "name" Then
             nameTextbox.Text += " "
@@ -714,9 +680,19 @@ Public Class tables
             sizeTextbox.Text += " "
         End If
     End Sub
-
     Private Sub clearButton_Click(sender As Object, e As EventArgs) Handles clearButton.Click
         nameTextbox.Text = ""
         sizeTextbox.Text = ""
+    End Sub
+    Private Sub deleteKey_Click(sender As Object, e As EventArgs) Handles deleteKey.Click
+        If keyboardLastFocus = "name" Then
+            If nameTextbox.Text.Length > 0 Then
+                nameTextbox.Text = nameTextbox.Text.Remove(nameTextbox.Text.Length - 1, 1)
+            End If
+        ElseIf keyboardLastFocus = "size" Then
+            If sizeTextbox.Text.Length > 0 Then
+                sizeTextbox.Text = sizeTextbox.Text.Remove(sizeTextbox.Text.Length - 1, 1)
+            End If
+        End If
     End Sub
 End Class
