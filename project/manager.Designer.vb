@@ -58,7 +58,7 @@ Partial Class manager
         Me.inventoryTab.Margin = New System.Windows.Forms.Padding(6)
         Me.inventoryTab.Name = "inventoryTab"
         Me.inventoryTab.Padding = New System.Windows.Forms.Padding(6)
-        Me.inventoryTab.Size = New System.Drawing.Size(1312, 653)
+        Me.inventoryTab.Size = New System.Drawing.Size(1249, 627)
         Me.inventoryTab.TabIndex = 1
         Me.inventoryTab.Text = "INVENTORY"
         Me.inventoryTab.UseVisualStyleBackColor = True
