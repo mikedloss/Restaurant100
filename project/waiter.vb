@@ -4,6 +4,8 @@ Imports System.Data.SqlClient
 
 Public Class waiter
 
+    Public connStr As String
+
     Dim arraySend() As String
     Dim tableNumber As Integer
 
@@ -12,10 +14,11 @@ Public Class waiter
         Me.WindowState = FormWindowState.Maximized
     End Sub
 
-    Public Sub New(ByVal table As Integer)
+    Public Sub New(ByVal table As Integer, ByVal connection As String)
         InitializeComponent()
+        connStr = connection
         tableNumber = table
-
+        tableNumLabel.Text += Convert.ToString(tableNumber)
     End Sub
 
     Private Sub clearButton_Click(sender As System.Object, e As System.EventArgs) Handles clearButton.Click
@@ -31,4 +34,5 @@ Public Class waiter
     Private Sub modifier86Button_Click(sender As Object, e As EventArgs) Handles modifier86Button.Click
         tabControlWaiter.Visible = False
     End Sub
+
 End Class

@@ -6,12 +6,13 @@ Public Class login
 
     Public connStr As String = "Database=restaurant;" & _
                     "Data Source=192.168.1.2;" & _
-                    "User Id=root;"
+                    "User Id=root;Password=root;"
     Dim connFlag As Boolean = False
     Dim returnAnswer As Boolean = False
     Dim queryResult As Int32
     Dim queryTypeResult As Int32
     Dim queryDisplayName As String
+    Dim username As String
 
     Private Sub login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'tests the connection to make sure it works
@@ -83,19 +84,36 @@ Public Class login
             usernameLogin.Text = ""
             passwordLogin.Text = ""
         Else
+            loggingIn()
             If (queryTypeResult = 1 Or queryTypeResult = 2) Then
-                Dim tablesForm As New tables(queryTypeResult, queryDisplayName)
+                Dim tablesForm As New tables(queryTypeResult, queryDisplayName, connStr, username)
                 tablesForm.Show()
                 'Me.Hide()
             ElseIf (queryTypeResult = 3) Then
                 MsgBox("you are a cook")
             ElseIf (queryTypeResult = 4) Then
-                MsgBox("you are a manager")
+                Dim managerForm As New manager(connStr, username)
+                managerForm.Show()
             End If
             usernameLogin.Text = ""
             passwordLogin.Text = ""
             errorLabel.Visible = False
             End If
+    End Sub
+
+    Public Sub loggingIn()
+        username = Convert.ToString(usernameLogin.Text)
+        Dim query As String = "UPDATE restaurant.employeeinfo SET `isLoggedIn`='y' WHERE `un`='" + username + "';"
+        Dim connection As New MySqlConnection(connStr)
+        Dim command As New MySqlCommand(query, connection)
+        Try
+            connection.Open()
+            command.ExecuteNonQuery()
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        Finally
+            connection.Close()
+        End Try
     End Sub
 
     Public Function retrieveTest()
@@ -184,7 +202,6 @@ Public Class login
             usernameLogin.Text += "1"
         End If
     End Sub
-
     Private Sub login2KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login2KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
@@ -195,7 +212,6 @@ Public Class login
             usernameLogin.Text += "2"
         End If
     End Sub
-
     Private Sub login3KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login3KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
@@ -206,7 +222,6 @@ Public Class login
             usernameLogin.Text += "3"
         End If
     End Sub
-
     Private Sub login4KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login4KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
@@ -217,7 +232,6 @@ Public Class login
             usernameLogin.Text += "4"
         End If
     End Sub
-
     Private Sub login5KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login5KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
@@ -228,7 +242,6 @@ Public Class login
             usernameLogin.Text += "5"
         End If
     End Sub
-
     Private Sub login6KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login6KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
@@ -239,7 +252,6 @@ Public Class login
             usernameLogin.Text += "6"
         End If
     End Sub
-
     Private Sub login7KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login7KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
@@ -250,7 +262,6 @@ Public Class login
             usernameLogin.Text += "7"
         End If
     End Sub
-
     Private Sub login8KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login8KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
@@ -261,7 +272,6 @@ Public Class login
             usernameLogin.Text += "8"
         End If
     End Sub
-
     Private Sub login9KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login9KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
@@ -272,7 +282,6 @@ Public Class login
             usernameLogin.Text += "9"
         End If
     End Sub
-
     Private Sub login0KeyButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles login0KeyButton.Click
         If passwordLogin.Text.Length = 4 Then
             loginSubmitButton.Focus()
@@ -305,7 +314,6 @@ Public Class login
             checkmarkPicture.Visible = True
             statusLabel.Text = "connected"
             statusLabel.ForeColor = Color.Green
-
         Catch ex As Exception
             MsgBox(ex.Message)
             checkmarkPicture.Visible = False
