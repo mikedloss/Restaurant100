@@ -185,4 +185,7 @@ Public Class manager
         End Using
     End Sub
 
+    Private Sub editEmployeeButton_Click(sender As Object, e As EventArgs) Handles editEmployeeButton.Click
+
+    End Sub
 End Class

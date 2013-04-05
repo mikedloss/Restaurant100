@@ -26,28 +26,28 @@ Partial Class waiter
         Me.clearButton = New System.Windows.Forms.Button()
         Me.tabControlWaiter = New System.Windows.Forms.TabControl()
         Me.alcoholTab = New System.Windows.Forms.TabPage()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.alcohol1Button = New System.Windows.Forms.Button()
         Me.drinksTab = New System.Windows.Forms.TabPage()
-        Me.waterDrinkButton = New System.Windows.Forms.Button()
-        Me.milkDrinkButton = New System.Windows.Forms.Button()
-        Me.sodaDrinkButton = New System.Windows.Forms.Button()
-        Me.juiceDrinkButton = New System.Windows.Forms.Button()
+        Me.drink4Button = New System.Windows.Forms.Button()
+        Me.drink3Button = New System.Windows.Forms.Button()
+        Me.drink2Button = New System.Windows.Forms.Button()
+        Me.drink1Button = New System.Windows.Forms.Button()
         Me.cheeseFriesAppButton = New System.Windows.Forms.TabPage()
         Me.Splitter2 = New System.Windows.Forms.Splitter()
         Me.Splitter1 = New System.Windows.Forms.Splitter()
-        Me.bonelessAppButton = New System.Windows.Forms.Button()
-        Me.wingsAppButton = New System.Windows.Forms.Button()
-        Me.samplerAppButton = New System.Windows.Forms.Button()
-        Me.mozStixAppButton = New System.Windows.Forms.Button()
-        Me.chipsAppButton = New System.Windows.Forms.Button()
-        Me.potatoSkinsAppButton = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.app7Button = New System.Windows.Forms.Button()
+        Me.app6Button = New System.Windows.Forms.Button()
+        Me.app2Button = New System.Windows.Forms.Button()
+        Me.app5Button = New System.Windows.Forms.Button()
+        Me.app4Button = New System.Windows.Forms.Button()
+        Me.app3Button = New System.Windows.Forms.Button()
+        Me.app1Button = New System.Windows.Forms.Button()
         Me.entreeTab = New System.Windows.Forms.TabPage()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.entree3Button = New System.Windows.Forms.Button()
+        Me.entree2Button = New System.Windows.Forms.Button()
+        Me.entree1Button = New System.Windows.Forms.Button()
         Me.dessertTab = New System.Windows.Forms.TabPage()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.dessert1Button = New System.Windows.Forms.Button()
         Me.extrasTab = New System.Windows.Forms.TabPage()
         Me.submitOrderButton = New System.Windows.Forms.Button()
         Me.modifier86Button = New System.Windows.Forms.Button()
@@ -109,7 +109,7 @@ Partial Class waiter
         '
         'alcoholTab
         '
-        Me.alcoholTab.Controls.Add(Me.Button6)
+        Me.alcoholTab.Controls.Add(Me.alcohol1Button)
         Me.alcoholTab.Location = New System.Drawing.Point(4, 37)
         Me.alcoholTab.Name = "alcoholTab"
         Me.alcoholTab.Padding = New System.Windows.Forms.Padding(3)
@@ -118,21 +118,21 @@ Partial Class waiter
         Me.alcoholTab.Text = "ALCOHOL"
         Me.alcoholTab.UseVisualStyleBackColor = True
         '
-        'Button6
+        'alcohol1Button
         '
-        Me.Button6.Location = New System.Drawing.Point(20, 20)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(200, 75)
-        Me.Button6.TabIndex = 1
-        Me.Button6.Text = "BEER"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.alcohol1Button.Location = New System.Drawing.Point(20, 20)
+        Me.alcohol1Button.Name = "alcohol1Button"
+        Me.alcohol1Button.Size = New System.Drawing.Size(200, 75)
+        Me.alcohol1Button.TabIndex = 1
+        Me.alcohol1Button.Text = "BEER"
+        Me.alcohol1Button.UseVisualStyleBackColor = True
         '
         'drinksTab
         '
-        Me.drinksTab.Controls.Add(Me.waterDrinkButton)
-        Me.drinksTab.Controls.Add(Me.milkDrinkButton)
-        Me.drinksTab.Controls.Add(Me.sodaDrinkButton)
-        Me.drinksTab.Controls.Add(Me.juiceDrinkButton)
+        Me.drinksTab.Controls.Add(Me.drink4Button)
+        Me.drinksTab.Controls.Add(Me.drink3Button)
+        Me.drinksTab.Controls.Add(Me.drink2Button)
+        Me.drinksTab.Controls.Add(Me.drink1Button)
         Me.drinksTab.Location = New System.Drawing.Point(4, 37)
         Me.drinksTab.Name = "drinksTab"
         Me.drinksTab.Padding = New System.Windows.Forms.Padding(3)
@@ -141,53 +141,53 @@ Partial Class waiter
         Me.drinksTab.Text = "DRINKS"
         Me.drinksTab.UseVisualStyleBackColor = True
         '
-        'waterDrinkButton
+        'drink4Button
         '
-        Me.waterDrinkButton.Location = New System.Drawing.Point(20, 263)
-        Me.waterDrinkButton.Name = "waterDrinkButton"
-        Me.waterDrinkButton.Size = New System.Drawing.Size(200, 75)
-        Me.waterDrinkButton.TabIndex = 3
-        Me.waterDrinkButton.Text = "WATER"
-        Me.waterDrinkButton.UseVisualStyleBackColor = True
+        Me.drink4Button.Location = New System.Drawing.Point(20, 263)
+        Me.drink4Button.Name = "drink4Button"
+        Me.drink4Button.Size = New System.Drawing.Size(200, 75)
+        Me.drink4Button.TabIndex = 3
+        Me.drink4Button.Text = "WATER"
+        Me.drink4Button.UseVisualStyleBackColor = True
         '
-        'milkDrinkButton
+        'drink3Button
         '
-        Me.milkDrinkButton.Location = New System.Drawing.Point(20, 182)
-        Me.milkDrinkButton.Name = "milkDrinkButton"
-        Me.milkDrinkButton.Size = New System.Drawing.Size(200, 75)
-        Me.milkDrinkButton.TabIndex = 2
-        Me.milkDrinkButton.Text = "MILK"
-        Me.milkDrinkButton.UseVisualStyleBackColor = True
+        Me.drink3Button.Location = New System.Drawing.Point(20, 182)
+        Me.drink3Button.Name = "drink3Button"
+        Me.drink3Button.Size = New System.Drawing.Size(200, 75)
+        Me.drink3Button.TabIndex = 2
+        Me.drink3Button.Text = "MILK"
+        Me.drink3Button.UseVisualStyleBackColor = True
         '
-        'sodaDrinkButton
+        'drink2Button
         '
-        Me.sodaDrinkButton.Location = New System.Drawing.Point(20, 101)
-        Me.sodaDrinkButton.Name = "sodaDrinkButton"
-        Me.sodaDrinkButton.Size = New System.Drawing.Size(200, 75)
-        Me.sodaDrinkButton.TabIndex = 1
-        Me.sodaDrinkButton.Text = "SODA"
-        Me.sodaDrinkButton.UseVisualStyleBackColor = True
+        Me.drink2Button.Location = New System.Drawing.Point(20, 101)
+        Me.drink2Button.Name = "drink2Button"
+        Me.drink2Button.Size = New System.Drawing.Size(200, 75)
+        Me.drink2Button.TabIndex = 1
+        Me.drink2Button.Text = "SODA"
+        Me.drink2Button.UseVisualStyleBackColor = True
         '
-        'juiceDrinkButton
+        'drink1Button
         '
-        Me.juiceDrinkButton.Location = New System.Drawing.Point(20, 20)
-        Me.juiceDrinkButton.Name = "juiceDrinkButton"
-        Me.juiceDrinkButton.Size = New System.Drawing.Size(200, 75)
-        Me.juiceDrinkButton.TabIndex = 0
-        Me.juiceDrinkButton.Text = "JUICE"
-        Me.juiceDrinkButton.UseVisualStyleBackColor = True
+        Me.drink1Button.Location = New System.Drawing.Point(20, 20)
+        Me.drink1Button.Name = "drink1Button"
+        Me.drink1Button.Size = New System.Drawing.Size(200, 75)
+        Me.drink1Button.TabIndex = 0
+        Me.drink1Button.Text = "JUICE"
+        Me.drink1Button.UseVisualStyleBackColor = True
         '
         'cheeseFriesAppButton
         '
         Me.cheeseFriesAppButton.Controls.Add(Me.Splitter2)
         Me.cheeseFriesAppButton.Controls.Add(Me.Splitter1)
-        Me.cheeseFriesAppButton.Controls.Add(Me.bonelessAppButton)
-        Me.cheeseFriesAppButton.Controls.Add(Me.wingsAppButton)
-        Me.cheeseFriesAppButton.Controls.Add(Me.samplerAppButton)
-        Me.cheeseFriesAppButton.Controls.Add(Me.mozStixAppButton)
-        Me.cheeseFriesAppButton.Controls.Add(Me.chipsAppButton)
-        Me.cheeseFriesAppButton.Controls.Add(Me.potatoSkinsAppButton)
-        Me.cheeseFriesAppButton.Controls.Add(Me.Button5)
+        Me.cheeseFriesAppButton.Controls.Add(Me.app7Button)
+        Me.cheeseFriesAppButton.Controls.Add(Me.app6Button)
+        Me.cheeseFriesAppButton.Controls.Add(Me.app2Button)
+        Me.cheeseFriesAppButton.Controls.Add(Me.app5Button)
+        Me.cheeseFriesAppButton.Controls.Add(Me.app4Button)
+        Me.cheeseFriesAppButton.Controls.Add(Me.app3Button)
+        Me.cheeseFriesAppButton.Controls.Add(Me.app1Button)
         Me.cheeseFriesAppButton.Location = New System.Drawing.Point(4, 37)
         Me.cheeseFriesAppButton.Name = "cheeseFriesAppButton"
         Me.cheeseFriesAppButton.Size = New System.Drawing.Size(818, 564)
@@ -211,74 +211,74 @@ Partial Class waiter
         Me.Splitter1.TabIndex = 7
         Me.Splitter1.TabStop = False
         '
-        'bonelessAppButton
+        'app7Button
         '
-        Me.bonelessAppButton.Location = New System.Drawing.Point(226, 344)
-        Me.bonelessAppButton.Name = "bonelessAppButton"
-        Me.bonelessAppButton.Size = New System.Drawing.Size(200, 75)
-        Me.bonelessAppButton.TabIndex = 6
-        Me.bonelessAppButton.Text = "B-LESS WINGS"
-        Me.bonelessAppButton.UseVisualStyleBackColor = True
+        Me.app7Button.Location = New System.Drawing.Point(226, 344)
+        Me.app7Button.Name = "app7Button"
+        Me.app7Button.Size = New System.Drawing.Size(200, 75)
+        Me.app7Button.TabIndex = 6
+        Me.app7Button.Text = "B-LESS WINGS"
+        Me.app7Button.UseVisualStyleBackColor = True
         '
-        'wingsAppButton
+        'app6Button
         '
-        Me.wingsAppButton.Location = New System.Drawing.Point(20, 344)
-        Me.wingsAppButton.Name = "wingsAppButton"
-        Me.wingsAppButton.Size = New System.Drawing.Size(200, 75)
-        Me.wingsAppButton.TabIndex = 5
-        Me.wingsAppButton.Text = "BONE WINGS"
-        Me.wingsAppButton.UseVisualStyleBackColor = True
+        Me.app6Button.Location = New System.Drawing.Point(20, 344)
+        Me.app6Button.Name = "app6Button"
+        Me.app6Button.Size = New System.Drawing.Size(200, 75)
+        Me.app6Button.TabIndex = 5
+        Me.app6Button.Text = "BONE WINGS"
+        Me.app6Button.UseVisualStyleBackColor = True
         '
-        'samplerAppButton
+        'app2Button
         '
-        Me.samplerAppButton.Location = New System.Drawing.Point(226, 20)
-        Me.samplerAppButton.Name = "samplerAppButton"
-        Me.samplerAppButton.Size = New System.Drawing.Size(200, 75)
-        Me.samplerAppButton.TabIndex = 4
-        Me.samplerAppButton.Text = "SAMPLER"
-        Me.samplerAppButton.UseVisualStyleBackColor = True
+        Me.app2Button.Location = New System.Drawing.Point(226, 20)
+        Me.app2Button.Name = "app2Button"
+        Me.app2Button.Size = New System.Drawing.Size(200, 75)
+        Me.app2Button.TabIndex = 4
+        Me.app2Button.Text = "SAMPLER"
+        Me.app2Button.UseVisualStyleBackColor = True
         '
-        'mozStixAppButton
+        'app5Button
         '
-        Me.mozStixAppButton.Location = New System.Drawing.Point(20, 263)
-        Me.mozStixAppButton.Name = "mozStixAppButton"
-        Me.mozStixAppButton.Size = New System.Drawing.Size(200, 75)
-        Me.mozStixAppButton.TabIndex = 3
-        Me.mozStixAppButton.Text = "MOZ STIX"
-        Me.mozStixAppButton.UseVisualStyleBackColor = True
+        Me.app5Button.Location = New System.Drawing.Point(20, 263)
+        Me.app5Button.Name = "app5Button"
+        Me.app5Button.Size = New System.Drawing.Size(200, 75)
+        Me.app5Button.TabIndex = 3
+        Me.app5Button.Text = "MOZ STIX"
+        Me.app5Button.UseVisualStyleBackColor = True
         '
-        'chipsAppButton
+        'app4Button
         '
-        Me.chipsAppButton.Location = New System.Drawing.Point(20, 182)
-        Me.chipsAppButton.Name = "chipsAppButton"
-        Me.chipsAppButton.Size = New System.Drawing.Size(200, 75)
-        Me.chipsAppButton.TabIndex = 2
-        Me.chipsAppButton.Text = "CHIPS SALSA"
-        Me.chipsAppButton.UseVisualStyleBackColor = True
+        Me.app4Button.Location = New System.Drawing.Point(20, 182)
+        Me.app4Button.Name = "app4Button"
+        Me.app4Button.Size = New System.Drawing.Size(200, 75)
+        Me.app4Button.TabIndex = 2
+        Me.app4Button.Text = "CHIPS SALSA"
+        Me.app4Button.UseVisualStyleBackColor = True
         '
-        'potatoSkinsAppButton
+        'app3Button
         '
-        Me.potatoSkinsAppButton.Location = New System.Drawing.Point(20, 101)
-        Me.potatoSkinsAppButton.Name = "potatoSkinsAppButton"
-        Me.potatoSkinsAppButton.Size = New System.Drawing.Size(200, 75)
-        Me.potatoSkinsAppButton.TabIndex = 1
-        Me.potatoSkinsAppButton.Text = "PT SKINS"
-        Me.potatoSkinsAppButton.UseVisualStyleBackColor = True
+        Me.app3Button.Location = New System.Drawing.Point(20, 101)
+        Me.app3Button.Name = "app3Button"
+        Me.app3Button.Size = New System.Drawing.Size(200, 75)
+        Me.app3Button.TabIndex = 1
+        Me.app3Button.Text = "PT SKINS"
+        Me.app3Button.UseVisualStyleBackColor = True
         '
-        'Button5
+        'app1Button
         '
-        Me.Button5.Location = New System.Drawing.Point(20, 20)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(200, 75)
-        Me.Button5.TabIndex = 0
-        Me.Button5.Text = "CH FRIES"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.app1Button.Location = New System.Drawing.Point(20, 20)
+        Me.app1Button.Name = "app1Button"
+        Me.app1Button.Size = New System.Drawing.Size(200, 75)
+        Me.app1Button.TabIndex = 0
+        Me.app1Button.Text = "CH FRIES"
+        Me.app1Button.UseVisualStyleBackColor = True
         '
         'entreeTab
         '
-        Me.entreeTab.Controls.Add(Me.Button3)
-        Me.entreeTab.Controls.Add(Me.Button2)
-        Me.entreeTab.Controls.Add(Me.Button1)
+        Me.entreeTab.Controls.Add(Me.entree3Button)
+        Me.entreeTab.Controls.Add(Me.entree2Button)
+        Me.entreeTab.Controls.Add(Me.entree1Button)
         Me.entreeTab.Location = New System.Drawing.Point(4, 37)
         Me.entreeTab.Name = "entreeTab"
         Me.entreeTab.Size = New System.Drawing.Size(818, 564)
@@ -286,36 +286,36 @@ Partial Class waiter
         Me.entreeTab.Text = "ENTREE'S"
         Me.entreeTab.UseVisualStyleBackColor = True
         '
-        'Button3
+        'entree3Button
         '
-        Me.Button3.Location = New System.Drawing.Point(20, 182)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(200, 75)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "BACON CHSBRGR"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.entree3Button.Location = New System.Drawing.Point(20, 182)
+        Me.entree3Button.Name = "entree3Button"
+        Me.entree3Button.Size = New System.Drawing.Size(200, 75)
+        Me.entree3Button.TabIndex = 3
+        Me.entree3Button.Text = "BACON CHSBRGR"
+        Me.entree3Button.UseVisualStyleBackColor = True
         '
-        'Button2
+        'entree2Button
         '
-        Me.Button2.Location = New System.Drawing.Point(20, 101)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(200, 75)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "TURKEY BLT"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.entree2Button.Location = New System.Drawing.Point(20, 101)
+        Me.entree2Button.Name = "entree2Button"
+        Me.entree2Button.Size = New System.Drawing.Size(200, 75)
+        Me.entree2Button.TabIndex = 2
+        Me.entree2Button.Text = "TURKEY BLT"
+        Me.entree2Button.UseVisualStyleBackColor = True
         '
-        'Button1
+        'entree1Button
         '
-        Me.Button1.Location = New System.Drawing.Point(20, 20)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(200, 75)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "HONEY BBQ SANDWICH"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.entree1Button.Location = New System.Drawing.Point(20, 20)
+        Me.entree1Button.Name = "entree1Button"
+        Me.entree1Button.Size = New System.Drawing.Size(200, 75)
+        Me.entree1Button.TabIndex = 1
+        Me.entree1Button.Text = "HONEY BBQ SANDWICH"
+        Me.entree1Button.UseVisualStyleBackColor = True
         '
         'dessertTab
         '
-        Me.dessertTab.Controls.Add(Me.Button7)
+        Me.dessertTab.Controls.Add(Me.dessert1Button)
         Me.dessertTab.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dessertTab.Location = New System.Drawing.Point(4, 37)
         Me.dessertTab.Name = "dessertTab"
@@ -324,15 +324,15 @@ Partial Class waiter
         Me.dessertTab.Text = "DESSERTS"
         Me.dessertTab.UseVisualStyleBackColor = True
         '
-        'Button7
+        'dessert1Button
         '
-        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Location = New System.Drawing.Point(20, 20)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(200, 75)
-        Me.Button7.TabIndex = 1
-        Me.Button7.Text = "ICE CREAM"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.dessert1Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dessert1Button.Location = New System.Drawing.Point(20, 20)
+        Me.dessert1Button.Name = "dessert1Button"
+        Me.dessert1Button.Size = New System.Drawing.Size(200, 75)
+        Me.dessert1Button.TabIndex = 1
+        Me.dessert1Button.Text = "ICE CREAM"
+        Me.dessert1Button.UseVisualStyleBackColor = True
         '
         'extrasTab
         '
@@ -490,24 +490,24 @@ Partial Class waiter
     Friend WithEvents sideofModifierButton As System.Windows.Forms.Button
     Friend WithEvents extraModifierButton As System.Windows.Forms.Button
     Friend WithEvents extrasTab As System.Windows.Forms.TabPage
-    Friend WithEvents waterDrinkButton As System.Windows.Forms.Button
-    Friend WithEvents milkDrinkButton As System.Windows.Forms.Button
-    Friend WithEvents sodaDrinkButton As System.Windows.Forms.Button
-    Friend WithEvents juiceDrinkButton As System.Windows.Forms.Button
-    Friend WithEvents samplerAppButton As System.Windows.Forms.Button
-    Friend WithEvents mozStixAppButton As System.Windows.Forms.Button
-    Friend WithEvents chipsAppButton As System.Windows.Forms.Button
-    Friend WithEvents potatoSkinsAppButton As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents bonelessAppButton As System.Windows.Forms.Button
-    Friend WithEvents wingsAppButton As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents drink4Button As System.Windows.Forms.Button
+    Friend WithEvents drink3Button As System.Windows.Forms.Button
+    Friend WithEvents drink2Button As System.Windows.Forms.Button
+    Friend WithEvents drink1Button As System.Windows.Forms.Button
+    Friend WithEvents app2Button As System.Windows.Forms.Button
+    Friend WithEvents app5Button As System.Windows.Forms.Button
+    Friend WithEvents app4Button As System.Windows.Forms.Button
+    Friend WithEvents app3Button As System.Windows.Forms.Button
+    Friend WithEvents app1Button As System.Windows.Forms.Button
+    Friend WithEvents app7Button As System.Windows.Forms.Button
+    Friend WithEvents app6Button As System.Windows.Forms.Button
+    Friend WithEvents entree2Button As System.Windows.Forms.Button
+    Friend WithEvents entree1Button As System.Windows.Forms.Button
     Friend WithEvents Splitter2 As System.Windows.Forms.Splitter
     Friend WithEvents Splitter1 As System.Windows.Forms.Splitter
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents entree3Button As System.Windows.Forms.Button
+    Friend WithEvents alcohol1Button As System.Windows.Forms.Button
+    Friend WithEvents dessert1Button As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents tableNumLabel As System.Windows.Forms.Label
 End Class

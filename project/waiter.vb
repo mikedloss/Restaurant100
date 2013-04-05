@@ -6,7 +6,7 @@ Public Class waiter
 
     Public connStr As String
 
-    Dim arraySend() As String
+    Dim array() As String
     Dim tableNumber As Integer
 
     Private Sub waiter_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
@@ -35,4 +35,15 @@ Public Class waiter
         tabControlWaiter.Visible = False
     End Sub
 
+    Public Sub addToArray(ByVal input As String, ByVal item As String)
+        'will add to array and display on screen
+        Dim whatever As String
+
+    End Sub
+
+    Private Sub alcohol1Button_Click(sender As Object, e As EventArgs) Handles alcohol1Button.Click
+        Dim text As String
+        text = "1 BEER" & vbCrLf
+        addToArray(text, 1)
+    End Sub
 End Class
