@@ -14,11 +14,11 @@ Public Class waiter
         Me.WindowState = FormWindowState.Maximized
     End Sub
 
-    Public Sub New(ByVal table As Integer, ByVal connection As String)
+    Public Sub New(ByVal table As String, ByVal connection As String)
         InitializeComponent()
         connStr = connection
-        tableNumber = table
-        tableNumLabel.Text += Convert.ToString(tableNumber)
+        tableNumber = Convert.ToInt32(table)
+        tableNumLabel.Text += table
     End Sub
 
     Private Sub clearButton_Click(sender As System.Object, e As System.EventArgs) Handles clearButton.Click
@@ -37,7 +37,7 @@ Public Class waiter
 
     Public Sub addToArray(ByVal input As String, ByVal item As String)
         'will add to array and display on screen
-        Dim whatever As String
+        'Dim whatever As String
 
     End Sub
 

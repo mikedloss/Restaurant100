@@ -92,7 +92,7 @@ Public Class login
             ElseIf (queryTypeResult = 3) Then
                 MsgBox("you are a cook")
             ElseIf (queryTypeResult = 4) Then
-                Dim managerForm As New manager(connStr, username)
+                Dim managerForm As New manager(connStr, username, queryDisplayName)
                 managerForm.Show()
             End If
             usernameLogin.Text = ""

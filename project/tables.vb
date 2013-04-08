@@ -13,8 +13,9 @@ Public Class tables
 
     Dim displayName As String
     Public connStr As String
-    Dim employeeID As String
+    Dim unID As String
     Dim dbRowCount As String
+    Dim tablenum(0 To 24) As String
 
     Dim keyboardLastFocus As String = "name"
 
@@ -23,7 +24,7 @@ Public Class tables
         connStr = connection
         employeeType = type
         displayName = name
-        employeeID = id
+        unID = id
     End Sub
 
     Private Sub tables_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
@@ -32,343 +33,1025 @@ Public Class tables
         getDBCount()
         waiter2Label.Text = dbRowCount
         fillWaiterLabel()
-        'waiter1Label.Text = ""
-        'waiter2Label.Text = ""
-        'waiter3Label.Text = ""
-        'waiter4Label.Text = ""
-        'bartenderLabel.Text = ""
-        waiter1Label.Text = Convert.ToString(displayName)
         retrieveWaitlistData()
+        retrieveOccupancyData()
+        retrieveNote()
+
+        welcomeLabel.Text = "Welcome, " + displayName + "!"
+        timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
+        dateLabel.Text = Now.Date
+
+        waiter1Label.Text = Convert.ToString(displayName)
+    End Sub
+
+    Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timer.Tick
+        'every tick updates time
+        timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
     End Sub
 
     Private Sub table1Button_Click(sender As Object, e As EventArgs) Handles table1Button.Click
+        Dim tableNum As Integer = 1
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 1
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(1) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table1Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table1Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table1Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table2Button_Click(sender As Object, e As EventArgs) Handles table2Button.Click
+        Dim tableNum As Integer = 2
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 2
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(2) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table2Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table2Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table2Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table3Button_Click(sender As Object, e As EventArgs) Handles table3Button.Click
+        Dim tableNum As Integer = 3
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 3
-            Dim waiterform As New waiter(tableNum, connStr)
-
+            If checkFlag(3) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table3Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table3Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table3Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table4Button_Click(sender As Object, e As EventArgs) Handles table4Button.Click
+        Dim tableNum As Integer = 4
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 4
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(4) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table4Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table4Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table4Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table5Button_Click(sender As Object, e As EventArgs) Handles table5Button.Click
+        Dim tableNum As Integer = 5
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 5
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(5) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table5Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table5Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table5Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table6Button_Click(sender As Object, e As EventArgs) Handles table6Button.Click
+        Dim tableNum As Integer = 6
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 6
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(6) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table6Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table6Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table6Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table7Button_Click(sender As Object, e As EventArgs) Handles table7Button.Click
+        Dim tableNum As Integer = 7
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 7
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(7) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table7Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table7Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table7Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table8Button_Click(sender As Object, e As EventArgs) Handles table8Button.Click
+        Dim tableNum As Integer = 8
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 8
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(8) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table8Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table8Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table8Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table9Button_Click(sender As Object, e As EventArgs) Handles table9Button.Click
+        Dim tableNum As Integer = 9
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 9
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(9) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table9Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table9Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table9Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table10Button_Click(sender As Object, e As EventArgs) Handles table10Button.Click
+        Dim tableNum As Integer = 10
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 10
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(10) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table10Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table10Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table10Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table11Button_Click(sender As Object, e As EventArgs) Handles table11Button.Click
+        Dim tableNum As Integer = 11
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 11
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(11) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table11Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table11Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table11Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table12Button_Click(sender As Object, e As EventArgs) Handles table12Button.Click
+        Dim tableNum As Integer = 12
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 12
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(12) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table12Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table12Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table12Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table13Button_Click(sender As Object, e As EventArgs) Handles table13Button.Click
+        Dim tableNum As Integer = 13
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 13
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(13) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table13Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table13Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table13Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table14Button_Click(sender As Object, e As EventArgs) Handles table14Button.Click
+        Dim tableNum As Integer = 14
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 14
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(14) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table14Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table14Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table14Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub table15Button_Click(sender As Object, e As EventArgs) Handles table15Button.Click
+        Dim tableNum As Integer = 15
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 15
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(15) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (table15Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table15Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 table15Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub barSeat1Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat1Button.Click
+        Dim tableNum As Integer = 16
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 16
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
+            If checkFlag(16) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
+            Else
+                MsgBox("you can't do that ;)")
+            End If
         Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
             If (barSeat1Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 barSeat1Button.BackColor = Color.LightSalmon
             Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
                 barSeat1Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub barSeat2Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat2Button.Click
+        Dim tableNum As Integer = 17
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 17
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
-        Else
-            If (barSeat1Button.BackColor = Color.PaleGreen) Then
-                barSeat1Button.BackColor = Color.LightSalmon
+            If checkFlag(17) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
             Else
-                barSeat1Button.BackColor = Color.PaleGreen
+                MsgBox("you can't do that ;)")
+            End If
+        Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
+            If (barSeat2Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat2Button.BackColor = Color.LightSalmon
+            Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat2Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub barSeat3Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat3Button.Click
+        Dim tableNum As Integer = 18
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 18
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
-        Else
-            If (barSeat1Button.BackColor = Color.PaleGreen) Then
-                barSeat1Button.BackColor = Color.LightSalmon
+            If checkFlag(18) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
             Else
-                barSeat1Button.BackColor = Color.PaleGreen
+                MsgBox("you can't do that ;)")
+            End If
+        Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
+            If (barSeat3Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat3Button.BackColor = Color.LightSalmon
+            Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat3Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub barSeat4Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat4Button.Click
+        Dim tableNum As Integer = 19
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 19
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
-        Else
-            If (barSeat1Button.BackColor = Color.PaleGreen) Then
-                barSeat1Button.BackColor = Color.LightSalmon
+            If checkFlag(19) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
             Else
-                barSeat1Button.BackColor = Color.PaleGreen
+                MsgBox("you can't do that ;)")
+            End If
+        Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
+            If (barSeat4Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat4Button.BackColor = Color.LightSalmon
+            Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat4Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub barSeat5Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat5Button.Click
+        Dim tableNum As Integer = 20
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 20
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
-        Else
-            If (barSeat1Button.BackColor = Color.PaleGreen) Then
-                barSeat1Button.BackColor = Color.LightSalmon
+            If checkFlag(20) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
             Else
-                barSeat1Button.BackColor = Color.PaleGreen
+                MsgBox("you can't do that ;)")
+            End If
+        Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
+            If (barSeat5Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat5Button.BackColor = Color.LightSalmon
+            Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat5Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub barSeat6Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat6Button.Click
+        Dim tableNum As Integer = 21
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 21
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
-        Else
-            If (barSeat1Button.BackColor = Color.PaleGreen) Then
-                barSeat1Button.BackColor = Color.LightSalmon
+            If checkFlag(21) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
             Else
-                barSeat1Button.BackColor = Color.PaleGreen
+                MsgBox("you can't do that ;)")
+            End If
+        Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
+            If (barSeat6Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat6Button.BackColor = Color.LightSalmon
+            Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat6Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub barSeat7Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat7Button.Click
+        Dim tableNum As Integer = 22
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 22
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
-        Else
-            If (barSeat1Button.BackColor = Color.PaleGreen) Then
-                barSeat1Button.BackColor = Color.LightSalmon
+            If checkFlag(22) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
             Else
-                barSeat1Button.BackColor = Color.PaleGreen
+                MsgBox("you can't do that ;)")
+            End If
+        Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
+            If (barSeat7Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat7Button.BackColor = Color.LightSalmon
+            Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat7Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub barSeat8Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat8Button.Click
+        Dim tableNum As Integer = 23
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 23
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
-        Else
-            If (barSeat1Button.BackColor = Color.PaleGreen) Then
-                barSeat1Button.BackColor = Color.LightSalmon
+            If checkFlag(23) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
             Else
-                barSeat1Button.BackColor = Color.PaleGreen
+                MsgBox("you can't do that ;)")
+            End If
+        Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
+            If (barSeat8Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat8Button.BackColor = Color.LightSalmon
+            Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat8Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub barSeat9Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat9Button.Click
+        Dim tableNum As Integer = 24
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 24
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
-        Else
-            If (barSeat1Button.BackColor = Color.PaleGreen) Then
-                barSeat1Button.BackColor = Color.LightSalmon
+            If checkFlag(24) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
             Else
-                barSeat1Button.BackColor = Color.PaleGreen
+                MsgBox("you can't do that ;)")
+            End If
+        Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
+            If (barSeat9Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat9Button.BackColor = Color.LightSalmon
+            Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat9Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
     Private Sub barSeat10Button_Click(sender As System.Object, e As System.EventArgs) Handles barSeat10Button.Click
+        Dim tableNum As Integer = 25
         If (employeeType = 2) Then
-            Dim tableNum As Integer = 25
-            Dim waiterform As New waiter(tableNum, connStr)
-            waiterform.Show()
-        Else
-            If (barSeat1Button.BackColor = Color.PaleGreen) Then
-                barSeat1Button.BackColor = Color.LightSalmon
+            If checkFlag(25) = True Then
+                Dim waiterform As New waiter(tableNum, connStr)
+                waiterform.Show()
             Else
-                barSeat1Button.BackColor = Color.PaleGreen
+                MsgBox("you can't do that ;)")
+            End If
+        Else
+            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+
+            If (barSeat10Button.BackColor = Color.PaleGreen) Then
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryY, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat10Button.BackColor = Color.LightSalmon
+            Else
+                Using connection As New MySqlConnection(connStr)
+                    Dim command As New MySqlCommand(queryN, connection)
+                    Try
+                        connection.Open()
+                        command.ExecuteNonQuery()
+                        connection.Close()
+                    Catch ex As Exception
+                        Console.WriteLine(ex.Message)
+                    End Try
+                End Using
+                barSeat10Button.BackColor = Color.PaleGreen
             End If
         End If
     End Sub
 
     Private Sub logoutButton_Click(sender As System.Object, e As System.EventArgs) Handles logoutButton.Click
-        Dim query As String = "UPDATE restaurant.employeeinfo SET `isLoggedIn`='n' WHERE `un`='" + employeeID + "';"
+        Dim query As String = "UPDATE restaurant.employeeinfo SET `isLoggedIn`='n' WHERE `un`='" + unID + "';"
         Dim connection As New MySqlConnection(connStr)
         Dim command As New MySqlCommand(query, connection)
         Try
@@ -381,6 +1064,212 @@ Public Class tables
         End Try
         Me.Close()
         login.Show()
+    End Sub
+
+    Public Function checkFlag(ByVal table As Integer)
+        Dim flag As Boolean = False
+        Dim numberInArray As Integer = table - 1
+        If numberInArray < 0 Then
+            Return False
+        ElseIf Me.tablenum(numberInArray) = "y" Then
+            flag = True
+        End If
+        Return flag
+    End Function
+
+    Public Sub retrieveOccupancyData()
+        Dim i As Integer = 1
+        Dim j As Integer = 0
+        Dim istring As String = Convert.ToString(i)
+        Dim query As String = "SELECT occupied FROM restaurant.tableoccupancy WHERE n=" + istring + ";"
+
+        Using connection As New MySqlConnection(connStr)
+            Dim command As New MySqlCommand(query, connection)
+            Try
+                connection.Open()
+                Do While (i <= 25)
+                    command.CommandText = "SELECT occupied FROM restaurant.tableoccupancy WHERE n=" + istring + ";"
+                    Me.tablenum(j) = Convert.ToString(command.ExecuteScalar())
+                    i += 1
+                    j += 1
+                    istring = Convert.ToString(i)
+                Loop
+                connection.Close()
+            Catch ex As Exception
+                Console.Write(ex.Message)
+            End Try
+        End Using
+
+        i = 0
+        j = 0
+        Do While (i <= 24)
+            If i = 0 Then
+                If tablenum(i) = "n" Then
+                    table1Button.BackColor = Color.PaleGreen
+                Else
+                    table1Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 1 Then
+                If tablenum(i) = "n" Then
+                    table2Button.BackColor = Color.PaleGreen
+                Else
+                    table2Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 2 Then
+                If tablenum(i) = "n" Then
+                    table3Button.BackColor = Color.PaleGreen
+                Else
+                    table3Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 3 Then
+                If tablenum(i) = "n" Then
+                    table4Button.BackColor = Color.PaleGreen
+                Else
+                    table4Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 4 Then
+                If tablenum(i) = "n" Then
+                    table5Button.BackColor = Color.PaleGreen
+                Else
+                    table5Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 5 Then
+                If tablenum(i) = "n" Then
+                    table6Button.BackColor = Color.PaleGreen
+                Else
+                    table6Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 6 Then
+                If tablenum(i) = "n" Then
+                    table7Button.BackColor = Color.PaleGreen
+                Else
+                    table7Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 7 Then
+                If tablenum(i) = "n" Then
+                    table8Button.BackColor = Color.PaleGreen
+                Else
+                    table8Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 8 Then
+                If tablenum(i) = "n" Then
+                    table9Button.BackColor = Color.PaleGreen
+                Else
+                    table9Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 9 Then
+                If tablenum(i) = "n" Then
+                    table10Button.BackColor = Color.PaleGreen
+                Else
+                    table10Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 10 Then
+                If tablenum(i) = "n" Then
+                    table11Button.BackColor = Color.PaleGreen
+                Else
+                    table11Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 11 Then
+                If tablenum(i) = "n" Then
+                    table12Button.BackColor = Color.PaleGreen
+                Else
+                    table12Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 12 Then
+                If tablenum(i) = "n" Then
+                    table13Button.BackColor = Color.PaleGreen
+                Else
+                    table13Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 13 Then
+                If tablenum(i) = "n" Then
+                    table14Button.BackColor = Color.PaleGreen
+                Else
+                    table14Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 14 Then
+                If tablenum(i) = "n" Then
+                    table15Button.BackColor = Color.PaleGreen
+                Else
+                    table15Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 15 Then
+                If tablenum(i) = "n" Then
+                    barSeat1Button.BackColor = Color.PaleGreen
+                Else
+                    barSeat1Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 16 Then
+                If tablenum(i) = "n" Then
+                    barSeat2Button.BackColor = Color.PaleGreen
+                Else
+                    barSeat2Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 17 Then
+                If tablenum(i) = "n" Then
+                    barSeat3Button.BackColor = Color.PaleGreen
+                Else
+                    barSeat3Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 18 Then
+                If tablenum(i) = "n" Then
+                    barSeat4Button.BackColor = Color.PaleGreen
+                Else
+                    barSeat4Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 19 Then
+                If tablenum(i) = "n" Then
+                    barSeat5Button.BackColor = Color.PaleGreen
+                Else
+                    barSeat5Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 20 Then
+                If tablenum(i) = "n" Then
+                    barSeat6Button.BackColor = Color.PaleGreen
+                Else
+                    barSeat6Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 21 Then
+                If tablenum(i) = "n" Then
+                    barSeat7Button.BackColor = Color.PaleGreen
+                Else
+                    barSeat7Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 22 Then
+                If tablenum(i) = "n" Then
+                    barSeat8Button.BackColor = Color.PaleGreen
+                Else
+                    barSeat8Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 23 Then
+                If tablenum(i) = "n" Then
+                    barSeat9Button.BackColor = Color.PaleGreen
+                Else
+                    barSeat9Button.BackColor = Color.LightSalmon
+                End If
+            ElseIf i = 24 Then
+                If tablenum(i) = "n" Then
+                    barSeat10Button.BackColor = Color.PaleGreen
+                Else
+                    barSeat10Button.BackColor = Color.LightSalmon
+                End If
+            End If
+            i += 1
+        Loop
+    End Sub
+
+    Public Sub retrieveNote()
+        Dim query As String = "SELECT note FROM restaurant.employeeinfo WHERE un='" + unID + "';"
+        Using connection As New MySqlConnection(connStr)
+            Dim command As New MySqlCommand(query, connection)
+            Try
+                connection.Open()
+                noteLabel.Text = Convert.ToString(command.ExecuteScalar())
+                connection.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+        End Using
     End Sub
 
     Public Sub getDBCount()
@@ -398,7 +1287,7 @@ Public Class tables
     End Sub
 
     Public Sub fillWaiterLabel()
-        Dim query As String = "SELECT un,type='2',isLoggedIn='n' FROM restaurant.employeeinfo;"
+        Dim query As String = "SELECT un,type='2',isLoggedIn='y' FROM restaurant.employeeinfo;"
         Dim n As Integer = 0
         Dim connection As New MySqlConnection(connStr)
     End Sub
@@ -790,4 +1679,5 @@ Public Class tables
             End If
         End If
     End Sub
+
 End Class
