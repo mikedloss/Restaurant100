@@ -14,8 +14,8 @@ Public Class tables
     Dim displayName As String
     Public connStr As String
     Dim unID As String
-    Dim dbRowCount As String
     Dim tablenum(0 To 24) As String
+    Dim dbRowCount As String
 
     Dim keyboardLastFocus As String = "name"
 
@@ -30,10 +30,13 @@ Public Class tables
     Private Sub tables_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.WindowState = FormWindowState.Maximized
-        getDBCount()
-        waiter2Label.Text = dbRowCount
-        fillWaiterLabel()
-        retrieveWaitlistData()
+        'fillWaiterLabel()
+        If employeeType = 2 Then
+            waiterModifications()
+        End If
+        If employeeType = 1 Then
+            retrieveWaitlistData()
+        End If
         retrieveOccupancyData()
         retrieveNote()
 
@@ -1051,6 +1054,11 @@ Public Class tables
     End Sub
 
     Private Sub logoutButton_Click(sender As System.Object, e As System.EventArgs) Handles logoutButton.Click
+        Me.Close()
+        login.Show()
+    End Sub
+
+    Private Sub clockOutButton_Click(sender As Object, e As EventArgs) Handles clockOutButton.Click
         Dim query As String = "UPDATE restaurant.employeeinfo SET `isLoggedIn`='n' WHERE `un`='" + unID + "';"
         Dim connection As New MySqlConnection(connStr)
         Dim command As New MySqlCommand(query, connection)
@@ -1064,6 +1072,30 @@ Public Class tables
         End Try
         Me.Close()
         login.Show()
+    End Sub
+
+    Public Sub waiterModifications()
+        DataGridView2.Visible = True
+        nameLabelW.Visible = True
+        tableLabelW.Visible = True
+        TabControl1.TabPages.Remove(waitlistTab)
+        Try
+            Dim query As String = "SELECT * FROM restaurant.tablewaitlist;"
+            Dim connection As New MySqlConnection(connStr)
+            Dim da As New MySqlDataAdapter(query, connection)
+            Dim ds As New DataSet()
+
+            connection.Open()
+            If da.Fill(ds) Then
+                DataGridView2.DataSource = ds.Tables(0)
+            End If
+            connection.Close()
+            DataGridView2.Columns(0).Visible = False
+            DataGridView2.Columns(1).Width = 190
+            DataGridView2.Columns(2).Width = 188
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
     End Sub
 
     Public Function checkFlag(ByVal table As Integer)
@@ -1272,8 +1304,9 @@ Public Class tables
         End Using
     End Sub
 
-    Public Sub getDBCount()
-        Dim query As String = "SELECT COUNT(*) FROM restaurant.employeeinfo;"
+    Public Function getDBCount()
+        Dim query As String = "SELECT COUNT(un) FROM restaurant.employeeinfo WHERE type='2' AND isLoggedIn='y';"
+        Dim dbRowCount As String
         Dim connection As New MySqlConnection(connStr)
         Dim command As New MySqlCommand(query, connection)
         Try
@@ -1284,12 +1317,67 @@ Public Class tables
         Finally
             connection.Close()
         End Try
-    End Sub
+        Return dbRowCount
+    End Function
 
     Public Sub fillWaiterLabel()
-        Dim query As String = "SELECT un,type='2',isLoggedIn='y' FROM restaurant.employeeinfo;"
-        Dim n As Integer = 0
-        Dim connection As New MySqlConnection(connStr)
+        Dim query1 As String = "SELECT displayname FROM restaurant.employeeinfo WHERE type='2';"
+        Dim query2 As String = "SELECT displayname FROM restaurant.employeeinfo WHERE type='2' AND isLoggedIn='y';"
+        'Dim numofentries As Integer = Convert.ToInt32(getDBCount())
+        Dim reader1 As MySqlDataReader
+        Dim reader2 As MySqlDataReader
+        Dim waitersQ1(0 To 4) As String
+        Dim waitersQ2(0 To 4) As String
+        Dim i As Integer = 0
+        Dim waiter1, waiter2, waiter3, waiter4, bartender As String
+
+        Using connection As New MySqlConnection(connStr)
+            Dim command1 As New MySqlCommand(query1, connection)
+            Try
+                connection.Open()
+                reader1 = command1.ExecuteReader()
+                While (reader1.Read())
+                    waitersQ1(i) = reader1.GetString(0)
+                    i += 1
+                End While
+                connection.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+            i = 0
+            Dim command2 As New MySqlCommand(query2, connection)
+            Try
+                connection.Open()
+                reader2 = command2.ExecuteReader()
+                While (reader2.Read())
+                    waitersQ2(i) = reader2.GetString(0)
+                    i += 1
+                End While
+                connection.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+        End Using
+        i = 0
+        Do While (i < 5)
+            If i = 0 Then
+                waiter1 = waitersQ1(i)
+                i += 1
+            ElseIf i = 1 Then
+                waiter2 = waitersQ1(i)
+                i += 1
+            ElseIf i = 2 Then
+                waiter3 = waitersQ1(i)
+                i += 1
+            ElseIf i = 3 Then
+                waiter4 = waitersQ1(i)
+                i += 1
+            ElseIf i = 4 Then
+                bartender = waitersQ1(i)
+                i += 1
+            End If
+        Loop
+
     End Sub
 
     Public Sub retrieveWaitlistData()
@@ -1403,7 +1491,6 @@ Public Class tables
     Private Sub sizeTextBox_Focus(sender As Object, e As EventArgs) Handles sizeTextbox.Enter
         keyboardLastFocus = "size"
     End Sub
-
     'keyboard buttons
     Private Sub oneButton_Click(sender As Object, e As EventArgs) Handles oneButton.Click
         If keyboardLastFocus = "name" Then
@@ -1679,5 +1766,4 @@ Public Class tables
             End If
         End If
     End Sub
-
 End Class

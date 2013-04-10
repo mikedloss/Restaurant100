@@ -85,12 +85,13 @@ Public Class login
             passwordLogin.Text = ""
         Else
             loggingIn()
-            If (queryTypeResult = 1 Or queryTypeResult = 2) Then
+            If (queryTypeResult = 1 Or queryTypeResult = 2 Or queryTypeResult = 5) Then
                 Dim tablesForm As New tables(queryTypeResult, queryDisplayName, connStr, username)
                 tablesForm.Show()
                 'Me.Hide()
             ElseIf (queryTypeResult = 3) Then
-                MsgBox("you are a cook")
+                Dim cookForm As New cook(connStr, username, queryDisplayName)
+                cookForm.Show()
             ElseIf (queryTypeResult = 4) Then
                 Dim managerForm As New manager(connStr, username, queryDisplayName)
                 managerForm.Show()

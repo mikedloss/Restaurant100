@@ -23,7 +23,8 @@ Partial Class tables
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Panel17 = New System.Windows.Forms.Panel()
         Me.table6Button = New System.Windows.Forms.Button()
@@ -74,7 +75,6 @@ Partial Class tables
         Me.waiter3Label = New System.Windows.Forms.Label()
         Me.bartenderPanel = New System.Windows.Forms.Panel()
         Me.bartenderLabel = New System.Windows.Forms.Label()
-        Me.logoutButton = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tablesTab = New System.Windows.Forms.TabPage()
         Me.waiter4Label = New System.Windows.Forms.Label()
@@ -130,12 +130,18 @@ Partial Class tables
         Me.sizeTextbox = New System.Windows.Forms.TextBox()
         Me.nameTextbox = New System.Windows.Forms.TextBox()
         Me.infoTab = New System.Windows.Forms.TabPage()
+        Me.clockOutButton = New System.Windows.Forms.Button()
         Me.dateLabel = New System.Windows.Forms.Label()
         Me.timeLabel = New System.Windows.Forms.Label()
         Me.welcomeLabel = New System.Windows.Forms.Label()
         Me.timer = New System.Windows.Forms.Timer(Me.components)
         Me.Label4 = New System.Windows.Forms.Label()
         Me.noteLabel = New System.Windows.Forms.Label()
+        Me.logoutButton = New System.Windows.Forms.Button()
+        Me.tableLabelW = New System.Windows.Forms.Label()
+        Me.nameLabelW = New System.Windows.Forms.Label()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.waitlistLabelW = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.Panel17.SuspendLayout()
         Me.Panel15.SuspendLayout()
@@ -156,6 +162,8 @@ Partial Class tables
         Me.tablesTab.SuspendLayout()
         Me.waitlistTab.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.infoTab.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -710,16 +718,6 @@ Partial Class tables
         Me.bartenderLabel.TabIndex = 26
         Me.bartenderLabel.Text = "bartender"
         '
-        'logoutButton
-        '
-        Me.logoutButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.logoutButton.Location = New System.Drawing.Point(972, 600)
-        Me.logoutButton.Name = "logoutButton"
-        Me.logoutButton.Size = New System.Drawing.Size(276, 68)
-        Me.logoutButton.TabIndex = 27
-        Me.logoutButton.Text = "LOGOUT"
-        Me.logoutButton.UseVisualStyleBackColor = True
-        '
         'TabControl1
         '
         Me.TabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons
@@ -736,6 +734,10 @@ Partial Class tables
         'tablesTab
         '
         Me.tablesTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tablesTab.Controls.Add(Me.waitlistLabelW)
+        Me.tablesTab.Controls.Add(Me.tableLabelW)
+        Me.tablesTab.Controls.Add(Me.nameLabelW)
+        Me.tablesTab.Controls.Add(Me.DataGridView2)
         Me.tablesTab.Controls.Add(Me.waiter4Label)
         Me.tablesTab.Controls.Add(Me.Panel16)
         Me.tablesTab.Controls.Add(Me.GroupBox1)
@@ -747,6 +749,7 @@ Partial Class tables
         Me.tablesTab.Controls.Add(Me.waitress3Panel)
         Me.tablesTab.Controls.Add(Me.waiter1Label)
         Me.tablesTab.Controls.Add(Me.waitress1Panel)
+        Me.tablesTab.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tablesTab.Location = New System.Drawing.Point(4, 43)
         Me.tablesTab.Name = "tablesTab"
         Me.tablesTab.Padding = New System.Windows.Forms.Padding(3)
@@ -891,19 +894,20 @@ Partial Class tables
         Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SkyBlue
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SkyBlue
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.ColumnHeadersVisible = False
         Me.DataGridView1.EnableHeadersVisualStyles = False
         Me.DataGridView1.GridColor = System.Drawing.SystemColors.Control
         Me.DataGridView1.Location = New System.Drawing.Point(3, 32)
+        Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
@@ -1335,6 +1339,7 @@ Partial Class tables
         '
         'infoTab
         '
+        Me.infoTab.Controls.Add(Me.clockOutButton)
         Me.infoTab.Location = New System.Drawing.Point(4, 43)
         Me.infoTab.Name = "infoTab"
         Me.infoTab.Padding = New System.Windows.Forms.Padding(3)
@@ -1342,6 +1347,16 @@ Partial Class tables
         Me.infoTab.TabIndex = 1
         Me.infoTab.Text = "INFO"
         Me.infoTab.UseVisualStyleBackColor = True
+        '
+        'clockOutButton
+        '
+        Me.clockOutButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.clockOutButton.Location = New System.Drawing.Point(925, 455)
+        Me.clockOutButton.Name = "clockOutButton"
+        Me.clockOutButton.Size = New System.Drawing.Size(303, 68)
+        Me.clockOutButton.TabIndex = 28
+        Me.clockOutButton.Text = "CLOCK OUT"
+        Me.clockOutButton.UseVisualStyleBackColor = True
         '
         'dateLabel
         '
@@ -1384,7 +1399,7 @@ Partial Class tables
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(399, 590)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(122, 16)
+        Me.Label4.Size = New System.Drawing.Size(118, 16)
         Me.Label4.TabIndex = 35
         Me.Label4.Text = "Notes for today:"
         '
@@ -1397,19 +1412,91 @@ Partial Class tables
         Me.noteLabel.TabIndex = 36
         Me.noteLabel.Text = "notes go here"
         '
+        'logoutButton
+        '
+        Me.logoutButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.logoutButton.Location = New System.Drawing.Point(1103, 600)
+        Me.logoutButton.Name = "logoutButton"
+        Me.logoutButton.Size = New System.Drawing.Size(140, 68)
+        Me.logoutButton.TabIndex = 37
+        Me.logoutButton.Text = "LOG OUT"
+        Me.logoutButton.UseVisualStyleBackColor = True
+        '
+        'tableLabelW
+        '
+        Me.tableLabelW.AutoSize = True
+        Me.tableLabelW.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tableLabelW.Location = New System.Drawing.Point(1050, 40)
+        Me.tableLabelW.Name = "tableLabelW"
+        Me.tableLabelW.Size = New System.Drawing.Size(83, 20)
+        Me.tableLabelW.TabIndex = 138
+        Me.tableLabelW.Text = "Table Size"
+        Me.tableLabelW.Visible = False
+        '
+        'nameLabelW
+        '
+        Me.nameLabelW.AutoSize = True
+        Me.nameLabelW.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.nameLabelW.Location = New System.Drawing.Point(848, 39)
+        Me.nameLabelW.Name = "nameLabelW"
+        Me.nameLabelW.Size = New System.Drawing.Size(117, 20)
+        Me.nameLabelW.TabIndex = 137
+        Me.nameLabelW.Text = "Name of Guest"
+        Me.nameLabelW.Visible = False
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.AllowUserToAddRows = False
+        Me.DataGridView2.AllowUserToDeleteRows = False
+        Me.DataGridView2.AllowUserToResizeColumns = False
+        Me.DataGridView2.AllowUserToResizeRows = False
+        Me.DataGridView2.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.DataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SkyBlue
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DataGridView2.ColumnHeadersVisible = False
+        Me.DataGridView2.EnableHeadersVisualStyles = False
+        Me.DataGridView2.GridColor = System.Drawing.SystemColors.Control
+        Me.DataGridView2.Location = New System.Drawing.Point(852, 60)
+        Me.DataGridView2.MultiSelect = False
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.ReadOnly = True
+        Me.DataGridView2.RowHeadersVisible = False
+        Me.DataGridView2.RowHeadersWidth = 80
+        Me.DataGridView2.Size = New System.Drawing.Size(380, 468)
+        Me.DataGridView2.TabIndex = 136
+        Me.DataGridView2.Visible = False
+        '
+        'waitlistLabelW
+        '
+        Me.waitlistLabelW.AutoSize = True
+        Me.waitlistLabelW.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.waitlistLabelW.Location = New System.Drawing.Point(847, 6)
+        Me.waitlistLabelW.Name = "waitlistLabelW"
+        Me.waitlistLabelW.Size = New System.Drawing.Size(96, 29)
+        Me.waitlistLabelW.TabIndex = 139
+        Me.waitlistLabelW.Text = "Waitlist:"
+        '
         'tables
         '
         Me.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1264, 680)
+        Me.Controls.Add(Me.logoutButton)
         Me.Controls.Add(Me.noteLabel)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.dateLabel)
         Me.Controls.Add(Me.timeLabel)
         Me.Controls.Add(Me.welcomeLabel)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.logoutButton)
         Me.Name = "tables"
         Me.Text = "Tables"
         Me.GroupBox1.ResumeLayout(False)
@@ -1434,6 +1521,8 @@ Partial Class tables
         Me.waitlistTab.ResumeLayout(False)
         Me.waitlistTab.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.infoTab.ResumeLayout(False)
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1459,7 +1548,6 @@ Partial Class tables
     Friend WithEvents waiter3Label As System.Windows.Forms.Label
     Friend WithEvents bartenderPanel As System.Windows.Forms.Panel
     Friend WithEvents bartenderLabel As System.Windows.Forms.Label
-    Friend WithEvents logoutButton As System.Windows.Forms.Button
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents tablesTab As System.Windows.Forms.TabPage
     Friend WithEvents infoTab As System.Windows.Forms.TabPage
@@ -1550,4 +1638,10 @@ Partial Class tables
     Friend WithEvents timer As System.Windows.Forms.Timer
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents noteLabel As System.Windows.Forms.Label
+    Friend WithEvents logoutButton As System.Windows.Forms.Button
+    Friend WithEvents clockOutButton As System.Windows.Forms.Button
+    Friend WithEvents tableLabelW As System.Windows.Forms.Label
+    Friend WithEvents nameLabelW As System.Windows.Forms.Label
+    Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
+    Friend WithEvents waitlistLabelW As System.Windows.Forms.Label
 End Class
