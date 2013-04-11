@@ -59,6 +59,8 @@ Partial Class waiter
         Me.extraModifierButton = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.tableNumLabel = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.tabControlWaiter.SuspendLayout()
         Me.alcoholTab.SuspendLayout()
         Me.drinksTab.SuspendLayout()
@@ -73,7 +75,7 @@ Partial Class waiter
         Me.orderTextBox.Location = New System.Drawing.Point(12, 12)
         Me.orderTextBox.Multiline = True
         Me.orderTextBox.Name = "orderTextBox"
-        Me.orderTextBox.Size = New System.Drawing.Size(302, 605)
+        Me.orderTextBox.Size = New System.Drawing.Size(302, 563)
         Me.orderTextBox.TabIndex = 0
         '
         'clearButton
@@ -443,11 +445,33 @@ Partial Class waiter
         Me.tableNumLabel.TabIndex = 24
         Me.tableNumLabel.Text = "#"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(61, 589)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(56, 24)
+        Me.Label1.TabIndex = 25
+        Me.Label1.Text = "Total:"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(123, 587)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(191, 26)
+        Me.TextBox1.TabIndex = 26
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'waiter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1264, 680)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tableNumLabel)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.extraModifierButton)
@@ -510,4 +534,6 @@ Partial Class waiter
     Friend WithEvents dessert1Button As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents tableNumLabel As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 End Class

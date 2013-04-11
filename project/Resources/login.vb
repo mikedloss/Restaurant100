@@ -8,7 +8,7 @@ Public Class login
                     "Data Source=192.168.1.2;" & _
                     "User Id=root;Password=root;"
     Dim connFlag As Boolean = False
-    Dim returnAnswer As Boolean = False
+    Public returnAnswer As Boolean = False
     Dim queryResult As Int32
     Dim queryTypeResult As Int32
     Dim queryDisplayName As String

@@ -82,6 +82,7 @@
     <Compile Include="cook.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="inventory.vb" />
     <Compile Include="Resources\login.vb">
       <SubType>Form</SubType>
     </Compile>

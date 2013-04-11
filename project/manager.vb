@@ -1,4 +1,6 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Option Explicit On
+
+Imports MySql.Data.MySqlClient
 Imports System.Data
 Imports System.Data.SqlClient
 
@@ -13,6 +15,7 @@ Public Class manager
     Dim displayName As String
     Dim holdnforedit As String
     Dim tablenum(0 To 24) As String
+    Dim count As Integer
 
     Public Sub New(ByVal connection As String, ByVal ID As String, ByVal name As String)
         InitializeComponent()
@@ -50,6 +53,12 @@ Public Class manager
     Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timer.Tick
         'every tick updates time
         timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
+        count += 1
+        If count = 10 Then
+            'refreshTables()
+            retrieveOccupancyData()
+            count = 0
+        End If
     End Sub
 
     Private Sub logoutButton_Click(sender As System.Object, e As System.EventArgs) Handles logoutButton.Click
@@ -431,6 +440,10 @@ Public Class manager
         End Try
     End Sub
 
+    Public Sub refreshTables()
+
+    End Sub
+
     Public Sub retrieveOccupancyData()
         Dim i As Integer = 1
         Dim j As Integer = 0
@@ -611,7 +624,7 @@ Public Class manager
             i += 1
         Loop
     End Sub
-    
+
     Private Sub addToWaitlistButton_Click(sender As Object, e As EventArgs) Handles addToWaitlistButton.Click
 
         Using connection As New MySqlConnection(connStr)
@@ -707,34 +720,34 @@ Public Class manager
     '---------------------all of the tables
     Private Sub table1Button_Click(sender As Object, e As EventArgs) Handles table1Button.Click
         Dim tableNum As Integer = 1
-            Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
-            Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+        Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
+        Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
 
-            If (table1Button.BackColor = Color.PaleGreen) Then
-                Using connection As New MySqlConnection(connStr)
-                    Dim command As New MySqlCommand(queryY, connection)
-                    Try
-                        connection.Open()
-                        command.ExecuteNonQuery()
-                        connection.Close()
-                    Catch ex As Exception
-                        Console.WriteLine(ex.Message)
-                    End Try
-                End Using
-                table1Button.BackColor = Color.LightSalmon
-            Else
-                Using connection As New MySqlConnection(connStr)
-                    Dim command As New MySqlCommand(queryN, connection)
-                    Try
-                        connection.Open()
-                        command.ExecuteNonQuery()
-                        connection.Close()
-                    Catch ex As Exception
-                        Console.WriteLine(ex.Message)
-                    End Try
-                End Using
-                table1Button.BackColor = Color.PaleGreen
-            End If
+        If (table1Button.BackColor = Color.PaleGreen) Then
+            Using connection As New MySqlConnection(connStr)
+                Dim command As New MySqlCommand(queryY, connection)
+                Try
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                    connection.Close()
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+            End Using
+            table1Button.BackColor = Color.LightSalmon
+        Else
+            Using connection As New MySqlConnection(connStr)
+                Dim command As New MySqlCommand(queryN, connection)
+                Try
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                    connection.Close()
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+            End Using
+            table1Button.BackColor = Color.PaleGreen
+        End If
     End Sub
     Private Sub table2Button_Click(sender As Object, e As EventArgs) Handles table2Button.Click
         Dim tableNum As Integer = 2

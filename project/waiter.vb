@@ -1,24 +1,29 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.Data
 Imports System.Data.SqlClient
+Imports project.inventory
 
 Public Class waiter
 
     Public connStr As String
 
     Dim array() As String
-    Dim tableNumber As Integer
-
-    Private Sub waiter_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-        Me.WindowState = FormWindowState.Maximized
-    End Sub
+    Dim tableNumber As String
+    Dim blah As String
 
     Public Sub New(ByVal table As String, ByVal connection As String)
         InitializeComponent()
         connStr = connection
-        tableNumber = Convert.ToInt32(table)
+        tableNumber = table
         tableNumLabel.Text += table
+    End Sub
+
+    Private Sub waiter_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+        Me.WindowState = FormWindowState.Maximized
+
+        'blah = inventory.shit.poop
+        orderTextBox.Text = blah
     End Sub
 
     Private Sub clearButton_Click(sender As System.Object, e As System.EventArgs) Handles clearButton.Click

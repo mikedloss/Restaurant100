@@ -16,6 +16,7 @@ Public Class tables
     Dim unID As String
     Dim tablenum(0 To 24) As String
     Dim dbRowCount As String
+    Dim count As String
 
     Dim keyboardLastFocus As String = "name"
 
@@ -50,6 +51,11 @@ Public Class tables
     Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timer.Tick
         'every tick updates time
         timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
+        count += 1
+        If count = 10 Then
+            retrieveOccupancyData()
+            count = 0
+        End If
     End Sub
 
     Private Sub table1Button_Click(sender As Object, e As EventArgs) Handles table1Button.Click
@@ -1076,6 +1082,7 @@ Public Class tables
 
     Public Sub waiterModifications()
         DataGridView2.Visible = True
+        waitlistLabelW.Visible = True
         nameLabelW.Visible = True
         tableLabelW.Visible = True
         TabControl1.TabPages.Remove(waitlistTab)
