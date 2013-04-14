@@ -34,6 +34,12 @@ Partial Class manager
         Me.editEmployeeButtonDGV = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.addTab = New System.Windows.Forms.TabPage()
+        Me.zoneGroupBox = New System.Windows.Forms.GroupBox()
+        Me.zone4Button = New System.Windows.Forms.RadioButton()
+        Me.zone1Button = New System.Windows.Forms.RadioButton()
+        Me.zone2Button = New System.Windows.Forms.RadioButton()
+        Me.zone3Button = New System.Windows.Forms.RadioButton()
+        Me.zoneErrorLabel = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.noteTextBox = New System.Windows.Forms.TextBox()
@@ -62,6 +68,13 @@ Partial Class manager
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.editTab = New System.Windows.Forms.TabPage()
+        Me.zoneGroupBoxE = New System.Windows.Forms.GroupBox()
+        Me.zoneBarButtonE = New System.Windows.Forms.RadioButton()
+        Me.zone4ButtonE = New System.Windows.Forms.RadioButton()
+        Me.zone1ButtonE = New System.Windows.Forms.RadioButton()
+        Me.zone2ButtonE = New System.Windows.Forms.RadioButton()
+        Me.zone3ButtonE = New System.Windows.Forms.RadioButton()
+        Me.zoneErrorLabelE = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.noteTextBoxE = New System.Windows.Forms.TextBox()
@@ -167,7 +180,9 @@ Partial Class manager
         Me.listTab.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.addTab.SuspendLayout()
+        Me.zoneGroupBox.SuspendLayout()
         Me.editTab.SuspendLayout()
+        Me.zoneGroupBoxE.SuspendLayout()
         Me.tablesTab.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -307,6 +322,8 @@ Partial Class manager
         '
         'addTab
         '
+        Me.addTab.Controls.Add(Me.zoneGroupBox)
+        Me.addTab.Controls.Add(Me.zoneErrorLabel)
         Me.addTab.Controls.Add(Me.Label10)
         Me.addTab.Controls.Add(Me.Label7)
         Me.addTab.Controls.Add(Me.noteTextBox)
@@ -343,6 +360,85 @@ Partial Class manager
         Me.addTab.TabIndex = 1
         Me.addTab.Text = "ADD"
         Me.addTab.UseVisualStyleBackColor = True
+        '
+        'zoneGroupBox
+        '
+        Me.zoneGroupBox.Controls.Add(Me.zone4Button)
+        Me.zoneGroupBox.Controls.Add(Me.zone1Button)
+        Me.zoneGroupBox.Controls.Add(Me.zone2Button)
+        Me.zoneGroupBox.Controls.Add(Me.zone3Button)
+        Me.zoneGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.zoneGroupBox.Location = New System.Drawing.Point(465, 188)
+        Me.zoneGroupBox.Name = "zoneGroupBox"
+        Me.zoneGroupBox.Size = New System.Drawing.Size(103, 124)
+        Me.zoneGroupBox.TabIndex = 132
+        Me.zoneGroupBox.TabStop = False
+        Me.zoneGroupBox.Text = "Zone number"
+        Me.zoneGroupBox.Visible = False
+        '
+        'zone4Button
+        '
+        Me.zone4Button.AutoSize = True
+        Me.zone4Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zone4Button.Location = New System.Drawing.Point(6, 94)
+        Me.zone4Button.Name = "zone4Button"
+        Me.zone4Button.Size = New System.Drawing.Size(33, 20)
+        Me.zone4Button.TabIndex = 129
+        Me.zone4Button.TabStop = True
+        Me.zone4Button.Text = "4"
+        Me.zone4Button.UseVisualStyleBackColor = True
+        Me.zone4Button.Visible = False
+        '
+        'zone1Button
+        '
+        Me.zone1Button.AutoSize = True
+        Me.zone1Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zone1Button.Location = New System.Drawing.Point(6, 16)
+        Me.zone1Button.Name = "zone1Button"
+        Me.zone1Button.Size = New System.Drawing.Size(33, 20)
+        Me.zone1Button.TabIndex = 126
+        Me.zone1Button.TabStop = True
+        Me.zone1Button.Text = "1"
+        Me.zone1Button.UseVisualStyleBackColor = True
+        Me.zone1Button.Visible = False
+        '
+        'zone2Button
+        '
+        Me.zone2Button.AutoSize = True
+        Me.zone2Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zone2Button.Location = New System.Drawing.Point(6, 42)
+        Me.zone2Button.Name = "zone2Button"
+        Me.zone2Button.Size = New System.Drawing.Size(33, 20)
+        Me.zone2Button.TabIndex = 127
+        Me.zone2Button.TabStop = True
+        Me.zone2Button.Text = "2"
+        Me.zone2Button.UseVisualStyleBackColor = True
+        Me.zone2Button.Visible = False
+        '
+        'zone3Button
+        '
+        Me.zone3Button.AutoSize = True
+        Me.zone3Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zone3Button.Location = New System.Drawing.Point(6, 68)
+        Me.zone3Button.Name = "zone3Button"
+        Me.zone3Button.Size = New System.Drawing.Size(33, 20)
+        Me.zone3Button.TabIndex = 128
+        Me.zone3Button.TabStop = True
+        Me.zone3Button.Text = "3"
+        Me.zone3Button.UseVisualStyleBackColor = True
+        Me.zone3Button.Visible = False
+        '
+        'zoneErrorLabel
+        '
+        Me.zoneErrorLabel.AutoSize = True
+        Me.zoneErrorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zoneErrorLabel.ForeColor = System.Drawing.Color.Firebrick
+        Me.zoneErrorLabel.Location = New System.Drawing.Point(574, 190)
+        Me.zoneErrorLabel.Name = "zoneErrorLabel"
+        Me.zoneErrorLabel.Size = New System.Drawing.Size(47, 20)
+        Me.zoneErrorLabel.TabIndex = 131
+        Me.zoneErrorLabel.Text = "error"
+        Me.zoneErrorLabel.Visible = False
         '
         'Label10
         '
@@ -613,6 +709,8 @@ Partial Class manager
         '
         'editTab
         '
+        Me.editTab.Controls.Add(Me.zoneGroupBoxE)
+        Me.editTab.Controls.Add(Me.zoneErrorLabelE)
         Me.editTab.Controls.Add(Me.Label9)
         Me.editTab.Controls.Add(Me.Label8)
         Me.editTab.Controls.Add(Me.noteTextBoxE)
@@ -644,6 +742,94 @@ Partial Class manager
         Me.editTab.TabIndex = 3
         Me.editTab.Text = "EDIT"
         Me.editTab.UseVisualStyleBackColor = True
+        '
+        'zoneGroupBoxE
+        '
+        Me.zoneGroupBoxE.Controls.Add(Me.zoneBarButtonE)
+        Me.zoneGroupBoxE.Controls.Add(Me.zone4ButtonE)
+        Me.zoneGroupBoxE.Controls.Add(Me.zone1ButtonE)
+        Me.zoneGroupBoxE.Controls.Add(Me.zone2ButtonE)
+        Me.zoneGroupBoxE.Controls.Add(Me.zone3ButtonE)
+        Me.zoneGroupBoxE.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.zoneGroupBoxE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zoneGroupBoxE.Location = New System.Drawing.Point(465, 188)
+        Me.zoneGroupBoxE.Name = "zoneGroupBoxE"
+        Me.zoneGroupBoxE.Size = New System.Drawing.Size(103, 142)
+        Me.zoneGroupBoxE.TabIndex = 134
+        Me.zoneGroupBoxE.TabStop = False
+        Me.zoneGroupBoxE.Text = "Zone number"
+        '
+        'zoneBarButtonE
+        '
+        Me.zoneBarButtonE.AutoSize = True
+        Me.zoneBarButtonE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zoneBarButtonE.Location = New System.Drawing.Point(6, 120)
+        Me.zoneBarButtonE.Name = "zoneBarButtonE"
+        Me.zoneBarButtonE.Size = New System.Drawing.Size(85, 20)
+        Me.zoneBarButtonE.TabIndex = 130
+        Me.zoneBarButtonE.TabStop = True
+        Me.zoneBarButtonE.Text = "Bartender"
+        Me.zoneBarButtonE.UseVisualStyleBackColor = True
+        '
+        'zone4ButtonE
+        '
+        Me.zone4ButtonE.AutoSize = True
+        Me.zone4ButtonE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zone4ButtonE.Location = New System.Drawing.Point(6, 94)
+        Me.zone4ButtonE.Name = "zone4ButtonE"
+        Me.zone4ButtonE.Size = New System.Drawing.Size(33, 20)
+        Me.zone4ButtonE.TabIndex = 129
+        Me.zone4ButtonE.TabStop = True
+        Me.zone4ButtonE.Text = "4"
+        Me.zone4ButtonE.UseVisualStyleBackColor = True
+        '
+        'zone1ButtonE
+        '
+        Me.zone1ButtonE.AutoSize = True
+        Me.zone1ButtonE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zone1ButtonE.Location = New System.Drawing.Point(6, 16)
+        Me.zone1ButtonE.Name = "zone1ButtonE"
+        Me.zone1ButtonE.Size = New System.Drawing.Size(33, 20)
+        Me.zone1ButtonE.TabIndex = 126
+        Me.zone1ButtonE.TabStop = True
+        Me.zone1ButtonE.Text = "1"
+        Me.zone1ButtonE.UseVisualStyleBackColor = True
+        '
+        'zone2ButtonE
+        '
+        Me.zone2ButtonE.AutoSize = True
+        Me.zone2ButtonE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zone2ButtonE.Location = New System.Drawing.Point(6, 42)
+        Me.zone2ButtonE.Name = "zone2ButtonE"
+        Me.zone2ButtonE.Size = New System.Drawing.Size(33, 20)
+        Me.zone2ButtonE.TabIndex = 127
+        Me.zone2ButtonE.TabStop = True
+        Me.zone2ButtonE.Text = "2"
+        Me.zone2ButtonE.UseVisualStyleBackColor = True
+        '
+        'zone3ButtonE
+        '
+        Me.zone3ButtonE.AutoSize = True
+        Me.zone3ButtonE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zone3ButtonE.Location = New System.Drawing.Point(6, 68)
+        Me.zone3ButtonE.Name = "zone3ButtonE"
+        Me.zone3ButtonE.Size = New System.Drawing.Size(33, 20)
+        Me.zone3ButtonE.TabIndex = 128
+        Me.zone3ButtonE.TabStop = True
+        Me.zone3ButtonE.Text = "3"
+        Me.zone3ButtonE.UseVisualStyleBackColor = True
+        '
+        'zoneErrorLabelE
+        '
+        Me.zoneErrorLabelE.AutoSize = True
+        Me.zoneErrorLabelE.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.zoneErrorLabelE.ForeColor = System.Drawing.Color.Firebrick
+        Me.zoneErrorLabelE.Location = New System.Drawing.Point(574, 190)
+        Me.zoneErrorLabelE.Name = "zoneErrorLabelE"
+        Me.zoneErrorLabelE.Size = New System.Drawing.Size(47, 20)
+        Me.zoneErrorLabelE.TabIndex = 133
+        Me.zoneErrorLabelE.Text = "error"
+        Me.zoneErrorLabelE.Visible = False
         '
         'Label9
         '
@@ -1747,8 +1933,12 @@ Partial Class manager
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.addTab.ResumeLayout(False)
         Me.addTab.PerformLayout()
+        Me.zoneGroupBox.ResumeLayout(False)
+        Me.zoneGroupBox.PerformLayout()
         Me.editTab.ResumeLayout(False)
         Me.editTab.PerformLayout()
+        Me.zoneGroupBoxE.ResumeLayout(False)
+        Me.zoneGroupBoxE.PerformLayout()
         Me.tablesTab.ResumeLayout(False)
         Me.tablesTab.PerformLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1908,4 +2098,17 @@ Partial Class manager
     Friend WithEvents nameLabel As System.Windows.Forms.Label
     Friend WithEvents errorLabel As System.Windows.Forms.Label
     Friend WithEvents clockOutButton As System.Windows.Forms.Button
+    Friend WithEvents zone4Button As System.Windows.Forms.RadioButton
+    Friend WithEvents zone3Button As System.Windows.Forms.RadioButton
+    Friend WithEvents zone2Button As System.Windows.Forms.RadioButton
+    Friend WithEvents zone1Button As System.Windows.Forms.RadioButton
+    Friend WithEvents zoneErrorLabel As System.Windows.Forms.Label
+    Friend WithEvents zoneGroupBox As System.Windows.Forms.GroupBox
+    Friend WithEvents zoneGroupBoxE As System.Windows.Forms.GroupBox
+    Friend WithEvents zone4ButtonE As System.Windows.Forms.RadioButton
+    Friend WithEvents zone1ButtonE As System.Windows.Forms.RadioButton
+    Friend WithEvents zone2ButtonE As System.Windows.Forms.RadioButton
+    Friend WithEvents zone3ButtonE As System.Windows.Forms.RadioButton
+    Friend WithEvents zoneErrorLabelE As System.Windows.Forms.Label
+    Friend WithEvents zoneBarButtonE As System.Windows.Forms.RadioButton
 End Class

@@ -9,7 +9,7 @@ Public Class tables
     '2 = waiter
     '3 = cook/qa
     '4 = manager
-    '5 = the best person in the world
+    '5 = bartender??
 
     Dim displayName As String
     Public connStr As String
@@ -31,7 +31,9 @@ Public Class tables
     Private Sub tables_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.WindowState = FormWindowState.Maximized
-        'fillWaiterLabel()
+
+        fillWaiterLabel()
+
         If employeeType = 2 Then
             waiterModifications()
         End If
@@ -44,8 +46,6 @@ Public Class tables
         welcomeLabel.Text = "Welcome, " + displayName + "!"
         timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
         dateLabel.Text = Now.Date
-
-        waiter1Label.Text = Convert.ToString(displayName)
     End Sub
 
     Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timer.Tick
@@ -1328,36 +1328,21 @@ Public Class tables
     End Function
 
     Public Sub fillWaiterLabel()
-        Dim query1 As String = "SELECT displayname FROM restaurant.employeeinfo WHERE type='2';"
-        Dim query2 As String = "SELECT displayname FROM restaurant.employeeinfo WHERE type='2' AND isLoggedIn='y';"
-        'Dim numofentries As Integer = Convert.ToInt32(getDBCount())
-        Dim reader1 As MySqlDataReader
-        Dim reader2 As MySqlDataReader
-        Dim waitersQ1(0 To 4) As String
-        Dim waitersQ2(0 To 4) As String
+        Dim query As String = "SELECT displayName,areaNumber FROM restaurant.employeeinfo WHERE type='2' AND isLoggedIn='y';"
+        Dim waitersName(0 To 4) As String
+        Dim waitersZone(0 To 4) As String
         Dim i As Integer = 0
-        Dim waiter1, waiter2, waiter3, waiter4, bartender As String
+        Dim j As Integer = 0
 
         Using connection As New MySqlConnection(connStr)
-            Dim command1 As New MySqlCommand(query1, connection)
+            Dim command As New MySqlCommand(query, connection)
+            Dim reader As MySqlDataReader
             Try
                 connection.Open()
-                reader1 = command1.ExecuteReader()
-                While (reader1.Read())
-                    waitersQ1(i) = reader1.GetString(0)
-                    i += 1
-                End While
-                connection.Close()
-            Catch ex As Exception
-                Console.WriteLine(ex.Message)
-            End Try
-            i = 0
-            Dim command2 As New MySqlCommand(query2, connection)
-            Try
-                connection.Open()
-                reader2 = command2.ExecuteReader()
-                While (reader2.Read())
-                    waitersQ2(i) = reader2.GetString(0)
+                reader = command.ExecuteReader()
+                While (reader.Read())
+                    waitersName(i) = reader.GetString(0)
+                    waitersZone(i) = reader.GetString(1)
                     i += 1
                 End While
                 connection.Close()
@@ -1365,26 +1350,26 @@ Public Class tables
                 Console.WriteLine(ex.Message)
             End Try
         End Using
-        i = 0
-        Do While (i < 5)
-            If i = 0 Then
-                waiter1 = waitersQ1(i)
-                i += 1
-            ElseIf i = 1 Then
-                waiter2 = waitersQ1(i)
-                i += 1
-            ElseIf i = 2 Then
-                waiter3 = waitersQ1(i)
-                i += 1
-            ElseIf i = 3 Then
-                waiter4 = waitersQ1(i)
-                i += 1
-            ElseIf i = 4 Then
-                bartender = waitersQ1(i)
-                i += 1
-            End If
-        Loop
 
+        waiter1Label.Text = ""
+        waiter2Label.Text = ""
+        waiter3Label.Text = ""
+        waiter4Label.Text = ""
+        bartenderLabel.Text = ""
+
+        For i = 0 To 4
+            If waitersZone(i) = 1 Then
+                waiter1Label.Text = waitersName(i)
+            ElseIf waitersZone(i) = 2 Then
+                waiter2Label.Text = waitersName(i)
+            ElseIf waitersZone(i) = 3 Then
+                waiter3Label.Text = waitersName(i)
+            ElseIf waitersZone(i) = 4 Then
+                waiter4Label.Text = waitersName(i)
+            ElseIf waitersZone(i) = 5 Then
+                bartenderLabel.Text = waitersName(i)
+            End If
+        Next
     End Sub
 
     Public Sub retrieveWaitlistData()

@@ -17,6 +17,8 @@ Public Class manager
     Dim tablenum(0 To 24) As String
     Dim count As Integer
 
+    '---------------------creation stuff
+    'these populate things when the form loads
     Public Sub New(ByVal connection As String, ByVal ID As String, ByVal name As String)
         InitializeComponent()
         connStr = connection
@@ -27,7 +29,9 @@ Public Class manager
     Private Sub manager_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.WindowState = FormWindowState.Maximized
+
         fillEmployeeTables()
+        fillWaiterLabel()
         retrieveWaitlistData()
         retrieveOccupancyData()
 
@@ -41,15 +45,16 @@ Public Class manager
         TabControl2.TabPages.Remove(editTab)
 
         'loop to make columns not sortable
-        Dim colnum As Integer = DataGridView1.DisplayedColumnCount(True)
+        'Dim colnum As Integer = DataGridView1.DisplayedColumnCount(True)
+        Dim colnum As Integer = DataGridView1.ColumnCount
         Dim i As Integer
         For i = 0 To (colnum - 1)
             DataGridView1.Columns(i).SortMode = DataGridViewColumnSortMode.NotSortable
-            i += 1
         Next
     End Sub
 
-    '----------------universal stuff
+    '---------------------universal stuff
+    'things seen on every tab go here
     Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timer.Tick
         'every tick updates time
         timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
@@ -83,6 +88,7 @@ Public Class manager
     End Sub
 
     '---------------------employee tab
+    'these subs deal with all of the employee functionality of this form
     Public Sub fillEmployeeTables()
         Try
             Dim query As String = "SELECT * FROM restaurant.employeeinfo;"
@@ -95,8 +101,8 @@ Public Class manager
                 DataGridView1.DataSource = ds.Tables(0)
             End If
             connection.Close()
-            'DataGridView1.Columns(0).Visible = False
-            'DataGridView2.Columns(0).Visible = False
+            DataGridView1.Columns(0).Visible = False
+            DataGridView1.Columns(7).Visible = False
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
@@ -111,6 +117,7 @@ Public Class manager
         Dim username As String = usernameTextbox.Text
         Dim password As String = passwordTextbox.Text
         Dim note As String = noteTextBox.Text
+        Dim zone As String = "0"
 
         errorFirstNameLabel.Visible = False
         errorLastNameLabel.Visible = False
@@ -120,8 +127,24 @@ Public Class manager
 
         If (hostButton.Checked = True) Then
             employeeType = "1"
-        ElseIf (waiterButton.Checked = True Or bartenderButton.Checked = True) Then
+        ElseIf (waiterButton.Checked = True) Then
             employeeType = "2"
+            If (zone1Button.Checked = True And waiterButton.Checked = True) Then
+                zone = "1"
+            ElseIf (zone2Button.Checked = True And waiterButton.Checked = True) Then
+                zone = "2"
+            ElseIf (zone3Button.Checked = True And waiterButton.Checked = True) Then
+                zone = "3"
+            ElseIf (zone4Button.Checked = True And waiterButton.Checked = True) Then
+                zone = "4"
+            Else
+                zoneErrorLabel.Text = "You need a zone"
+                zoneErrorLabel.Visible = True
+                flag = False
+            End If
+        ElseIf (bartenderButton.Checked = True) Then
+            employeeType = "2"
+            zone = "5"
         ElseIf (QAButton.Checked = True Or cookButton.Checked = True) Then
             employeeType = "3"
         ElseIf (managerButton.Checked = True) Then
@@ -152,7 +175,7 @@ Public Class manager
             flag = False
         End If
 
-        Dim query As String = "INSERT INTO restaurant.employeeinfo (`un`, `pw`, `type`, `firstname`, `lastname`, `displayname`, `isLoggedIn`, `note`) VALUES ('" + username + "', '" + password + "', '" + employeeType + "', '" + firstName + "', '" + lastName + "', '" + displayName + "', 'n', '" + note + "');"
+        Dim query As String = "INSERT INTO restaurant.employeeinfo (`un`, `pw`, `type`, `firstname`, `lastname`, `displayname`, `isLoggedIn`, `note`, `areaNumber`) VALUES ('" + username + "', '" + password + "', '" + employeeType + "', '" + firstName + "', '" + lastName + "', '" + displayName + "', 'n', '" + note + "', '" + zone + "');"
         Using connection As New MySqlConnection(connStr)
             Dim command As New MySqlCommand(query, connection)
             Try
@@ -162,16 +185,28 @@ Public Class manager
                 connection.Open()
                 command.ExecuteNonQuery()
                 connection.Close()
+                flag = True
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
             End Try
         End Using
         'debug
         'TextBox1.Text = holdn
-        restructureTable()
-        TabControl2.TabPages.Add(listTab)
-        TabControl2.SelectedTab = listTab
-        TabControl2.TabPages.Remove(addTab)
+        If flag = True Then
+            restructureTable()
+            TabControl2.TabPages.Add(listTab)
+            TabControl2.SelectedTab = listTab
+            TabControl2.TabPages.Remove(addTab)
+        End If
+    End Sub
+
+    Private Sub waiterButton_CheckedChanged(sender As Object, e As EventArgs) Handles waiterButton.CheckedChanged
+        zoneGroupBox.Visible = True
+        'zoneLabel.Visible = True
+        zone1Button.Visible = True
+        zone2Button.Visible = True
+        zone3Button.Visible = True
+        zone4Button.Visible = True
     End Sub
 
     Public Sub restructureTable()
@@ -234,6 +269,8 @@ Public Class manager
         Dim username As String
         Dim password As String
         Dim note As String
+        Dim zone As String
+        Dim imAWaiter As Boolean
         Dim holdn As String = ""
         Dim queryN As String = "SELECT n FROM restaurant.employeeinfo LIMIT " + Convert.ToString(DataGridView1.CurrentCell.RowIndex) + ",1;"
         Using connection As New MySqlConnection(connStr)
@@ -294,7 +331,16 @@ Public Class manager
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
             End Try
+            Dim queryZO As String = "SELECT areaNumber FROM restaurant.employeeinfo WHERE n=" + holdn + ";"
+            command = New MySqlCommand(queryZO, connection)
+            Try
+                zone = Convert.ToString(command.ExecuteScalar())
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+            connection.Close()
         End Using
+
         firstNameTextBoxE.Text = firstName
         lastNameTextBoxE.Text = lastName
         displayNameTextBoxE.Text = displayName
@@ -302,16 +348,32 @@ Public Class manager
         passwordTextBoxE.Text = password
         noteTextBoxE.Text = note
 
-        If employeeType = 1 Then
+        If employeeType = "1" Then
             hostButtonE.Checked = True
-        ElseIf employeeType = 2 Then
+        ElseIf employeeType = "2" Then
             waiterButtonE.Checked = True
-        ElseIf employeeType = 3 Then
+        ElseIf employeeType = "3" Then
             cookQAButtonE.Checked = True
-        ElseIf employeeType = 4 Then
+        ElseIf employeeType = "4" Then
             managerButtonE.Checked = True
         Else
             MsgBox("kys jelly w/ some salt BRAH")
+        End If
+
+        If waiterButtonE.Checked = True Then
+            If zone = "1" Then
+                zone1ButtonE.Checked = True
+            ElseIf zone = "2" Then
+                zone2ButtonE.Checked = True
+            ElseIf zone = "3" Then
+                zone3ButtonE.Checked = True
+            ElseIf zone = "4" Then
+                zone4ButtonE.Checked = True
+            ElseIf zone = "5" Then
+                zoneBarButtonE.Checked = True
+            Else
+                MsgBox("BROKEN")
+            End If
         End If
 
         TabControl2.TabPages.Add(editTab)
@@ -329,6 +391,7 @@ Public Class manager
         Dim password As String = passwordTextBoxE.Text
         Dim note As String = noteTextBoxE.Text
         Dim holdn As String = holdnforedit
+        Dim zone As String = "0"
 
         errorFirstNameLabelE.Visible = False
         errorLastNameLabelE.Visible = False
@@ -341,6 +404,19 @@ Public Class manager
             employeeType = "1"
         ElseIf (waiterButtonE.Checked = True) Then
             employeeType = "2"
+            If (zone1ButtonE.Checked = True And waiterButtonE.Checked = True) Then
+                zone = "1"
+            ElseIf (zone2ButtonE.Checked = True And waiterButtonE.Checked = True) Then
+                zone = "2"
+            ElseIf (zone3ButtonE.Checked = True And waiterButtonE.Checked = True) Then
+                zone = "3"
+            ElseIf (zone4ButtonE.Checked = True And waiterButtonE.Checked = True) Then
+                zone = "4"
+            Else
+                zoneErrorLabelE.Text = "You need a zone"
+                zoneErrorLabelE.Visible = True
+                flag = False
+            End If
         ElseIf (cookQAButtonE.Checked = True) Then
             employeeType = "3"
         ElseIf (managerButton.Checked = True) Then
@@ -348,6 +424,7 @@ Public Class manager
         Else
             flag = False
         End If
+
         'error checking
         If (Len(firstName) = 0) Then
             errorFirstNameLabelE.Text = "You need a correct first name"
@@ -372,23 +449,26 @@ Public Class manager
         End If
 
         'nascar time
-        'UPDATE restaurant.employeeinfo SET un='3342', pw='3466', type='3', firstname='Geogria', lastname='Blue', displayname='GEORGIA B', note='SOME NOTES' WHERE n='9';
-
-        Dim updateQuery As String = "UPDATE restaurant.employeeinfo SET `un`='" + username + "', `pw`='" + password + "', `type`='" + employeeType + "', `firstname`='" + firstName + "', `lastname`='" + lastName + "', `displayname`='" + displayName + "', `note`='" + note + "' WHERE `n`='" + holdn + "';"
+        Dim updateQuery As String = "UPDATE restaurant.employeeinfo SET `un`='" + username + "', `pw`='" + password + "', `type`='" + employeeType + "', `firstname`='" + firstName + "', `lastname`='" + lastName + "', `displayname`='" + displayName + "', `note`='" + note + "', `areaNumber`='" + zone + "' WHERE `n`='" + holdn + "';"
         Using connection As New MySqlConnection(connStr)
             Dim command As New MySqlCommand(updateQuery, connection)
             Try
                 connection.Open()
                 command.ExecuteNonQuery()
+                connection.Close()
+                flag = True
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
             End Try
         End Using
-        restructureTable()
-        holdnforedit = ""
-        TabControl2.TabPages.Add(listTab)
-        TabControl2.SelectedTab = listTab
-        TabControl2.TabPages.Remove(editTab)
+
+        If flag = True Then
+            restructureTable()
+            holdnforedit = ""
+            TabControl2.TabPages.Add(listTab)
+            TabControl2.SelectedTab = listTab
+            TabControl2.TabPages.Remove(editTab)
+        End If
     End Sub
 
     Private Sub closeTabButton_Click(sender As Object, e As EventArgs) Handles closeTabButton.Click
@@ -414,12 +494,14 @@ Public Class manager
     End Sub
 
     '---------------------inventory tab
+    'things dealing with the inventory tab go here
     Public Sub stuff()
 
     End Sub
 
 
     '---------------------tables tab
+    'subs that make the tables tab function properly
     Public Sub retrieveWaitlistData()
         Try
             Dim query As String = "SELECT * FROM restaurant.tablewaitlist;"
@@ -625,6 +707,51 @@ Public Class manager
         Loop
     End Sub
 
+    Public Sub fillWaiterLabel()
+        Dim query As String = "SELECT displayName,areaNumber FROM restaurant.employeeinfo WHERE type='2' AND isLoggedIn='y';"
+        Dim waitersName(0 To 4) As String
+        Dim waitersZone(0 To 4) As String
+        Dim i As Integer = 0
+        Dim j As Integer = 0
+
+        Using connection As New MySqlConnection(connStr)
+            Dim command As New MySqlCommand(query, connection)
+            Dim reader As MySqlDataReader
+            Try
+                connection.Open()
+                reader = command.ExecuteReader()
+                While (reader.Read())
+                    waitersName(i) = reader.GetString(0)
+                    waitersZone(i) = reader.GetString(1)
+                    i += 1
+                End While
+                connection.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+        End Using
+
+        waiter1Label.Text = ""
+        waiter2Label.Text = ""
+        waiter3Label.Text = ""
+        waiter4Label.Text = ""
+        bartenderLabel.Text = ""
+
+        For i = 0 To 4
+            If waitersZone(i) = 1 Then
+                waiter1Label.Text = waitersName(i)
+            ElseIf waitersZone(i) = 2 Then
+                waiter2Label.Text = waitersName(i)
+            ElseIf waitersZone(i) = 3 Then
+                waiter3Label.Text = waitersName(i)
+            ElseIf waitersZone(i) = 4 Then
+                waiter4Label.Text = waitersName(i)
+            ElseIf waitersZone(i) = 5 Then
+                bartenderLabel.Text = waitersName(i)
+            End If
+        Next
+    End Sub
+
     Private Sub addToWaitlistButton_Click(sender As Object, e As EventArgs) Handles addToWaitlistButton.Click
 
         Using connection As New MySqlConnection(connStr)
@@ -717,7 +844,8 @@ Public Class manager
         End If
     End Sub
 
-    '---------------------all of the tables
+    '--------all of the tables
+    'these are all under the tables tab
     Private Sub table1Button_Click(sender As Object, e As EventArgs) Handles table1Button.Click
         Dim tableNum As Integer = 1
         Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -1493,6 +1621,4 @@ Public Class manager
             barSeat10Button.BackColor = Color.PaleGreen
         End If
     End Sub
-
-
 End Class

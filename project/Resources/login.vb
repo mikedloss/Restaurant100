@@ -5,7 +5,7 @@ Imports System.Data.SqlClient
 Public Class login
 
     Public connStr As String = "Database=restaurant;" & _
-                    "Data Source=192.168.1.2;" & _
+                    "Data Source=localhost;" & _
                     "User Id=root;Password=root;"
     Dim connFlag As Boolean = False
     Public returnAnswer As Boolean = False

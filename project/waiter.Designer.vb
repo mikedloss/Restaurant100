@@ -33,14 +33,8 @@ Partial Class waiter
         Me.drink2Button = New System.Windows.Forms.Button()
         Me.drink1Button = New System.Windows.Forms.Button()
         Me.cheeseFriesAppButton = New System.Windows.Forms.TabPage()
-        Me.Splitter2 = New System.Windows.Forms.Splitter()
-        Me.Splitter1 = New System.Windows.Forms.Splitter()
-        Me.app7Button = New System.Windows.Forms.Button()
-        Me.app6Button = New System.Windows.Forms.Button()
-        Me.app2Button = New System.Windows.Forms.Button()
-        Me.app5Button = New System.Windows.Forms.Button()
-        Me.app4Button = New System.Windows.Forms.Button()
         Me.app3Button = New System.Windows.Forms.Button()
+        Me.app2Button = New System.Windows.Forms.Button()
         Me.app1Button = New System.Windows.Forms.Button()
         Me.entreeTab = New System.Windows.Forms.TabPage()
         Me.entree3Button = New System.Windows.Forms.Button()
@@ -51,16 +45,13 @@ Partial Class waiter
         Me.extrasTab = New System.Windows.Forms.TabPage()
         Me.submitOrderButton = New System.Windows.Forms.Button()
         Me.modifier86Button = New System.Windows.Forms.Button()
-        Me.addModifierButton = New System.Windows.Forms.Button()
-        Me.lightModifierButton = New System.Windows.Forms.Button()
-        Me.crispyModifierButton = New System.Windows.Forms.Button()
         Me.onsideModifierButton = New System.Windows.Forms.Button()
         Me.sideofModifierButton = New System.Windows.Forms.Button()
         Me.extraModifierButton = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.tableNumLabel = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.totalTextBox = New System.Windows.Forms.TextBox()
         Me.tabControlWaiter.SuspendLayout()
         Me.alcoholTab.SuspendLayout()
         Me.drinksTab.SuspendLayout()
@@ -181,14 +172,8 @@ Partial Class waiter
         '
         'cheeseFriesAppButton
         '
-        Me.cheeseFriesAppButton.Controls.Add(Me.Splitter2)
-        Me.cheeseFriesAppButton.Controls.Add(Me.Splitter1)
-        Me.cheeseFriesAppButton.Controls.Add(Me.app7Button)
-        Me.cheeseFriesAppButton.Controls.Add(Me.app6Button)
-        Me.cheeseFriesAppButton.Controls.Add(Me.app2Button)
-        Me.cheeseFriesAppButton.Controls.Add(Me.app5Button)
-        Me.cheeseFriesAppButton.Controls.Add(Me.app4Button)
         Me.cheeseFriesAppButton.Controls.Add(Me.app3Button)
+        Me.cheeseFriesAppButton.Controls.Add(Me.app2Button)
         Me.cheeseFriesAppButton.Controls.Add(Me.app1Button)
         Me.cheeseFriesAppButton.Location = New System.Drawing.Point(4, 37)
         Me.cheeseFriesAppButton.Name = "cheeseFriesAppButton"
@@ -197,75 +182,23 @@ Partial Class waiter
         Me.cheeseFriesAppButton.Text = "APPETIZERS"
         Me.cheeseFriesAppButton.UseVisualStyleBackColor = True
         '
-        'Splitter2
+        'app3Button
         '
-        Me.Splitter2.Location = New System.Drawing.Point(3, 0)
-        Me.Splitter2.Name = "Splitter2"
-        Me.Splitter2.Size = New System.Drawing.Size(3, 564)
-        Me.Splitter2.TabIndex = 8
-        Me.Splitter2.TabStop = False
-        '
-        'Splitter1
-        '
-        Me.Splitter1.Location = New System.Drawing.Point(0, 0)
-        Me.Splitter1.Name = "Splitter1"
-        Me.Splitter1.Size = New System.Drawing.Size(3, 564)
-        Me.Splitter1.TabIndex = 7
-        Me.Splitter1.TabStop = False
-        '
-        'app7Button
-        '
-        Me.app7Button.Location = New System.Drawing.Point(226, 344)
-        Me.app7Button.Name = "app7Button"
-        Me.app7Button.Size = New System.Drawing.Size(200, 75)
-        Me.app7Button.TabIndex = 6
-        Me.app7Button.Text = "B-LESS WINGS"
-        Me.app7Button.UseVisualStyleBackColor = True
-        '
-        'app6Button
-        '
-        Me.app6Button.Location = New System.Drawing.Point(20, 344)
-        Me.app6Button.Name = "app6Button"
-        Me.app6Button.Size = New System.Drawing.Size(200, 75)
-        Me.app6Button.TabIndex = 5
-        Me.app6Button.Text = "BONE WINGS"
-        Me.app6Button.UseVisualStyleBackColor = True
+        Me.app3Button.Location = New System.Drawing.Point(20, 182)
+        Me.app3Button.Name = "app3Button"
+        Me.app3Button.Size = New System.Drawing.Size(200, 75)
+        Me.app3Button.TabIndex = 2
+        Me.app3Button.Text = "CHIPS SALSA"
+        Me.app3Button.UseVisualStyleBackColor = True
         '
         'app2Button
         '
-        Me.app2Button.Location = New System.Drawing.Point(226, 20)
+        Me.app2Button.Location = New System.Drawing.Point(20, 101)
         Me.app2Button.Name = "app2Button"
         Me.app2Button.Size = New System.Drawing.Size(200, 75)
-        Me.app2Button.TabIndex = 4
-        Me.app2Button.Text = "SAMPLER"
+        Me.app2Button.TabIndex = 1
+        Me.app2Button.Text = "PT SKINS"
         Me.app2Button.UseVisualStyleBackColor = True
-        '
-        'app5Button
-        '
-        Me.app5Button.Location = New System.Drawing.Point(20, 263)
-        Me.app5Button.Name = "app5Button"
-        Me.app5Button.Size = New System.Drawing.Size(200, 75)
-        Me.app5Button.TabIndex = 3
-        Me.app5Button.Text = "MOZ STIX"
-        Me.app5Button.UseVisualStyleBackColor = True
-        '
-        'app4Button
-        '
-        Me.app4Button.Location = New System.Drawing.Point(20, 182)
-        Me.app4Button.Name = "app4Button"
-        Me.app4Button.Size = New System.Drawing.Size(200, 75)
-        Me.app4Button.TabIndex = 2
-        Me.app4Button.Text = "CHIPS SALSA"
-        Me.app4Button.UseVisualStyleBackColor = True
-        '
-        'app3Button
-        '
-        Me.app3Button.Location = New System.Drawing.Point(20, 101)
-        Me.app3Button.Name = "app3Button"
-        Me.app3Button.Size = New System.Drawing.Size(200, 75)
-        Me.app3Button.TabIndex = 1
-        Me.app3Button.Text = "PT SKINS"
-        Me.app3Button.UseVisualStyleBackColor = True
         '
         'app1Button
         '
@@ -358,47 +291,17 @@ Partial Class waiter
         'modifier86Button
         '
         Me.modifier86Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.modifier86Button.Location = New System.Drawing.Point(320, 49)
+        Me.modifier86Button.Location = New System.Drawing.Point(322, 50)
         Me.modifier86Button.Name = "modifier86Button"
         Me.modifier86Button.Size = New System.Drawing.Size(100, 70)
         Me.modifier86Button.TabIndex = 16
         Me.modifier86Button.Text = "86"
         Me.modifier86Button.UseVisualStyleBackColor = True
         '
-        'addModifierButton
-        '
-        Me.addModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.addModifierButton.Location = New System.Drawing.Point(320, 125)
-        Me.addModifierButton.Name = "addModifierButton"
-        Me.addModifierButton.Size = New System.Drawing.Size(100, 70)
-        Me.addModifierButton.TabIndex = 17
-        Me.addModifierButton.Text = "ADD"
-        Me.addModifierButton.UseVisualStyleBackColor = True
-        '
-        'lightModifierButton
-        '
-        Me.lightModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lightModifierButton.Location = New System.Drawing.Point(320, 201)
-        Me.lightModifierButton.Name = "lightModifierButton"
-        Me.lightModifierButton.Size = New System.Drawing.Size(100, 70)
-        Me.lightModifierButton.TabIndex = 18
-        Me.lightModifierButton.Text = "LIGHT"
-        Me.lightModifierButton.UseVisualStyleBackColor = True
-        '
-        'crispyModifierButton
-        '
-        Me.crispyModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.crispyModifierButton.Location = New System.Drawing.Point(320, 277)
-        Me.crispyModifierButton.Name = "crispyModifierButton"
-        Me.crispyModifierButton.Size = New System.Drawing.Size(100, 70)
-        Me.crispyModifierButton.TabIndex = 19
-        Me.crispyModifierButton.Text = "CRISPY"
-        Me.crispyModifierButton.UseVisualStyleBackColor = True
-        '
         'onsideModifierButton
         '
         Me.onsideModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.onsideModifierButton.Location = New System.Drawing.Point(320, 353)
+        Me.onsideModifierButton.Location = New System.Drawing.Point(322, 126)
         Me.onsideModifierButton.Name = "onsideModifierButton"
         Me.onsideModifierButton.Size = New System.Drawing.Size(100, 70)
         Me.onsideModifierButton.TabIndex = 20
@@ -408,7 +311,7 @@ Partial Class waiter
         'sideofModifierButton
         '
         Me.sideofModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.sideofModifierButton.Location = New System.Drawing.Point(320, 429)
+        Me.sideofModifierButton.Location = New System.Drawing.Point(322, 202)
         Me.sideofModifierButton.Name = "sideofModifierButton"
         Me.sideofModifierButton.Size = New System.Drawing.Size(100, 70)
         Me.sideofModifierButton.TabIndex = 21
@@ -418,7 +321,7 @@ Partial Class waiter
         'extraModifierButton
         '
         Me.extraModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.extraModifierButton.Location = New System.Drawing.Point(320, 505)
+        Me.extraModifierButton.Location = New System.Drawing.Point(322, 278)
         Me.extraModifierButton.Name = "extraModifierButton"
         Me.extraModifierButton.Size = New System.Drawing.Size(100, 70)
         Me.extraModifierButton.TabIndex = 22
@@ -455,31 +358,28 @@ Partial Class waiter
         Me.Label1.TabIndex = 25
         Me.Label1.Text = "Total:"
         '
-        'TextBox1
+        'totalTextBox
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(123, 587)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(191, 26)
-        Me.TextBox1.TabIndex = 26
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.totalTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.totalTextBox.Location = New System.Drawing.Point(123, 587)
+        Me.totalTextBox.Name = "totalTextBox"
+        Me.totalTextBox.ReadOnly = True
+        Me.totalTextBox.Size = New System.Drawing.Size(191, 26)
+        Me.totalTextBox.TabIndex = 26
+        Me.totalTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'waiter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1264, 680)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.totalTextBox)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tableNumLabel)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.extraModifierButton)
         Me.Controls.Add(Me.sideofModifierButton)
         Me.Controls.Add(Me.onsideModifierButton)
-        Me.Controls.Add(Me.crispyModifierButton)
-        Me.Controls.Add(Me.lightModifierButton)
-        Me.Controls.Add(Me.addModifierButton)
         Me.Controls.Add(Me.modifier86Button)
         Me.Controls.Add(Me.submitOrderButton)
         Me.Controls.Add(Me.tabControlWaiter)
@@ -507,9 +407,6 @@ Partial Class waiter
     Friend WithEvents dessertTab As System.Windows.Forms.TabPage
     Friend WithEvents submitOrderButton As System.Windows.Forms.Button
     Friend WithEvents modifier86Button As System.Windows.Forms.Button
-    Friend WithEvents addModifierButton As System.Windows.Forms.Button
-    Friend WithEvents lightModifierButton As System.Windows.Forms.Button
-    Friend WithEvents crispyModifierButton As System.Windows.Forms.Button
     Friend WithEvents onsideModifierButton As System.Windows.Forms.Button
     Friend WithEvents sideofModifierButton As System.Windows.Forms.Button
     Friend WithEvents extraModifierButton As System.Windows.Forms.Button
@@ -518,22 +415,16 @@ Partial Class waiter
     Friend WithEvents drink3Button As System.Windows.Forms.Button
     Friend WithEvents drink2Button As System.Windows.Forms.Button
     Friend WithEvents drink1Button As System.Windows.Forms.Button
-    Friend WithEvents app2Button As System.Windows.Forms.Button
-    Friend WithEvents app5Button As System.Windows.Forms.Button
-    Friend WithEvents app4Button As System.Windows.Forms.Button
     Friend WithEvents app3Button As System.Windows.Forms.Button
+    Friend WithEvents app2Button As System.Windows.Forms.Button
     Friend WithEvents app1Button As System.Windows.Forms.Button
-    Friend WithEvents app7Button As System.Windows.Forms.Button
-    Friend WithEvents app6Button As System.Windows.Forms.Button
     Friend WithEvents entree2Button As System.Windows.Forms.Button
     Friend WithEvents entree1Button As System.Windows.Forms.Button
-    Friend WithEvents Splitter2 As System.Windows.Forms.Splitter
-    Friend WithEvents Splitter1 As System.Windows.Forms.Splitter
     Friend WithEvents entree3Button As System.Windows.Forms.Button
     Friend WithEvents alcohol1Button As System.Windows.Forms.Button
     Friend WithEvents dessert1Button As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents tableNumLabel As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents totalTextBox As System.Windows.Forms.TextBox
 End Class

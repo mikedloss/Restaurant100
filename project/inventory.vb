@@ -24,33 +24,15 @@
         cheese = 1
         price = 5
     End Enum
-    Public Enum appetizer2  'sampler
-        potato = 2
-        cheddarCheese = 1
-        price = 8
-    End Enum
-    Public Enum appetizer3  'potato skins
+    Public Enum appetizer2  'potato skins
         potato = 2
         cheese = 1
         price = 4
     End Enum
-    Public Enum appetizer4  'salsa
+    Public Enum appetizer3  'salsa
         chips = 1
         salsa = 1
         price = 2
-    End Enum
-    Public Enum appetizer5  'mozzerlla sticks
-        breading = 4
-        mozCheese = 4
-        price = 4
-    End Enum
-    Public Enum appetizer6  'bone-in wings
-        wingBone = 6
-        price = 5
-    End Enum
-    Public Enum appetizer7  'bone-less wings
-        wingBoneless = 6
-        price = 5
     End Enum
     Public Enum entree1 'honey bbq sandwich
         honey = 1
@@ -90,16 +72,10 @@
     Public Const drink3s As String = "$2  -  1 MILK" + vbCrLf
     Public Const drink4s As String = "$0  -  1 WATER" + vbCrLf
     Public Const appetizer1s As String = "$5  -  1 CHEESE FRY" + vbCrLf
-    Public Const appetizer2s As String = "$8  -  1 APP SAMPLER" + vbCrLf
-    Public Const appetizer3s As String = "$4  -  1 POTATO SKINS" + vbCrLf
-    Public Const appetizer4s As String = "$2  -  1 CHIPS & SALSA" + vbCrLf
-    Public Const appetizer5s As String = "$4  -  1 MOZ STICKS" + vbCrLf
-    Public Const appetizer6s As String = "$5  -  1 WINGS" + vbCrLf
-    Public Const appetizer7s As String = "$5  -  1 WINGS" + vbCrLf
+    Public Const appetizer2s As String = "$4  -  1 POTATO SKINS" + vbCrLf
+    Public Const appetizer3s As String = "$2  -  1 CHIPS & SALSA" + vbCrLf
     Public Const entree1s As String = "$8  -  1 HONEY BBQ" + vbCrLf
     Public Const entree2s As String = "$7  -  1 TURKEY BLT" + vbCrLf
     Public Const entree3s As String = "$7  -  1 BACON BURGER" + vbCrLf
-    Public Const desser1s As String = "$3  -  1 ICE CREAM" + vbCrLf
-
-
+    Public Const dessert1s As String = "$3  -  1 ICE CREAM" + vbCrLf
 End Class
