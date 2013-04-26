@@ -50,6 +50,7 @@
         bacon = 1
         bun = 1
         fries = 1
+        onion = 1
         chips = 0
         price = 7
     End Enum
@@ -64,6 +65,7 @@
     End Enum
     Public Enum dessert1
         iceCream = 1
+        price = 3
     End Enum
 
     Public Const alcohol1s As String = "$5  -  1 BEER" + vbCrLf

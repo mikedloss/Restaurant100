@@ -14,11 +14,11 @@ Public Class manager
     Dim unID As String
     Dim displayName As String
     Dim holdnforedit As String
+    Dim holdnforinv As String
     Dim tablenum(0 To 24) As String
     Dim count As Integer
 
-    '---------------------creation stuff
-    'these populate things when the form loads
+    '---------------------creation stuff // these populate things when the form loads
     Public Sub New(ByVal connection As String, ByVal ID As String, ByVal name As String)
         InitializeComponent()
         connStr = connection
@@ -34,6 +34,7 @@ Public Class manager
         fillWaiterLabel()
         retrieveWaitlistData()
         retrieveOccupancyData()
+        getInventoryData()
 
         welcomeLabel.Text = "Welcome, " + displayName + "!"
         timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
@@ -46,15 +47,18 @@ Public Class manager
 
         'loop to make columns not sortable
         'Dim colnum As Integer = DataGridView1.DisplayedColumnCount(True)
-        Dim colnum As Integer = DataGridView1.ColumnCount
+        Dim colnumdgv1 As Integer = DataGridView1.ColumnCount
+        Dim colnumdgv3 As Integer = DataGridView3.ColumnCount
         Dim i As Integer
-        For i = 0 To (colnum - 1)
+        For i = 0 To (colnumdgv1 - 1)
             DataGridView1.Columns(i).SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
+        For i = 0 To (colnumdgv3 - 1)
+            DataGridView3.Columns(i).SortMode = DataGridViewColumnSortMode.NotSortable
         Next
     End Sub
 
-    '---------------------universal stuff
-    'things seen on every tab go here
+    '---------------------universal stuff // things seen on every tab go here
     Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timer.Tick
         'every tick updates time
         timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
@@ -87,8 +91,7 @@ Public Class manager
         login.Show()
     End Sub
 
-    '---------------------employee tab
-    'these subs deal with all of the employee functionality of this form
+    '---------------------employee tab // these subs deal with all of the employee functionality of this form
     Public Sub fillEmployeeTables()
         Try
             Dim query As String = "SELECT * FROM restaurant.employeeinfo;"
@@ -493,15 +496,153 @@ Public Class manager
         passwordTextBoxE.Text = ""
     End Sub
 
-    '---------------------inventory tab
-    'things dealing with the inventory tab go here
-    Public Sub stuff()
+    '---------------------inventory tab // things dealing with the inventory tab go here
+    Public Sub getInventoryData()
+        Try
+            Dim query As String = "SELECT * FROM restaurant.inventory;"
+            Dim connection As New MySqlConnection(connStr)
+            Dim da As New MySqlDataAdapter(query, connection)
+            Dim ds As New DataSet()
 
+            connection.Open()
+            If da.Fill(ds) Then
+                DataGridView3.DataSource = ds.Tables(0)
+            End If
+            connection.Close()
+            DataGridView3.Columns(0).Visible = False
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
+
+        DataGridView3.Columns(1).Width = 200
+        DataGridView3.Columns(2).Width = 198
     End Sub
 
+    Private Sub DataGridView3_CellClick(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles DataGridView3.CellClick
+        Dim value As Integer = DataGridView3.CurrentCell.RowIndex
+        Dim test As String = Convert.ToString(DataGridView3.CurrentCell.Value)
+        If test = Nothing Then
+            addItem(value)
+        End If
+        fillBoxes(value)
+    End Sub
 
-    '---------------------tables tab
-    'subs that make the tables tab function properly
+    Private Sub addItem(ByVal row As Integer)
+        itemNameTextBox.Visible = True
+        itemNameTextBox.ReadOnly = False
+        newCountLabel.Visible = True
+        newCountTextBox.Visible = True
+        updateInventoryButton.Visible = True
+        inventoryNoteLabel.Visible = True
+    End Sub
+
+    Private Sub fillBoxes(ByVal row As Integer)
+        Dim queryN As String = "SELECT n FROM restaurant.inventory LIMIT " + Convert.ToString(row) + ",1;"
+        Dim itemName As String
+        Dim currentCount As String
+        Using connection As New MySqlConnection(connStr)
+            Dim command As New MySqlCommand(queryN, connection)
+            Try
+                connection.Open()
+                holdnforinv = Convert.ToString(command.ExecuteScalar())
+                'connection.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+            Dim queryItem As String = "SELECT item FROM restaurant.inventory WHERE n='" + holdnforinv + "';"
+            command = New MySqlCommand(queryItem, connection)
+            Try
+                itemName = command.ExecuteScalar()
+                itemNameTextBox.Text = itemName
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+            Dim queryCurrentCount As String = "SELECT count FROM restaurant.inventory WHERE n='" + holdnforinv + "';"
+            command = New MySqlCommand(queryCurrentCount, connection)
+            Try
+                currentCount = command.ExecuteScalar()
+                currentCountTextBox.Text = currentCount
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+            connection.Close()
+        End Using
+
+        itemNameTextBox.Visible = True
+        itemNameLabel.Visible = True
+        currentCountLabel.Visible = True
+        currentCountTextBox.Visible = True
+        newCountLabel.Visible = True
+        newCountTextBox.Visible = True
+        updateInventoryButton.Visible = True
+        inventoryNoteLabel.Visible = True
+    End Sub
+
+    Private Sub updateInventoryButton_Click(sender As Object, e As EventArgs) Handles updateInventoryButton.Click
+        Dim newCount As String = newCountTextBox.Text
+        If (IsNumeric(newCount) = False) Then
+            inventoryErrorLabel.Visible = True
+            inventoryErrorLabel.Text = "#'s only"
+            Exit Sub
+        End If
+        Dim query As String = "UPDATE restaurant.inventory SET count='" + newCount + "' WHERE n='" + holdnforinv + "';"
+
+        If itemNameTextBox.ReadOnly = False Then
+            Dim newItem As String = itemNameTextBox.Text
+            If newItem Like "*[a-z]*" Or newItem Like "*[A-Z]*" Then
+                query = "INSERT INTO restaurant.inventory (`item`, `count`) VALUES ('" + newItem + "', '" + newCount + "');"
+            Else
+                inventoryErrorLabel.Visible = True
+                inventoryErrorLabel.Text = "#'s only"
+                Exit Sub
+            End If
+        End If
+
+        Using connection As New MySqlConnection(connStr)
+            Dim command As New MySqlCommand(query, connection)
+            Try
+                connection.Open()
+                command.ExecuteNonQuery()
+                connection.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+        End Using
+
+        Dim queryDropN As String = "ALTER TABLE restaurant.inventory DROP n;"   'first step in renumbering the column n
+        Using connection As New MySqlConnection(connStr)
+            Dim dropcoln As New MySqlCommand(queryDropN, connection)
+            Dim renumbercmd As New MySqlCommand()
+            With renumbercmd
+                .CommandText = "ALTER TABLE restaurant.inventory" & vbCrLf & "ADD n INT UNSIGNED NOT NULL AUTO_INCREMENT FIRST," & vbCrLf & "ADD PRIMARY KEY (n);"
+                .Connection = connection
+                .CommandType = CommandType.Text
+            End With
+            Try
+                connection.Open()
+                dropcoln.ExecuteNonQuery()
+                renumbercmd.ExecuteNonQuery()
+                connection.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+        End Using
+
+        newCountTextBox.Text = ""
+        itemNameTextBox.Visible = False
+        itemNameTextBox.ReadOnly = True
+        itemNameLabel.Visible = False
+        currentCountLabel.Visible = False
+        currentCountTextBox.Visible = False
+        newCountLabel.Visible = False
+        newCountTextBox.Visible = False
+        updateInventoryButton.Visible = False
+        inventoryNoteLabel.Visible = False
+        inventoryErrorLabel.Visible = False
+        getInventoryData()
+    End Sub
+
+    '---------------------tables tab // subs that make the tables tab function properly
     Public Sub retrieveWaitlistData()
         Try
             Dim query As String = "SELECT * FROM restaurant.tablewaitlist;"
@@ -844,8 +985,7 @@ Public Class manager
         End If
     End Sub
 
-    '--------all of the tables
-    'these are all under the tables tab
+    '--------all of the tables // these are all under the tables tab
     Private Sub table1Button_Click(sender As Object, e As EventArgs) Handles table1Button.Click
         Dim tableNum As Integer = 1
         Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"

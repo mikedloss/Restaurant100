@@ -32,6 +32,9 @@ Public Class tables
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.WindowState = FormWindowState.Maximized
 
+        'maybe re-enable this idk
+        TabControl1.TabPages.Remove(infoTab)
+
         fillWaiterLabel()
 
         If employeeType = 2 Then
@@ -46,6 +49,13 @@ Public Class tables
         welcomeLabel.Text = "Welcome, " + displayName + "!"
         timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
         dateLabel.Text = Now.Date
+
+        Dim colnum As Integer = DataGridView1.ColumnCount
+        Dim i As Integer
+        For i = 0 To (colnum - 1)
+            DataGridView1.Columns(i).SortMode = DataGridViewColumnSortMode.NotSortable
+            'DataGridView2.Columns(i).SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
     End Sub
 
     Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timer.Tick
@@ -1064,7 +1074,7 @@ Public Class tables
         login.Show()
     End Sub
 
-    Private Sub clockOutButton_Click(sender As Object, e As EventArgs) Handles clockOutButton.Click
+    Private Sub clockOutButton_Click_1(sender As Object, e As EventArgs) Handles clockOutButton.Click
         Dim query As String = "UPDATE restaurant.employeeinfo SET `isLoggedIn`='n' WHERE `un`='" + unID + "';"
         Dim connection As New MySqlConnection(connStr)
         Dim command As New MySqlCommand(query, connection)
@@ -1083,8 +1093,8 @@ Public Class tables
     Public Sub waiterModifications()
         DataGridView2.Visible = True
         waitlistLabelW.Visible = True
-        nameLabelW.Visible = True
-        tableLabelW.Visible = True
+        'nameLabelW.Visible = True
+        'tableLabelW.Visible = True
         TabControl1.TabPages.Remove(waitlistTab)
         Try
             Dim query As String = "SELECT * FROM restaurant.tablewaitlist;"
@@ -1103,6 +1113,12 @@ Public Class tables
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
+
+        Dim colnum As Integer = DataGridView2.ColumnCount
+        Dim i As Integer
+        For i = 0 To (colnum - 1)
+            DataGridView2.Columns(i).SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
     End Sub
 
     Public Function checkFlag(ByVal table As Integer)

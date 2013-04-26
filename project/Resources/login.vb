@@ -13,6 +13,7 @@ Public Class login
     Dim queryTypeResult As Int32
     Dim queryDisplayName As String
     Dim username As String
+    Public firsttimeflag As Integer = 0
 
     Private Sub login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'tests the connection to make sure it works
@@ -51,7 +52,8 @@ Public Class login
             connFlag = True
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("Connection cannot be made!")
+            Stop
         End Try
     End Sub
 
@@ -83,11 +85,15 @@ Public Class login
             errorLabel.Visible = True
             usernameLogin.Text = ""
             passwordLogin.Text = ""
+            'ElseIf (usernameLogin.Text = "9999" And passwordLogin.Text = "9999" And firsttimeflag = 0) Then
+            '    Dim firsttimeForm As New firsttime(connStr)
+            '    firsttimeForm.Show()
         Else
             loggingIn()
             If (queryTypeResult = 1 Or queryTypeResult = 2 Or queryTypeResult = 5) Then
                 Dim tablesForm As New tables(queryTypeResult, queryDisplayName, connStr, username)
                 tablesForm.Show()
+                'captureTime()
                 'Me.Hide()
             ElseIf (queryTypeResult = 3) Then
                 Dim cookForm As New cook(connStr, username, queryDisplayName)
@@ -100,6 +106,14 @@ Public Class login
             passwordLogin.Text = ""
             errorLabel.Visible = False
             End If
+    End Sub
+
+    Public Sub captureTime()
+        Dim timeLogin As System.DateTime = Date.Parse(Date.Now)
+        Dim timeLoginCapture As New System.DateTime
+        Dim timeLogout As System.DateTime
+        Dim timeLogoutCapture As New System.DateTime
+
     End Sub
 
     Public Sub loggingIn()
@@ -306,20 +320,23 @@ Public Class login
         Me.Close()
     End Sub
 
+    'Private Sub reconnectButton_Click(sender As Object, e As EventArgs)
+    '    Try
+    '        Dim connection As New MySqlConnection(connStr)
+    '        connection.Open()
+    '        connection.Close()
+    '        connFlag = True
+    '        checkmarkPicture.Visible = True
+    '        statusLabel.Text = "connected"
+    '        statusLabel.ForeColor = Color.Green
+    '    Catch ex As Exception
+    '        checkmarkPicture.Visible = False
+    '        statusLabel.Text = "not connected"
+    '        statusLabel.ForeColor = Color.Red
+    '    End Try
+    'End Sub
+
     Private Sub reconnectButton_Click(sender As Object, e As EventArgs) Handles reconnectButton.Click
-        Try
-            Dim connection As New MySqlConnection(connStr)
-            connection.Open()
-            connection.Close()
-            connFlag = True
-            checkmarkPicture.Visible = True
-            statusLabel.Text = "connected"
-            statusLabel.ForeColor = Color.Green
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            checkmarkPicture.Visible = False
-            statusLabel.Text = "not connected"
-            statusLabel.ForeColor = Color.Red
-        End Try
+
     End Sub
 End Class

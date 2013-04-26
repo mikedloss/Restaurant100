@@ -116,6 +116,12 @@
     <Compile Include="cook.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="firsttime.Designer.vb">
+      <DependentUpon>firsttime.vb</DependentUpon>
+    </Compile>
+    <Compile Include="firsttime.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="inventory.vb" />
     <Compile Include="Resources\login.vb">
       <SubType>Form</SubType>
@@ -161,6 +167,9 @@
   <ItemGroup>
     <EmbeddedResource Include="cook.resx">
       <DependentUpon>cook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="firsttime.resx">
+      <DependentUpon>firsttime.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\login.resx">
       <DependentUpon>login.vb</DependentUpon>

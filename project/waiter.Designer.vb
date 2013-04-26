@@ -32,7 +32,7 @@ Partial Class waiter
         Me.drink3Button = New System.Windows.Forms.Button()
         Me.drink2Button = New System.Windows.Forms.Button()
         Me.drink1Button = New System.Windows.Forms.Button()
-        Me.cheeseFriesAppButton = New System.Windows.Forms.TabPage()
+        Me.appTab = New System.Windows.Forms.TabPage()
         Me.app3Button = New System.Windows.Forms.Button()
         Me.app2Button = New System.Windows.Forms.Button()
         Me.app1Button = New System.Windows.Forms.Button()
@@ -42,27 +42,35 @@ Partial Class waiter
         Me.entree1Button = New System.Windows.Forms.Button()
         Me.dessertTab = New System.Windows.Forms.TabPage()
         Me.dessert1Button = New System.Windows.Forms.Button()
-        Me.extrasTab = New System.Windows.Forms.TabPage()
+        Me.eightySixTab = New System.Windows.Forms.TabPage()
+        Me.onion86Button = New System.Windows.Forms.Button()
+        Me.tomato86Button = New System.Windows.Forms.Button()
+        Me.lettuce86Button = New System.Windows.Forms.Button()
+        Me.cheese86Button = New System.Windows.Forms.Button()
+        Me.bacon86Button = New System.Windows.Forms.Button()
+        Me.sideOfTab = New System.Windows.Forms.TabPage()
         Me.submitOrderButton = New System.Windows.Forms.Button()
         Me.modifier86Button = New System.Windows.Forms.Button()
-        Me.onsideModifierButton = New System.Windows.Forms.Button()
         Me.sideofModifierButton = New System.Windows.Forms.Button()
-        Me.extraModifierButton = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.closeTableButton = New System.Windows.Forms.Button()
         Me.tableNumLabel = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.totalTextBox = New System.Windows.Forms.TextBox()
+        Me.areYouSureLabel = New System.Windows.Forms.Label()
+        Me.noButton = New System.Windows.Forms.Button()
+        Me.yesButton = New System.Windows.Forms.Button()
         Me.tabControlWaiter.SuspendLayout()
         Me.alcoholTab.SuspendLayout()
         Me.drinksTab.SuspendLayout()
-        Me.cheeseFriesAppButton.SuspendLayout()
+        Me.appTab.SuspendLayout()
         Me.entreeTab.SuspendLayout()
         Me.dessertTab.SuspendLayout()
+        Me.eightySixTab.SuspendLayout()
         Me.SuspendLayout()
         '
         'orderTextBox
         '
-        Me.orderTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.orderTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.orderTextBox.Location = New System.Drawing.Point(12, 12)
         Me.orderTextBox.Multiline = True
         Me.orderTextBox.Name = "orderTextBox"
@@ -84,10 +92,11 @@ Partial Class waiter
         Me.tabControlWaiter.Appearance = System.Windows.Forms.TabAppearance.FlatButtons
         Me.tabControlWaiter.Controls.Add(Me.alcoholTab)
         Me.tabControlWaiter.Controls.Add(Me.drinksTab)
-        Me.tabControlWaiter.Controls.Add(Me.cheeseFriesAppButton)
+        Me.tabControlWaiter.Controls.Add(Me.appTab)
         Me.tabControlWaiter.Controls.Add(Me.entreeTab)
         Me.tabControlWaiter.Controls.Add(Me.dessertTab)
-        Me.tabControlWaiter.Controls.Add(Me.extrasTab)
+        Me.tabControlWaiter.Controls.Add(Me.eightySixTab)
+        Me.tabControlWaiter.Controls.Add(Me.sideOfTab)
         Me.tabControlWaiter.Cursor = System.Windows.Forms.Cursors.Default
         Me.tabControlWaiter.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabControlWaiter.HotTrack = True
@@ -170,17 +179,17 @@ Partial Class waiter
         Me.drink1Button.Text = "JUICE"
         Me.drink1Button.UseVisualStyleBackColor = True
         '
-        'cheeseFriesAppButton
+        'appTab
         '
-        Me.cheeseFriesAppButton.Controls.Add(Me.app3Button)
-        Me.cheeseFriesAppButton.Controls.Add(Me.app2Button)
-        Me.cheeseFriesAppButton.Controls.Add(Me.app1Button)
-        Me.cheeseFriesAppButton.Location = New System.Drawing.Point(4, 37)
-        Me.cheeseFriesAppButton.Name = "cheeseFriesAppButton"
-        Me.cheeseFriesAppButton.Size = New System.Drawing.Size(818, 564)
-        Me.cheeseFriesAppButton.TabIndex = 2
-        Me.cheeseFriesAppButton.Text = "APPETIZERS"
-        Me.cheeseFriesAppButton.UseVisualStyleBackColor = True
+        Me.appTab.Controls.Add(Me.app3Button)
+        Me.appTab.Controls.Add(Me.app2Button)
+        Me.appTab.Controls.Add(Me.app1Button)
+        Me.appTab.Location = New System.Drawing.Point(4, 37)
+        Me.appTab.Name = "appTab"
+        Me.appTab.Size = New System.Drawing.Size(818, 564)
+        Me.appTab.TabIndex = 2
+        Me.appTab.Text = "APPETIZERS"
+        Me.appTab.UseVisualStyleBackColor = True
         '
         'app3Button
         '
@@ -269,14 +278,73 @@ Partial Class waiter
         Me.dessert1Button.Text = "ICE CREAM"
         Me.dessert1Button.UseVisualStyleBackColor = True
         '
-        'extrasTab
+        'eightySixTab
         '
-        Me.extrasTab.Location = New System.Drawing.Point(4, 37)
-        Me.extrasTab.Name = "extrasTab"
-        Me.extrasTab.Size = New System.Drawing.Size(818, 564)
-        Me.extrasTab.TabIndex = 5
-        Me.extrasTab.Text = "EXTRAS"
-        Me.extrasTab.UseVisualStyleBackColor = True
+        Me.eightySixTab.Controls.Add(Me.onion86Button)
+        Me.eightySixTab.Controls.Add(Me.tomato86Button)
+        Me.eightySixTab.Controls.Add(Me.lettuce86Button)
+        Me.eightySixTab.Controls.Add(Me.cheese86Button)
+        Me.eightySixTab.Controls.Add(Me.bacon86Button)
+        Me.eightySixTab.Location = New System.Drawing.Point(4, 37)
+        Me.eightySixTab.Name = "eightySixTab"
+        Me.eightySixTab.Size = New System.Drawing.Size(818, 564)
+        Me.eightySixTab.TabIndex = 5
+        Me.eightySixTab.Text = "86"
+        Me.eightySixTab.UseVisualStyleBackColor = True
+        '
+        'onion86Button
+        '
+        Me.onion86Button.Location = New System.Drawing.Point(444, 20)
+        Me.onion86Button.Name = "onion86Button"
+        Me.onion86Button.Size = New System.Drawing.Size(100, 100)
+        Me.onion86Button.TabIndex = 4
+        Me.onion86Button.Text = "Onion"
+        Me.onion86Button.UseVisualStyleBackColor = True
+        '
+        'tomato86Button
+        '
+        Me.tomato86Button.Location = New System.Drawing.Point(338, 20)
+        Me.tomato86Button.Name = "tomato86Button"
+        Me.tomato86Button.Size = New System.Drawing.Size(100, 100)
+        Me.tomato86Button.TabIndex = 3
+        Me.tomato86Button.Text = "Tomato"
+        Me.tomato86Button.UseVisualStyleBackColor = True
+        '
+        'lettuce86Button
+        '
+        Me.lettuce86Button.Location = New System.Drawing.Point(232, 20)
+        Me.lettuce86Button.Name = "lettuce86Button"
+        Me.lettuce86Button.Size = New System.Drawing.Size(100, 100)
+        Me.lettuce86Button.TabIndex = 2
+        Me.lettuce86Button.Text = "Lettuce"
+        Me.lettuce86Button.UseVisualStyleBackColor = True
+        '
+        'cheese86Button
+        '
+        Me.cheese86Button.Location = New System.Drawing.Point(126, 20)
+        Me.cheese86Button.Name = "cheese86Button"
+        Me.cheese86Button.Size = New System.Drawing.Size(100, 100)
+        Me.cheese86Button.TabIndex = 1
+        Me.cheese86Button.Text = "Cheese"
+        Me.cheese86Button.UseVisualStyleBackColor = True
+        '
+        'bacon86Button
+        '
+        Me.bacon86Button.Location = New System.Drawing.Point(20, 20)
+        Me.bacon86Button.Name = "bacon86Button"
+        Me.bacon86Button.Size = New System.Drawing.Size(100, 100)
+        Me.bacon86Button.TabIndex = 0
+        Me.bacon86Button.Text = "Bacon"
+        Me.bacon86Button.UseVisualStyleBackColor = True
+        '
+        'sideOfTab
+        '
+        Me.sideOfTab.Location = New System.Drawing.Point(4, 37)
+        Me.sideOfTab.Name = "sideOfTab"
+        Me.sideOfTab.Size = New System.Drawing.Size(818, 564)
+        Me.sideOfTab.TabIndex = 6
+        Me.sideOfTab.Text = "SIDES"
+        Me.sideOfTab.UseVisualStyleBackColor = True
         '
         'submitOrderButton
         '
@@ -298,45 +366,25 @@ Partial Class waiter
         Me.modifier86Button.Text = "86"
         Me.modifier86Button.UseVisualStyleBackColor = True
         '
-        'onsideModifierButton
-        '
-        Me.onsideModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.onsideModifierButton.Location = New System.Drawing.Point(322, 126)
-        Me.onsideModifierButton.Name = "onsideModifierButton"
-        Me.onsideModifierButton.Size = New System.Drawing.Size(100, 70)
-        Me.onsideModifierButton.TabIndex = 20
-        Me.onsideModifierButton.Text = "ON SIDE"
-        Me.onsideModifierButton.UseVisualStyleBackColor = True
-        '
         'sideofModifierButton
         '
         Me.sideofModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.sideofModifierButton.Location = New System.Drawing.Point(322, 202)
+        Me.sideofModifierButton.Location = New System.Drawing.Point(322, 126)
         Me.sideofModifierButton.Name = "sideofModifierButton"
         Me.sideofModifierButton.Size = New System.Drawing.Size(100, 70)
         Me.sideofModifierButton.TabIndex = 21
         Me.sideofModifierButton.Text = "SIDE OF"
         Me.sideofModifierButton.UseVisualStyleBackColor = True
         '
-        'extraModifierButton
+        'closeTableButton
         '
-        Me.extraModifierButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.extraModifierButton.Location = New System.Drawing.Point(322, 278)
-        Me.extraModifierButton.Name = "extraModifierButton"
-        Me.extraModifierButton.Size = New System.Drawing.Size(100, 70)
-        Me.extraModifierButton.TabIndex = 22
-        Me.extraModifierButton.Text = "EXTRA"
-        Me.extraModifierButton.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(320, 581)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(100, 87)
-        Me.Button4.TabIndex = 23
-        Me.Button4.Text = "CLOSE" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "TABLE"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.closeTableButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.closeTableButton.Location = New System.Drawing.Point(320, 581)
+        Me.closeTableButton.Name = "closeTableButton"
+        Me.closeTableButton.Size = New System.Drawing.Size(100, 87)
+        Me.closeTableButton.TabIndex = 23
+        Me.closeTableButton.Text = "CLOSE" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "TABLE"
+        Me.closeTableButton.UseVisualStyleBackColor = True
         '
         'tableNumLabel
         '
@@ -368,31 +416,66 @@ Partial Class waiter
         Me.totalTextBox.TabIndex = 26
         Me.totalTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'areYouSureLabel
+        '
+        Me.areYouSureLabel.AutoSize = True
+        Me.areYouSureLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.areYouSureLabel.Location = New System.Drawing.Point(8, 638)
+        Me.areYouSureLabel.Name = "areYouSureLabel"
+        Me.areYouSureLabel.Size = New System.Drawing.Size(120, 20)
+        Me.areYouSureLabel.TabIndex = 27
+        Me.areYouSureLabel.Text = "Are you sure?"
+        Me.areYouSureLabel.Visible = False
+        '
+        'noButton
+        '
+        Me.noButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.noButton.Location = New System.Drawing.Point(231, 631)
+        Me.noButton.Name = "noButton"
+        Me.noButton.Size = New System.Drawing.Size(85, 37)
+        Me.noButton.TabIndex = 28
+        Me.noButton.Text = "NO"
+        Me.noButton.UseVisualStyleBackColor = True
+        Me.noButton.Visible = False
+        '
+        'yesButton
+        '
+        Me.yesButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.yesButton.Location = New System.Drawing.Point(142, 631)
+        Me.yesButton.Name = "yesButton"
+        Me.yesButton.Size = New System.Drawing.Size(83, 37)
+        Me.yesButton.TabIndex = 29
+        Me.yesButton.Text = "YES"
+        Me.yesButton.UseVisualStyleBackColor = True
+        Me.yesButton.Visible = False
+        '
         'waiter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1264, 680)
+        Me.Controls.Add(Me.clearButton)
+        Me.Controls.Add(Me.yesButton)
+        Me.Controls.Add(Me.noButton)
+        Me.Controls.Add(Me.areYouSureLabel)
         Me.Controls.Add(Me.totalTextBox)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tableNumLabel)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.extraModifierButton)
+        Me.Controls.Add(Me.closeTableButton)
         Me.Controls.Add(Me.sideofModifierButton)
-        Me.Controls.Add(Me.onsideModifierButton)
         Me.Controls.Add(Me.modifier86Button)
         Me.Controls.Add(Me.submitOrderButton)
         Me.Controls.Add(Me.tabControlWaiter)
-        Me.Controls.Add(Me.clearButton)
         Me.Controls.Add(Me.orderTextBox)
         Me.Name = "waiter"
         Me.Text = "Waiter"
         Me.tabControlWaiter.ResumeLayout(False)
         Me.alcoholTab.ResumeLayout(False)
         Me.drinksTab.ResumeLayout(False)
-        Me.cheeseFriesAppButton.ResumeLayout(False)
+        Me.appTab.ResumeLayout(False)
         Me.entreeTab.ResumeLayout(False)
         Me.dessertTab.ResumeLayout(False)
+        Me.eightySixTab.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -402,15 +485,13 @@ Partial Class waiter
     Friend WithEvents tabControlWaiter As System.Windows.Forms.TabControl
     Friend WithEvents alcoholTab As System.Windows.Forms.TabPage
     Friend WithEvents drinksTab As System.Windows.Forms.TabPage
-    Friend WithEvents cheeseFriesAppButton As System.Windows.Forms.TabPage
+    Friend WithEvents appTab As System.Windows.Forms.TabPage
     Friend WithEvents entreeTab As System.Windows.Forms.TabPage
     Friend WithEvents dessertTab As System.Windows.Forms.TabPage
     Friend WithEvents submitOrderButton As System.Windows.Forms.Button
     Friend WithEvents modifier86Button As System.Windows.Forms.Button
-    Friend WithEvents onsideModifierButton As System.Windows.Forms.Button
     Friend WithEvents sideofModifierButton As System.Windows.Forms.Button
-    Friend WithEvents extraModifierButton As System.Windows.Forms.Button
-    Friend WithEvents extrasTab As System.Windows.Forms.TabPage
+    Friend WithEvents eightySixTab As System.Windows.Forms.TabPage
     Friend WithEvents drink4Button As System.Windows.Forms.Button
     Friend WithEvents drink3Button As System.Windows.Forms.Button
     Friend WithEvents drink2Button As System.Windows.Forms.Button
@@ -423,8 +504,17 @@ Partial Class waiter
     Friend WithEvents entree3Button As System.Windows.Forms.Button
     Friend WithEvents alcohol1Button As System.Windows.Forms.Button
     Friend WithEvents dessert1Button As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents closeTableButton As System.Windows.Forms.Button
     Friend WithEvents tableNumLabel As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents totalTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents areYouSureLabel As System.Windows.Forms.Label
+    Friend WithEvents noButton As System.Windows.Forms.Button
+    Friend WithEvents yesButton As System.Windows.Forms.Button
+    Friend WithEvents sideOfTab As System.Windows.Forms.TabPage
+    Friend WithEvents onion86Button As System.Windows.Forms.Button
+    Friend WithEvents tomato86Button As System.Windows.Forms.Button
+    Friend WithEvents lettuce86Button As System.Windows.Forms.Button
+    Friend WithEvents cheese86Button As System.Windows.Forms.Button
+    Friend WithEvents bacon86Button As System.Windows.Forms.Button
 End Class

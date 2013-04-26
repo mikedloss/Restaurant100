@@ -68,9 +68,9 @@ Partial Class cook
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(620, 459)
+        Me.Label4.Location = New System.Drawing.Point(55, 588)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(517, 120)
+        Me.Label4.Size = New System.Drawing.Size(550, 80)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = resources.GetString("Label4.Text")
         '
@@ -84,8 +84,9 @@ Partial Class cook
         Me.noteLabel.AutoSize = True
         Me.noteLabel.Location = New System.Drawing.Point(111, 374)
         Me.noteLabel.Name = "noteLabel"
-        Me.noteLabel.Size = New System.Drawing.Size(0, 20)
+        Me.noteLabel.Size = New System.Drawing.Size(41, 20)
         Me.noteLabel.TabIndex = 4
+        Me.noteLabel.Text = "note"
         '
         'Label1
         '
@@ -99,9 +100,9 @@ Partial Class cook
         'logoutButton
         '
         Me.logoutButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.logoutButton.Location = New System.Drawing.Point(624, 600)
+        Me.logoutButton.Location = New System.Drawing.Point(722, 12)
         Me.logoutButton.Name = "logoutButton"
-        Me.logoutButton.Size = New System.Drawing.Size(276, 68)
+        Me.logoutButton.Size = New System.Drawing.Size(530, 530)
         Me.logoutButton.TabIndex = 29
         Me.logoutButton.Text = "CLOSE WINDOW"
         Me.logoutButton.UseVisualStyleBackColor = True

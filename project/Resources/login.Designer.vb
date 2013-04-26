@@ -341,6 +341,7 @@ Partial Class login
         Me.reconnectButton.TabIndex = 27
         Me.reconnectButton.Text = "reconnect"
         Me.reconnectButton.UseVisualStyleBackColor = True
+        Me.reconnectButton.Visible = False
         '
         'login
         '
