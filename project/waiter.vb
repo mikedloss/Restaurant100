@@ -13,6 +13,7 @@ Public Class waiter
     Dim checkApps(0 To 0) As String
     Dim checkEntrees(0 To 0) As String
     Dim checkDesserts(0 To 0) As String
+    Dim checkSides(0 To 0) As String
     Dim check() As String
     Dim tableNumber As String
     Dim checkTotal As Integer
@@ -80,24 +81,22 @@ Public Class waiter
     End Sub
 
     Private Sub yesButton_Click(sender As Object, e As EventArgs) Handles yesButton.Click
-        Dim backupTotal As Integer
-        Dim queryBackupTotal As String = "SELECT total FROM restaurant.tablechecks WHERE tablenum='" + tableNumber + "';"
         Dim queryErase As String = "UPDATE restaurant.tablechecks SET items=NULL, total='0' WHERE tablenum='" + tableNumber + "';"
         Using connection As New MySqlConnection(connStr)
-            Dim command1 As New MySqlCommand(queryBackupTotal, connection)
-            Dim command2 As New MySqlCommand(queryErase, connection)
+            Dim command As New MySqlCommand(queryErase, connection)
             Try
                 connection.Open()
-                backupTotal = command1.ExecuteScalar()
-                command2.ExecuteNonQuery()
+                Command.ExecuteNonQuery()
                 connection.Close()
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
             End Try
         End Using
+
         orderTextBox.Text = ""
         checkTotal = 0
-        ReDim checkAlc(0 To 0), checkDrinks(0 To 0), checkApps(0 To 0), checkEntrees(0 To 0), checkDesserts(0 To 0)
+        Erase checkAlc, checkDrinks, checkApps, checkEntrees, checkDesserts, check, checkSides, inventoryValues, eightySixStuff
+        ReDim checkAlc(0 To 0), checkDrinks(0 To 0), checkApps(0 To 0), checkEntrees(0 To 0), checkDesserts(0 To 0), check(0 To 0), checkSides(0 To 0), inventoryValues(0 To 0), eightySixStuff(0 To 0)
         totalTextBox.Text = FormatCurrency(checkTotal, , , , )
 
         areYouSureLabel.Visible = False
@@ -238,6 +237,13 @@ Public Class waiter
                 ReDim Preserve checkDesserts(0 To (UBound(checkDesserts) + 1))
                 checkDesserts(UBound(checkDesserts)) += text
             End If
+        ElseIf itemOrder = 5 Then
+            If checkSides.Length = 1 Then
+                checkSides(0) += text
+            Else
+                ReDim Preserve checkSides(0 To (UBound(checkSides) + 1))
+                checkSides(UBound(checkSides)) += text
+            End If
         End If
 
         checkString = ""
@@ -246,6 +252,7 @@ Public Class waiter
         checkString += Join(checkApps)
         checkString += Join(checkEntrees)
         checkString += Join(checkDesserts)
+        checkString += Join(checkSides)
 
         orderTextBox.Text = ""
         orderTextBox.Text = checkString
@@ -253,8 +260,7 @@ Public Class waiter
         check = Split(checkString, vbCrLf)
     End Sub
 
-    '------------food buttons
-    'item order: 0 = alcohol, 1 = drinks, 2 = appetizers, 3 = entrees, 4 = desserts
+    '------------food buttons // item order: 0 = alcohol, 1 = drinks, 2 = appetizers, 3 = entrees, 4 = desserts, 5 = sides
     Private Sub alcohol1Button_Click(sender As Object, e As EventArgs) Handles alcohol1Button.Click
         Dim text As String = inventory.alcohol1s
         Dim price As Integer = inventory.alcohol1.price
@@ -546,14 +552,8 @@ Public Class waiter
     End Sub
 
     '---------------------modifier buttons
-
-    '---------------------86 mod button
-    Public Sub modifier86Button_Click(sender As Object, e As EventArgs) Handles modifier86Button.Click
-        tabMods(1)
-    End Sub
-
     Private Sub tabMods(ByVal input As Integer)
-        If input = 1 Then
+        If input = 0 Then   'click 86 button, show only 86 tab
             tabControlWaiter.TabPages.Remove(alcoholTab)
             tabControlWaiter.TabPages.Remove(drinksTab)
             tabControlWaiter.TabPages.Remove(appTab)
@@ -561,50 +561,189 @@ Public Class waiter
             tabControlWaiter.TabPages.Remove(dessertTab)
             tabControlWaiter.TabPages.Remove(sideOfTab)
             tabControlWaiter.TabPages.Add(eightySixTab)
-        Else
+        ElseIf input = 1 Then   'button clicks under 86 category, show default tabs
             tabControlWaiter.TabPages.Add(alcoholTab)
             tabControlWaiter.TabPages.Add(drinksTab)
             tabControlWaiter.TabPages.Add(appTab)
             tabControlWaiter.TabPages.Add(entreeTab)
             tabControlWaiter.TabPages.Add(dessertTab)
             tabControlWaiter.TabPages.Remove(eightySixTab)
+        ElseIf input = 2 Then   'click side of button, show only side of tab
+            tabControlWaiter.TabPages.Remove(alcoholTab)
+            tabControlWaiter.TabPages.Remove(drinksTab)
+            tabControlWaiter.TabPages.Remove(appTab)
+            tabControlWaiter.TabPages.Remove(entreeTab)
+            tabControlWaiter.TabPages.Remove(dessertTab)
+            tabControlWaiter.TabPages.Remove(sideOfTab)
+            tabControlWaiter.TabPages.Add(sideOfTab)
         End If
+    End Sub
+
+    '---------------------86 mod button
+    Public Sub modifier86Button_Click(sender As Object, e As EventArgs) Handles modifier86Button.Click
+        tabMods(0)
     End Sub
 
     Private Sub bacon86Button_Click(sender As Object, e As EventArgs) Handles bacon86Button.Click
         eightySixStuff(UBound(eightySixStuff)) = "bacon"
         ReDim Preserve eightySixStuff(0 To (UBound(eightySixStuff) + 1))
-        tabMods(0)
+        tabMods(1)
     End Sub
 
     Private Sub cheese86Button_Click(sender As Object, e As EventArgs) Handles cheese86Button.Click
         eightySixStuff(UBound(eightySixStuff)) = "cheese"
         ReDim Preserve eightySixStuff(0 To (UBound(eightySixStuff) + 1))
-        tabMods(0)
+        tabMods(1)
     End Sub
 
     Private Sub lettuce86Button_Click(sender As Object, e As EventArgs) Handles lettuce86Button.Click
         eightySixStuff(UBound(eightySixStuff)) = "lettuce"
         ReDim Preserve eightySixStuff(0 To (UBound(eightySixStuff) + 1))
-        tabMods(0)
+        tabMods(1)
     End Sub
 
     Private Sub tomato86Button_Click(sender As Object, e As EventArgs) Handles tomato86Button.Click
         eightySixStuff(UBound(eightySixStuff)) = "tomato"
         ReDim Preserve eightySixStuff(0 To (UBound(eightySixStuff) + 1))
-        tabMods(0)
+        tabMods(1)
 
     End Sub
 
     Private Sub onion86Button_Click(sender As Object, e As EventArgs) Handles onion86Button.Click
         eightySixStuff(UBound(eightySixStuff)) = "onion"
         ReDim Preserve eightySixStuff(0 To (UBound(eightySixStuff) + 1))
-        tabMods(0)
+        tabMods(1)
 
+    End Sub
+
+    Private Sub close86Button_Click(sender As Object, e As EventArgs) Handles close86Button.Click
+        tabControlWaiter.TabPages.Add(alcoholTab)
+        tabControlWaiter.TabPages.Add(drinksTab)
+        tabControlWaiter.TabPages.Add(appTab)
+        tabControlWaiter.TabPages.Add(entreeTab)
+        tabControlWaiter.TabPages.Add(dessertTab)
+        tabControlWaiter.TabPages.Remove(eightySixTab)
     End Sub
 
     '--------------------sides
     Private Sub sideofModifierButton_Click(sender As Object, e As EventArgs) Handles sideofModifierButton.Click
+        tabMods(2)
+    End Sub
 
+    Private Sub friesSideButton_Click(sender As Object, e As EventArgs) Handles friesSideButton.Click
+        Dim text As String = inventory.side1s
+        Dim price As Integer = inventory.side1.price
+        Dim i As Integer = 0
+        Dim itemName() As String
+        Dim itemValues As Array
+        Dim size As Integer = inventoryValues.Length
+
+        itemName = System.Enum.GetNames(GetType(side1))
+        itemValues = System.Enum.GetValues(GetType(side1))
+
+        checkTotal += price
+        totalTextBox.Text = FormatCurrency(checkTotal, , , , )
+
+        displayCheck(text, 5)
+
+        While (i < UBound(itemValues))
+            size = inventoryValues.Length
+            inventoryValues(size - 1) = itemName(i)
+            ReDim Preserve inventoryValues(0 To (UBound(inventoryValues) + 1))
+
+            i += 1
+        End While
+
+        tabMods(2)
+    End Sub
+
+    Private Sub chipsSideButton_Click(sender As Object, e As EventArgs) Handles chipsSideButton.Click
+        Dim text As String = inventory.side2s
+        Dim price As Integer = inventory.side2.price
+        Dim i As Integer = 0
+        Dim itemName() As String
+        Dim itemValues As Array
+        Dim size As Integer = inventoryValues.Length
+
+        itemName = System.Enum.GetNames(GetType(side2))
+        itemValues = System.Enum.GetValues(GetType(side2))
+
+        checkTotal += price
+        totalTextBox.Text = FormatCurrency(checkTotal, , , , )
+
+        displayCheck(text, 5)
+
+        While (i < UBound(itemValues))
+            size = inventoryValues.Length
+            inventoryValues(size - 1) = itemName(i)
+            ReDim Preserve inventoryValues(0 To (UBound(inventoryValues) + 1))
+
+            i += 1
+        End While
+
+        tabMods(2)
+    End Sub
+
+    Private Sub salsaSideButton_Click(sender As Object, e As EventArgs) Handles salsaSideButton.Click
+        Dim text As String = inventory.side3s
+        Dim price As Integer = inventory.side3.price
+        Dim i As Integer = 0
+        Dim itemName() As String
+        Dim itemValues As Array
+        Dim size As Integer = inventoryValues.Length
+
+        itemName = System.Enum.GetNames(GetType(side3))
+        itemValues = System.Enum.GetValues(GetType(side3))
+
+        checkTotal += price
+        totalTextBox.Text = FormatCurrency(checkTotal, , , , )
+
+        displayCheck(text, 5)
+
+        While (i < UBound(itemValues))
+            size = inventoryValues.Length
+            inventoryValues(size - 1) = itemName(i)
+            ReDim Preserve inventoryValues(0 To (UBound(inventoryValues) + 1))
+
+            i += 1
+        End While
+
+        tabMods(2)
+    End Sub
+
+    Private Sub baconSideButton_Click(sender As Object, e As EventArgs) Handles baconSideButton.Click
+        Dim text As String = inventory.side4s
+        Dim price As Integer = inventory.side4.price
+        Dim i As Integer = 0
+        Dim itemName() As String
+        Dim itemValues As Array
+        Dim size As Integer = inventoryValues.Length
+
+        itemName = System.Enum.GetNames(GetType(side4))
+        itemValues = System.Enum.GetValues(GetType(side4))
+
+        checkTotal += price
+        totalTextBox.Text = FormatCurrency(checkTotal, , , , )
+
+        displayCheck(text, 5)
+
+        While (i < UBound(itemValues))
+            size = inventoryValues.Length
+            inventoryValues(size - 1) = itemName(i)
+            ReDim Preserve inventoryValues(0 To (UBound(inventoryValues) + 1))
+
+            i += 1
+        End While
+
+        tabMods(2)
+    End Sub
+
+    Private Sub closeSidesButton_Click(sender As Object, e As EventArgs) Handles closeSidesButton.Click
+        tabControlWaiter.TabPages.Add(alcoholTab)
+        tabControlWaiter.TabPages.Add(drinksTab)
+        tabControlWaiter.TabPages.Add(appTab)
+        tabControlWaiter.TabPages.Add(entreeTab)
+        tabControlWaiter.TabPages.Add(dessertTab)
+        tabControlWaiter.TabPages.Remove(sideOfTab)
     End Sub
 End Class

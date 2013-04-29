@@ -1,28 +1,28 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.Data
 Imports System.Data.SqlClient
+Imports System
+Imports System.IO
+Imports System.Text
 
 Public Class login
 
-    Public connStr As String = "Database=restaurant;" & _
-                    "Data Source=localhost;" & _
-                    "User Id=root;Password=root;"
+    Public connstr As String = "Database=restaurant;" + vbCrLf + "Data Source=localhost;" + vbCrLf + "User Id=root;Password=root;"
     Dim connFlag As Boolean = False
-    Public returnAnswer As Boolean = False
+    Dim returnAnswer As Boolean = False
     Dim queryResult As Int32
     Dim queryTypeResult As Int32
     Dim queryDisplayName As String
     Dim username As String
-    Public firsttimeflag As Integer = 0
+    Friend FTstring1 As String
+    Friend FTflag1 As Boolean
+    Friend CEFlag As Boolean    'true = localhost, false = ip
 
     Private Sub login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'tests the connection to make sure it works
+        'connectionevents()
+        'ftevents()
         TestConnection()
-
-        'UNCOMMENT THIS TO SEE DATAGRID
-        'PictureBox1.Visible = false
-        'TextBox1.Visible = True
-        'Label1.Visible = True
 
         'date/time display
         timeLoginLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
@@ -57,7 +57,62 @@ Public Class login
         End Try
     End Sub
 
-    Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer.Tick
+    Private Sub ftevents()
+        Dim path As String = Application.StartupPath + "\r100ft.sr"
+
+        'first read file to see if it is first time or not
+        't3El38cK5dl2glhsgMJ0 - first time
+        'xkLpuzVEvdEWSbfcuX3J - returning user
+        Try
+            Using sr As New StreamReader(path)
+                FTstring1 = sr.ReadToEnd()
+                Console.WriteLine(FTstring1)
+                sr.Close()
+            End Using
+        Catch e As Exception
+            Dim fs As FileStream = File.Create(path)
+            Dim input As Byte() = New UTF8Encoding(True).GetBytes("t3El38cK5dl2glhsgMJ0")
+            fs.Write(input, 0, input.Length)
+            fs.Close()
+        End Try
+
+        'test to see if its a first time user
+        If FTstring1 = "t3El38cK5dl2glhsgMJ0" Then
+            FTflag1 = True
+        Else
+            FTflag1 = False
+        End If
+    End Sub
+
+    Private Sub connectionevents()
+        Dim path As String = Application.StartupPath + "\r100cs.sr"
+
+        'read file for connection info
+        Dim read As New System.IO.StreamReader(path)
+        Dim alllines As List(Of String) = New List(Of String)
+        Do While Not read.EndOfStream
+            alllines.Add(read.ReadLine())
+        Loop
+        read.Close()
+
+        'check to see if localhost is already there
+        If (alllines(2).Contains("Data Source=localhost;")) Then
+            Dim fs As FileStream = File.Create(path)
+            Dim input As Byte() = New UTF8Encoding(True).GetBytes(connstr)
+            fs.Write(input, 0, input.Length)
+            fs.Close()
+            CEFlag = True
+        Else
+            'IP is there instead of localhost
+            'change connStr to the IP
+            CEFlag = False
+            connstr = (alllines(0) + alllines(1) + alllines(2))
+        End If
+
+    End Sub
+
+
+    Private Sub timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timer.Tick
         'every tick updates time
         timeLoginLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
     End Sub
@@ -80,14 +135,16 @@ Public Class login
             errorLabel.Visible = True
             usernameLogin.Text = ""
             passwordLogin.Text = ""
+            'ElseIf (FTflag1 = True) Then
+            '    Dim un As String = usernameLogin.Text
+            '    Dim pw As String = passwordLogin.Text
+            '    Dim firsttimeForm As New firsttime(connStr, un, pw)
+            '    firsttimeForm.Show()
         ElseIf (usernameLogin.Text.Length < 4 Or passwordLogin.Text.Length < 4 Or retrieveTest() = False) Then
             errorLabel.Text = "ERROR: WRONG ID/PW"
             errorLabel.Visible = True
             usernameLogin.Text = ""
             passwordLogin.Text = ""
-            'ElseIf (usernameLogin.Text = "9999" And passwordLogin.Text = "9999" And firsttimeflag = 0) Then
-            '    Dim firsttimeForm As New firsttime(connStr)
-            '    firsttimeForm.Show()
         Else
             loggingIn()
             If (queryTypeResult = 1 Or queryTypeResult = 2 Or queryTypeResult = 5) Then
@@ -105,7 +162,14 @@ Public Class login
             usernameLogin.Text = ""
             passwordLogin.Text = ""
             errorLabel.Visible = False
-            End If
+        End If
+        usernameLogin.Text = ""
+        passwordLogin.Text = ""
+        'queryResult = Nothing
+        'queryTypeResult = Nothing
+        'queryDisplayName = Nothing
+        'username = Nothing
+        'FTstring1 = Nothing
     End Sub
 
     Public Sub captureTime()

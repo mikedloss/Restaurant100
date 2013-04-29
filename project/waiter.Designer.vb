@@ -59,6 +59,12 @@ Partial Class waiter
         Me.areYouSureLabel = New System.Windows.Forms.Label()
         Me.noButton = New System.Windows.Forms.Button()
         Me.yesButton = New System.Windows.Forms.Button()
+        Me.friesSideButton = New System.Windows.Forms.Button()
+        Me.chipsSideButton = New System.Windows.Forms.Button()
+        Me.salsaSideButton = New System.Windows.Forms.Button()
+        Me.baconSideButton = New System.Windows.Forms.Button()
+        Me.close86Button = New System.Windows.Forms.Button()
+        Me.closeSidesButton = New System.Windows.Forms.Button()
         Me.tabControlWaiter.SuspendLayout()
         Me.alcoholTab.SuspendLayout()
         Me.drinksTab.SuspendLayout()
@@ -66,6 +72,7 @@ Partial Class waiter
         Me.entreeTab.SuspendLayout()
         Me.dessertTab.SuspendLayout()
         Me.eightySixTab.SuspendLayout()
+        Me.sideOfTab.SuspendLayout()
         Me.SuspendLayout()
         '
         'orderTextBox
@@ -280,6 +287,7 @@ Partial Class waiter
         '
         'eightySixTab
         '
+        Me.eightySixTab.Controls.Add(Me.close86Button)
         Me.eightySixTab.Controls.Add(Me.onion86Button)
         Me.eightySixTab.Controls.Add(Me.tomato86Button)
         Me.eightySixTab.Controls.Add(Me.lettuce86Button)
@@ -339,6 +347,11 @@ Partial Class waiter
         '
         'sideOfTab
         '
+        Me.sideOfTab.Controls.Add(Me.closeSidesButton)
+        Me.sideOfTab.Controls.Add(Me.baconSideButton)
+        Me.sideOfTab.Controls.Add(Me.salsaSideButton)
+        Me.sideOfTab.Controls.Add(Me.chipsSideButton)
+        Me.sideOfTab.Controls.Add(Me.friesSideButton)
         Me.sideOfTab.Location = New System.Drawing.Point(4, 37)
         Me.sideOfTab.Name = "sideOfTab"
         Me.sideOfTab.Size = New System.Drawing.Size(818, 564)
@@ -449,6 +462,60 @@ Partial Class waiter
         Me.yesButton.UseVisualStyleBackColor = True
         Me.yesButton.Visible = False
         '
+        'friesSideButton
+        '
+        Me.friesSideButton.Location = New System.Drawing.Point(20, 20)
+        Me.friesSideButton.Name = "friesSideButton"
+        Me.friesSideButton.Size = New System.Drawing.Size(100, 100)
+        Me.friesSideButton.TabIndex = 1
+        Me.friesSideButton.Text = "Fries"
+        Me.friesSideButton.UseVisualStyleBackColor = True
+        '
+        'chipsSideButton
+        '
+        Me.chipsSideButton.Location = New System.Drawing.Point(126, 20)
+        Me.chipsSideButton.Name = "chipsSideButton"
+        Me.chipsSideButton.Size = New System.Drawing.Size(100, 100)
+        Me.chipsSideButton.TabIndex = 2
+        Me.chipsSideButton.Text = "Chips"
+        Me.chipsSideButton.UseVisualStyleBackColor = True
+        '
+        'salsaSideButton
+        '
+        Me.salsaSideButton.Location = New System.Drawing.Point(232, 20)
+        Me.salsaSideButton.Name = "salsaSideButton"
+        Me.salsaSideButton.Size = New System.Drawing.Size(100, 100)
+        Me.salsaSideButton.TabIndex = 3
+        Me.salsaSideButton.Text = "Salsa"
+        Me.salsaSideButton.UseVisualStyleBackColor = True
+        '
+        'baconSideButton
+        '
+        Me.baconSideButton.Location = New System.Drawing.Point(338, 20)
+        Me.baconSideButton.Name = "baconSideButton"
+        Me.baconSideButton.Size = New System.Drawing.Size(100, 100)
+        Me.baconSideButton.TabIndex = 4
+        Me.baconSideButton.Text = "Bacon"
+        Me.baconSideButton.UseVisualStyleBackColor = True
+        '
+        'close86Button
+        '
+        Me.close86Button.Location = New System.Drawing.Point(715, 461)
+        Me.close86Button.Name = "close86Button"
+        Me.close86Button.Size = New System.Drawing.Size(100, 100)
+        Me.close86Button.TabIndex = 5
+        Me.close86Button.Text = "Close 86"
+        Me.close86Button.UseVisualStyleBackColor = True
+        '
+        'closeSidesButton
+        '
+        Me.closeSidesButton.Location = New System.Drawing.Point(715, 461)
+        Me.closeSidesButton.Name = "closeSidesButton"
+        Me.closeSidesButton.Size = New System.Drawing.Size(100, 100)
+        Me.closeSidesButton.TabIndex = 7
+        Me.closeSidesButton.Text = "Close Sides"
+        Me.closeSidesButton.UseVisualStyleBackColor = True
+        '
         'waiter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -476,6 +543,7 @@ Partial Class waiter
         Me.entreeTab.ResumeLayout(False)
         Me.dessertTab.ResumeLayout(False)
         Me.eightySixTab.ResumeLayout(False)
+        Me.sideOfTab.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -517,4 +585,10 @@ Partial Class waiter
     Friend WithEvents lettuce86Button As System.Windows.Forms.Button
     Friend WithEvents cheese86Button As System.Windows.Forms.Button
     Friend WithEvents bacon86Button As System.Windows.Forms.Button
+    Friend WithEvents friesSideButton As System.Windows.Forms.Button
+    Friend WithEvents close86Button As System.Windows.Forms.Button
+    Friend WithEvents baconSideButton As System.Windows.Forms.Button
+    Friend WithEvents salsaSideButton As System.Windows.Forms.Button
+    Friend WithEvents chipsSideButton As System.Windows.Forms.Button
+    Friend WithEvents closeSidesButton As System.Windows.Forms.Button
 End Class

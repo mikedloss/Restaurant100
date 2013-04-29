@@ -35,7 +35,6 @@ Partial Class firsttime
         Me.tableoccupancyPopulateButton = New System.Windows.Forms.Button()
         Me.tablechecksPopulateButton = New System.Windows.Forms.Button()
         Me.inventoryPopulateButton = New System.Windows.Forms.Button()
-        Me.employeeinfoPopulateButton = New System.Windows.Forms.Button()
         Me.populateLabel = New System.Windows.Forms.Label()
         Me.workLabel = New System.Windows.Forms.Label()
         Me.timer = New System.Windows.Forms.Timer(Me.components)
@@ -45,6 +44,9 @@ Partial Class firsttime
         Me.Label2 = New System.Windows.Forms.Label()
         Me.errorLabel = New System.Windows.Forms.Label()
         Me.finishedButton = New System.Windows.Forms.Button()
+        Me.manualIPTextBox = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.errorIPLabel = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'createDatabaseButton
@@ -121,7 +123,7 @@ Partial Class firsttime
         'tablewaitlistPopulateButton
         '
         Me.tablewaitlistPopulateButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tablewaitlistPopulateButton.Location = New System.Drawing.Point(998, 458)
+        Me.tablewaitlistPopulateButton.Location = New System.Drawing.Point(997, 384)
         Me.tablewaitlistPopulateButton.Name = "tablewaitlistPopulateButton"
         Me.tablewaitlistPopulateButton.Size = New System.Drawing.Size(255, 68)
         Me.tablewaitlistPopulateButton.TabIndex = 97
@@ -131,7 +133,7 @@ Partial Class firsttime
         'tableoccupancyPopulateButton
         '
         Me.tableoccupancyPopulateButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tableoccupancyPopulateButton.Location = New System.Drawing.Point(998, 384)
+        Me.tableoccupancyPopulateButton.Location = New System.Drawing.Point(997, 310)
         Me.tableoccupancyPopulateButton.Name = "tableoccupancyPopulateButton"
         Me.tableoccupancyPopulateButton.Size = New System.Drawing.Size(255, 68)
         Me.tableoccupancyPopulateButton.TabIndex = 96
@@ -141,7 +143,7 @@ Partial Class firsttime
         'tablechecksPopulateButton
         '
         Me.tablechecksPopulateButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tablechecksPopulateButton.Location = New System.Drawing.Point(998, 310)
+        Me.tablechecksPopulateButton.Location = New System.Drawing.Point(997, 236)
         Me.tablechecksPopulateButton.Name = "tablechecksPopulateButton"
         Me.tablechecksPopulateButton.Size = New System.Drawing.Size(255, 68)
         Me.tablechecksPopulateButton.TabIndex = 95
@@ -151,22 +153,12 @@ Partial Class firsttime
         'inventoryPopulateButton
         '
         Me.inventoryPopulateButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.inventoryPopulateButton.Location = New System.Drawing.Point(998, 236)
+        Me.inventoryPopulateButton.Location = New System.Drawing.Point(997, 162)
         Me.inventoryPopulateButton.Name = "inventoryPopulateButton"
         Me.inventoryPopulateButton.Size = New System.Drawing.Size(255, 68)
         Me.inventoryPopulateButton.TabIndex = 94
         Me.inventoryPopulateButton.Text = "Inventory"
         Me.inventoryPopulateButton.UseVisualStyleBackColor = True
-        '
-        'employeeinfoPopulateButton
-        '
-        Me.employeeinfoPopulateButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.employeeinfoPopulateButton.Location = New System.Drawing.Point(998, 162)
-        Me.employeeinfoPopulateButton.Name = "employeeinfoPopulateButton"
-        Me.employeeinfoPopulateButton.Size = New System.Drawing.Size(255, 68)
-        Me.employeeinfoPopulateButton.TabIndex = 93
-        Me.employeeinfoPopulateButton.Text = "Employee info"
-        Me.employeeinfoPopulateButton.UseVisualStyleBackColor = True
         '
         'populateLabel
         '
@@ -257,11 +249,41 @@ Partial Class firsttime
         Me.finishedButton.Text = "Finished? Click me"
         Me.finishedButton.UseVisualStyleBackColor = True
         '
+        'manualIPTextBox
+        '
+        Me.manualIPTextBox.Location = New System.Drawing.Point(15, 384)
+        Me.manualIPTextBox.Name = "manualIPTextBox"
+        Me.manualIPTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.manualIPTextBox.TabIndex = 106
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(12, 368)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(55, 13)
+        Me.Label3.TabIndex = 107
+        Me.Label3.Text = "Manual IP"
+        '
+        'errorIPLabel
+        '
+        Me.errorIPLabel.AutoSize = True
+        Me.errorIPLabel.ForeColor = System.Drawing.Color.Red
+        Me.errorIPLabel.Location = New System.Drawing.Point(12, 407)
+        Me.errorIPLabel.Name = "errorIPLabel"
+        Me.errorIPLabel.Size = New System.Drawing.Size(28, 13)
+        Me.errorIPLabel.TabIndex = 108
+        Me.errorIPLabel.Text = "error"
+        Me.errorIPLabel.Visible = False
+        '
         'firsttime
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1264, 680)
+        Me.Controls.Add(Me.errorIPLabel)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.manualIPTextBox)
         Me.Controls.Add(Me.finishedButton)
         Me.Controls.Add(Me.errorLabel)
         Me.Controls.Add(Me.Label2)
@@ -274,7 +296,6 @@ Partial Class firsttime
         Me.Controls.Add(Me.tableoccupancyPopulateButton)
         Me.Controls.Add(Me.tablechecksPopulateButton)
         Me.Controls.Add(Me.inventoryPopulateButton)
-        Me.Controls.Add(Me.employeeinfoPopulateButton)
         Me.Controls.Add(Me.createLabel)
         Me.Controls.Add(Me.tablewaitlistTableButton)
         Me.Controls.Add(Me.tableoccupancyTableButton)
@@ -299,7 +320,6 @@ Partial Class firsttime
     Friend WithEvents tableoccupancyPopulateButton As System.Windows.Forms.Button
     Friend WithEvents tablechecksPopulateButton As System.Windows.Forms.Button
     Friend WithEvents inventoryPopulateButton As System.Windows.Forms.Button
-    Friend WithEvents employeeinfoPopulateButton As System.Windows.Forms.Button
     Friend WithEvents populateLabel As System.Windows.Forms.Label
     Friend WithEvents workLabel As System.Windows.Forms.Label
     Friend WithEvents timer As System.Windows.Forms.Timer
@@ -309,4 +329,7 @@ Partial Class firsttime
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents errorLabel As System.Windows.Forms.Label
     Friend WithEvents finishedButton As System.Windows.Forms.Button
+    Friend WithEvents manualIPTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents errorIPLabel As System.Windows.Forms.Label
 End Class

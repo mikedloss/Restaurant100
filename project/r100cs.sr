@@ -1,0 +1,3 @@
+Database=restaurant;
+Data Source=localhost;
+User Id=root;Password=root;

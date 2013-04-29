@@ -67,17 +67,37 @@
         iceCream = 1
         price = 3
     End Enum
+    Public Enum side1   'fries
+        fries = 1
+        price = 1
+    End Enum
+    Public Enum side2   'chips
+        chips = 1
+        price = 1
+    End Enum
+    Public Enum side3   'salsa
+        salsa = 1
+        price = 1
+    End Enum
+    Public Enum side4   'bacon
+        bacon = 1
+        price = 1
+    End Enum
 
-    Public Const alcohol1s As String = "$5  -  1 BEER" + vbCrLf
-    Public Const drink1s As String = "$2  -  1 JUICE" + vbCrLf
-    Public Const drink2s As String = "$2  -  1 SODA" + vbCrLf
-    Public Const drink3s As String = "$2  -  1 MILK" + vbCrLf
-    Public Const drink4s As String = "$0  -  1 WATER" + vbCrLf
-    Public Const appetizer1s As String = "$5  -  1 CHEESE FRY" + vbCrLf
-    Public Const appetizer2s As String = "$4  -  1 POTATO SKINS" + vbCrLf
-    Public Const appetizer3s As String = "$2  -  1 CHIPS & SALSA" + vbCrLf
-    Public Const entree1s As String = "$8  -  1 HONEY BBQ" + vbCrLf
-    Public Const entree2s As String = "$7  -  1 TURKEY BLT" + vbCrLf
-    Public Const entree3s As String = "$7  -  1 BACON BURGER" + vbCrLf
-    Public Const dessert1s As String = "$3  -  1 ICE CREAM" + vbCrLf
+    Public Const alcohol1s As String = "$5  -  BEER" + vbCrLf
+    Public Const drink1s As String = "$2  -  JUICE" + vbCrLf
+    Public Const drink2s As String = "$2  -  SODA" + vbCrLf
+    Public Const drink3s As String = "$2  -  MILK" + vbCrLf
+    Public Const drink4s As String = "$0  -  WATER" + vbCrLf
+    Public Const appetizer1s As String = "$5  -  CHEESE FRY" + vbCrLf
+    Public Const appetizer2s As String = "$4  -  POTATO SKINS" + vbCrLf
+    Public Const appetizer3s As String = "$2  -  CHIPS & SALSA" + vbCrLf
+    Public Const entree1s As String = "$8  -  HONEY BBQ" + vbCrLf
+    Public Const entree2s As String = "$7  -  TURKEY BLT" + vbCrLf
+    Public Const entree3s As String = "$7  -  BACON BURGER" + vbCrLf
+    Public Const dessert1s As String = "$3  -  ICE CREAM" + vbCrLf
+    Public Const side1s As String = "$1  -  FRIES (side)" + vbCrLf
+    Public Const side2s As String = "$1  -  CHIPS (side)" + vbCrLf
+    Public Const side3s As String = "$1  -  SALSA (side)" + vbCrLf
+    Public Const side4s As String = "$1  -  BACON (side)" + vbCrLf
 End Class
