@@ -9,7 +9,6 @@ Public Class manager
     '2 = waiter
     '3 = cook/qa
     '4 = manager
-    '5 = the best person in the world
     Public connStr As String
     Dim unID As String
     Dim displayName As String
@@ -64,13 +63,14 @@ Public Class manager
         timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
         count += 1
         If count = 10 Then
-            'refreshTables()
+            retrieveWaitlistData()
             retrieveOccupancyData()
             count = 0
         End If
     End Sub
 
     Private Sub logoutButton_Click(sender As System.Object, e As System.EventArgs) Handles logoutButton.Click
+        login.Update()
         Me.Close()
         login.Show()
     End Sub
@@ -87,6 +87,10 @@ Public Class manager
         Finally
             connection.Close()
         End Try
+        login.timeLogout = Date.Parse(Date.Now)
+        login.sendTime(unID)
+
+        login.Update()
         Me.Close()
         login.Show()
     End Sub
@@ -121,6 +125,7 @@ Public Class manager
         Dim password As String = passwordTextbox.Text
         Dim note As String = noteTextBox.Text
         Dim zone As String = "0"
+        Dim timeworked As String = "0.00"
 
         errorFirstNameLabel.Visible = False
         errorLastNameLabel.Visible = False
@@ -178,7 +183,7 @@ Public Class manager
             flag = False
         End If
 
-        Dim query As String = "INSERT INTO restaurant.employeeinfo (`un`, `pw`, `type`, `firstname`, `lastname`, `displayname`, `isLoggedIn`, `note`, `areaNumber`) VALUES ('" + username + "', '" + password + "', '" + employeeType + "', '" + firstName + "', '" + lastName + "', '" + displayName + "', 'n', '" + note + "', '" + zone + "');"
+        Dim query As String = "INSERT INTO restaurant.employeeinfo (`un`, `pw`, `type`, `firstname`, `lastname`, `displayname`, `isLoggedIn`, `note`, `areaNumber`, `timeworked`) VALUES ('" + username + "', '" + password + "', '" + employeeType + "', '" + firstName + "', '" + lastName + "', '" + displayName + "', 'n', '" + note + "', '" + zone + "', '" + timeworked + "');"
         Using connection As New MySqlConnection(connStr)
             Dim command As New MySqlCommand(query, connection)
             Try
@@ -205,7 +210,6 @@ Public Class manager
 
     Private Sub waiterButton_CheckedChanged(sender As Object, e As EventArgs) Handles waiterButton.CheckedChanged
         zoneGroupBox.Visible = True
-        'zoneLabel.Visible = True
         zone1Button.Visible = True
         zone2Button.Visible = True
         zone3Button.Visible = True
@@ -273,6 +277,7 @@ Public Class manager
         Dim password As String
         Dim note As String
         Dim zone As String
+        Dim timeworked As String
         Dim imAWaiter As Boolean
         Dim holdn As String = ""
         Dim queryN As String = "SELECT n FROM restaurant.employeeinfo LIMIT " + Convert.ToString(DataGridView1.CurrentCell.RowIndex) + ",1;"
@@ -341,6 +346,13 @@ Public Class manager
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
             End Try
+            Dim queryTW As String = "SELECT timeworked FROM restaurant.employeeinfo WHERE n='" + holdn + "';"
+            command = New MySqlCommand(queryTW, connection)
+            Try
+                timeworked = Convert.ToString(command.ExecuteScalar())
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
             connection.Close()
         End Using
 
@@ -350,6 +362,7 @@ Public Class manager
         usernameTextBoxE.Text = username
         passwordTextBoxE.Text = password
         noteTextBoxE.Text = note
+        timeWorkedTextBox.Text = timeworked
 
         If employeeType = "1" Then
             hostButtonE.Checked = True
@@ -395,6 +408,7 @@ Public Class manager
         Dim note As String = noteTextBoxE.Text
         Dim holdn As String = holdnforedit
         Dim zone As String = "0"
+        Dim timeworked As String = timeWorkedTextBox.Text
 
         errorFirstNameLabelE.Visible = False
         errorLastNameLabelE.Visible = False
@@ -449,10 +463,14 @@ Public Class manager
             errorPasswordLabelE.Text = "You need a correct password PIN (4 digits)"
             errorPasswordLabelE.Visible = True
             flag = False
+        ElseIf (timeworked Like "*[a-z]*" Or timeworked Like "*[A-Z]*") Then
+            timeWorkedErrorLabel.Text = "Incorrect format"
+            timeWorkedErrorLabel.Visible = True
+            flag = False
         End If
 
         'nascar time
-        Dim updateQuery As String = "UPDATE restaurant.employeeinfo SET `un`='" + username + "', `pw`='" + password + "', `type`='" + employeeType + "', `firstname`='" + firstName + "', `lastname`='" + lastName + "', `displayname`='" + displayName + "', `note`='" + note + "', `areaNumber`='" + zone + "' WHERE `n`='" + holdn + "';"
+        Dim updateQuery As String = "UPDATE restaurant.employeeinfo SET `un`='" + username + "', `pw`='" + password + "', `type`='" + employeeType + "', `firstname`='" + firstName + "', `lastname`='" + lastName + "', `displayname`='" + displayName + "', `note`='" + note + "', `areaNumber`='" + zone + "', `timeworked`='" + timeworked + "' WHERE `n`='" + holdn + "';"
         Using connection As New MySqlConnection(connStr)
             Dim command As New MySqlCommand(updateQuery, connection)
             Try
@@ -494,6 +512,25 @@ Public Class manager
         displayNameTextBoxE.Text = ""
         usernameTextBoxE.Text = ""
         passwordTextBoxE.Text = ""
+    End Sub
+
+    Private Sub resetTimeWorkedButton_Click(sender As Object, e As EventArgs) Handles resetTimeWorkedButton.Click
+        Dim dropcol As String = "ALTER TABLE `restaurant`.`employeeinfo` DROP COLUMN `timeworked` ;"
+        Dim addcol As String = "ALTER TABLE `restaurant`.`employeeinfo` ADD COLUMN `timeworked` DECIMAL(5,2) NOT NULL  AFTER `areaNumber` ;"
+        Using connection As New MySqlConnection(connStr)
+            Dim command1 As New MySqlCommand(dropcol, connection)
+            Dim command2 As New MySqlCommand(addcol, connection)
+            Try
+                connection.Open()
+                command1.ExecuteNonQuery()
+                command2.ExecuteNonQuery()
+                connection.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+        End Using
+        'restructureTable()
+        fillEmployeeTables()
     End Sub
 
     '---------------------inventory tab // things dealing with the inventory tab go here
@@ -661,10 +698,6 @@ Public Class manager
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
-    End Sub
-
-    Public Sub refreshTables()
-
     End Sub
 
     Public Sub retrieveOccupancyData()

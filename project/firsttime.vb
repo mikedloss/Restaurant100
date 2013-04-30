@@ -56,6 +56,7 @@ Public Class firsttime
         End If
         login.Update()
         Me.Close()
+        login.Show()
     End Sub
 
     Private Function writetofile()

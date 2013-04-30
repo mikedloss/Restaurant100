@@ -32,12 +32,10 @@ Public Class tables
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.WindowState = FormWindowState.Maximized
 
-        'maybe re-enable this idk
-        TabControl1.TabPages.Remove(infoTab)
-
-        fillWaiterLabel()
+        fillWaiterLabel()   'waiter list on side
 
         If employeeType = 2 Then
+            'putting waitlist on front tab and eliminating the keyboard and waitlist tab
             waiterModifications()
         End If
         If employeeType = 1 Then
@@ -50,11 +48,11 @@ Public Class tables
         timeLabel.Text = String.Format("{0:hh:mm:ss tt}", Date.Now)
         dateLabel.Text = Now.Date
 
+        'making datagridview unsortable for all columns
         Dim colnum As Integer = DataGridView1.ColumnCount
         Dim i As Integer
         For i = 0 To (colnum - 1)
             DataGridView1.Columns(i).SortMode = DataGridViewColumnSortMode.NotSortable
-            'DataGridView2.Columns(i).SortMode = DataGridViewColumnSortMode.NotSortable
         Next
     End Sub
 
@@ -64,12 +62,16 @@ Public Class tables
         count += 1
         If count = 10 Then
             retrieveOccupancyData()
+            retrieveWaitlistData()
             count = 0
         End If
     End Sub
 
+    '---------------------table buttons, look at table1 for comments
     Private Sub table1Button_Click(sender As Object, e As EventArgs) Handles table1Button.Click
         Dim tableNum As Integer = 1
+        'if employee is a waiter, then bring up waiter form
+        'else, continue w/ host stuff
         If (employeeType = 2) Then
             If checkFlag(1) = True Then
                 Dim waiterform As New waiter(tableNum, connStr)
@@ -78,6 +80,7 @@ Public Class tables
                 MsgBox("you can't do that ;)")
             End If
         Else
+            'update db if host to reflect changes
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
             Dim queryN As String = "UPDATE restaurant.tableoccupancy SET `occupied`='n' WHERE `n`='" + Convert.ToString(tableNum) + "';"
 
@@ -1070,11 +1073,13 @@ Public Class tables
     End Sub
 
     Private Sub logoutButton_Click(sender As System.Object, e As System.EventArgs) Handles logoutButton.Click
+        login.Update()
         Me.Close()
         login.Show()
     End Sub
 
     Private Sub clockOutButton_Click_1(sender As Object, e As EventArgs) Handles clockOutButton.Click
+        'update db to reflect if user is logged in or not
         Dim query As String = "UPDATE restaurant.employeeinfo SET `isLoggedIn`='n' WHERE `un`='" + unID + "';"
         Dim connection As New MySqlConnection(connStr)
         Dim command As New MySqlCommand(query, connection)
@@ -1086,6 +1091,12 @@ Public Class tables
         Finally
             connection.Close()
         End Try
+
+        'sending clock out time to db
+        login.timeLogout = Date.Parse(Date.Now)
+        login.sendTime(unID)
+
+        login.Update()
         Me.Close()
         login.Show()
     End Sub

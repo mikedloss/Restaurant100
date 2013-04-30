@@ -16,7 +16,13 @@ Public Class login
     Dim username As String
     Friend FTstring1 As String
     Friend FTflag1 As Boolean
-    Friend CEFlag As Boolean    'true = localhost, false = ip
+    Friend CEFlag As Boolean
+    Friend timeLogin As System.DateTime = Date.Parse(Date.Now)  '(year, month, day, hour, minute, second)
+    'Dim test As New System.DateTime(2013, 1, 2, 3, 4, 5)    '#1/2/2013 3:04:05AM#
+    'Friend timeLoginCapture As New System.DateTime
+    Friend timeLogout As System.DateTime
+    'Friend timeLogoutCapture As New System.DateTime
+    'true = localhost, false = ip
 
     Private Sub login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'tests the connection to make sure it works
@@ -57,7 +63,7 @@ Public Class login
         End Try
     End Sub
 
-    Private Sub ftevents()
+    Public Sub ftevents()
         Dim path As String = Application.StartupPath + "\r100ft.sr"
 
         'first read file to see if it is first time or not
@@ -84,7 +90,7 @@ Public Class login
         End If
     End Sub
 
-    Private Sub connectionevents()
+    Public Sub connectionevents()
         Dim path As String = Application.StartupPath + "\r100cs.sr"
 
         'read file for connection info
@@ -135,11 +141,11 @@ Public Class login
             errorLabel.Visible = True
             usernameLogin.Text = ""
             passwordLogin.Text = ""
-            'ElseIf (FTflag1 = True) Then
-            '    Dim un As String = usernameLogin.Text
-            '    Dim pw As String = passwordLogin.Text
-            '    Dim firsttimeForm As New firsttime(connStr, un, pw)
-            '    firsttimeForm.Show()
+        ElseIf (FTflag1 = True) Then        ''unfinished feature''
+            Dim un As String = usernameLogin.Text
+            Dim pw As String = passwordLogin.Text
+            Dim firsttimeForm As New firsttime(connstr, un, pw)
+            firsttimeForm.Show()
         ElseIf (usernameLogin.Text.Length < 4 Or passwordLogin.Text.Length < 4 Or retrieveTest() = False) Then
             errorLabel.Text = "ERROR: WRONG ID/PW"
             errorLabel.Visible = True
@@ -150,7 +156,7 @@ Public Class login
             If (queryTypeResult = 1 Or queryTypeResult = 2 Or queryTypeResult = 5) Then
                 Dim tablesForm As New tables(queryTypeResult, queryDisplayName, connStr, username)
                 tablesForm.Show()
-                'captureTime()
+                captureTime()
                 'Me.Hide()
             ElseIf (queryTypeResult = 3) Then
                 Dim cookForm As New cook(connStr, username, queryDisplayName)
@@ -162,6 +168,11 @@ Public Class login
             usernameLogin.Text = ""
             passwordLogin.Text = ""
             errorLabel.Visible = False
+            'queryResult = Nothing
+            'queryTypeResult = Nothing
+            'queryDisplayName = Nothing
+            'username = Nothing
+            'FTstring1 = Nothing
         End If
         usernameLogin.Text = ""
         passwordLogin.Text = ""
@@ -173,11 +184,31 @@ Public Class login
     End Sub
 
     Public Sub captureTime()
-        Dim timeLogin As System.DateTime = Date.Parse(Date.Now)
-        Dim timeLoginCapture As New System.DateTime
-        Dim timeLogout As System.DateTime
-        Dim timeLogoutCapture As New System.DateTime
+        timeLogin = Date.Parse(Date.Now)
+    End Sub
 
+    Public Sub sendTime(ByVal username As String)
+        Dim difference As System.TimeSpan
+        Dim timeworked As Decimal
+        difference = timeLogout.Subtract(timeLogin)
+        timeworked = FormatNumber(difference.TotalHours, 2)
+        Dim querySEND As String = "UPDATE restaurant.employeeinfo SET timeworked='" + Convert.ToString(timeworked) + "' WHERE un='" + username + "';"
+        Dim queryGET As String = "SELECT timeworked FROM restaurant.employeeinfo WHERE un='" + username + "';"
+        Dim queryGETresult As Integer
+
+        Using connection As New MySqlConnection(connstr)
+            Dim command1 As New MySqlCommand(queryGET, connection)
+            Dim command2 As New MySqlCommand(querySEND, connection)
+            Try
+                connection.Open()
+                queryGETresult = Convert.ToInt32(command1.ExecuteScalar())
+                timeworked = timeworked + queryGETresult
+                command2.ExecuteNonQuery()
+                connection.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+        End Using
     End Sub
 
     Public Sub loggingIn()
@@ -240,6 +271,8 @@ Public Class login
                         returnAnswer = True                             'flag to say everything is good to go!
                     End Using
                 End If
+            Else
+                returnAnswer = False
             End If
 
 
@@ -381,7 +414,7 @@ Public Class login
         usernameLogin.Text = ""
         passwordLogin.Text = ""
         'get rid of below code
-        Me.Close()
+        'Me.Close()
     End Sub
 
     'Private Sub reconnectButton_Click(sender As Object, e As EventArgs)

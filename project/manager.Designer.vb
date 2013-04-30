@@ -23,9 +23,9 @@ Partial Class manager
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.employeeTab = New System.Windows.Forms.TabPage()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
@@ -102,6 +102,11 @@ Partial Class manager
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.inventoryTab = New System.Windows.Forms.TabPage()
+        Me.inventoryErrorLabel = New System.Windows.Forms.Label()
+        Me.itemNameLabel = New System.Windows.Forms.Label()
+        Me.itemNameTextBox = New System.Windows.Forms.TextBox()
+        Me.inventoryNoteLabel = New System.Windows.Forms.Label()
+        Me.updateInventoryButton = New System.Windows.Forms.Button()
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.newCountLabel = New System.Windows.Forms.Label()
         Me.currentCountLabel = New System.Windows.Forms.Label()
@@ -180,11 +185,10 @@ Partial Class manager
         Me.timer = New System.Windows.Forms.Timer(Me.components)
         Me.logoutButton = New System.Windows.Forms.Button()
         Me.clockOutButton = New System.Windows.Forms.Button()
-        Me.updateInventoryButton = New System.Windows.Forms.Button()
-        Me.inventoryNoteLabel = New System.Windows.Forms.Label()
-        Me.itemNameTextBox = New System.Windows.Forms.TextBox()
-        Me.itemNameLabel = New System.Windows.Forms.Label()
-        Me.inventoryErrorLabel = New System.Windows.Forms.Label()
+        Me.resetTimeWorkedButton = New System.Windows.Forms.Button()
+        Me.timeWorkedErrorLabel = New System.Windows.Forms.Label()
+        Me.timeWorkedTextBox = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.employeeTab.SuspendLayout()
         Me.TabControl2.SuspendLayout()
@@ -260,6 +264,7 @@ Partial Class manager
         '
         'listTab
         '
+        Me.listTab.Controls.Add(Me.resetTimeWorkedButton)
         Me.listTab.Controls.Add(Me.addEmployeeButtonDGV)
         Me.listTab.Controls.Add(Me.deleteButton)
         Me.listTab.Controls.Add(Me.editEmployeeButtonDGV)
@@ -279,27 +284,27 @@ Partial Class manager
         Me.addEmployeeButtonDGV.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.addEmployeeButtonDGV.Location = New System.Drawing.Point(0, 407)
         Me.addEmployeeButtonDGV.Name = "addEmployeeButtonDGV"
-        Me.addEmployeeButtonDGV.Size = New System.Drawing.Size(410, 68)
+        Me.addEmployeeButtonDGV.Size = New System.Drawing.Size(290, 68)
         Me.addEmployeeButtonDGV.TabIndex = 85
         Me.addEmployeeButtonDGV.Text = "ADD EMPLOYEE"
         Me.addEmployeeButtonDGV.UseVisualStyleBackColor = True
         '
         'deleteButton
         '
-        Me.deleteButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.deleteButton.Location = New System.Drawing.Point(820, 407)
+        Me.deleteButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.deleteButton.Location = New System.Drawing.Point(592, 407)
         Me.deleteButton.Name = "deleteButton"
-        Me.deleteButton.Size = New System.Drawing.Size(410, 68)
+        Me.deleteButton.Size = New System.Drawing.Size(290, 68)
         Me.deleteButton.TabIndex = 84
         Me.deleteButton.Text = "DELETE EMPLOYEE"
         Me.deleteButton.UseVisualStyleBackColor = True
         '
         'editEmployeeButtonDGV
         '
-        Me.editEmployeeButtonDGV.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.editEmployeeButtonDGV.Location = New System.Drawing.Point(410, 407)
+        Me.editEmployeeButtonDGV.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.editEmployeeButtonDGV.Location = New System.Drawing.Point(296, 407)
         Me.editEmployeeButtonDGV.Name = "editEmployeeButtonDGV"
-        Me.editEmployeeButtonDGV.Size = New System.Drawing.Size(410, 68)
+        Me.editEmployeeButtonDGV.Size = New System.Drawing.Size(290, 68)
         Me.editEmployeeButtonDGV.TabIndex = 83
         Me.editEmployeeButtonDGV.Text = "EDIT EMPLOYEE"
         Me.editEmployeeButtonDGV.UseVisualStyleBackColor = True
@@ -313,14 +318,14 @@ Partial Class manager
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SkyBlue
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SkyBlue
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.EnableHeadersVisualStyles = False
         Me.DataGridView1.GridColor = System.Drawing.SystemColors.Control
@@ -722,6 +727,9 @@ Partial Class manager
         '
         'editTab
         '
+        Me.editTab.Controls.Add(Me.timeWorkedErrorLabel)
+        Me.editTab.Controls.Add(Me.timeWorkedTextBox)
+        Me.editTab.Controls.Add(Me.Label20)
         Me.editTab.Controls.Add(Me.zoneGroupBoxE)
         Me.editTab.Controls.Add(Me.zoneErrorLabelE)
         Me.editTab.Controls.Add(Me.Label9)
@@ -1128,6 +1136,61 @@ Partial Class manager
         Me.inventoryTab.Text = "INVENTORY"
         Me.inventoryTab.UseVisualStyleBackColor = True
         '
+        'inventoryErrorLabel
+        '
+        Me.inventoryErrorLabel.AutoSize = True
+        Me.inventoryErrorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.inventoryErrorLabel.ForeColor = System.Drawing.Color.Firebrick
+        Me.inventoryErrorLabel.Location = New System.Drawing.Point(1090, 105)
+        Me.inventoryErrorLabel.Name = "inventoryErrorLabel"
+        Me.inventoryErrorLabel.Size = New System.Drawing.Size(47, 20)
+        Me.inventoryErrorLabel.TabIndex = 92
+        Me.inventoryErrorLabel.Text = "error"
+        Me.inventoryErrorLabel.Visible = False
+        '
+        'itemNameLabel
+        '
+        Me.itemNameLabel.AutoSize = True
+        Me.itemNameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.itemNameLabel.Location = New System.Drawing.Point(769, 32)
+        Me.itemNameLabel.Name = "itemNameLabel"
+        Me.itemNameLabel.Size = New System.Drawing.Size(37, 16)
+        Me.itemNameLabel.TabIndex = 91
+        Me.itemNameLabel.Text = "Item"
+        Me.itemNameLabel.Visible = False
+        '
+        'itemNameTextBox
+        '
+        Me.itemNameTextBox.Location = New System.Drawing.Point(772, 51)
+        Me.itemNameTextBox.Name = "itemNameTextBox"
+        Me.itemNameTextBox.ReadOnly = True
+        Me.itemNameTextBox.Size = New System.Drawing.Size(210, 22)
+        Me.itemNameTextBox.TabIndex = 90
+        Me.itemNameTextBox.Visible = False
+        '
+        'inventoryNoteLabel
+        '
+        Me.inventoryNoteLabel.AutoSize = True
+        Me.inventoryNoteLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.inventoryNoteLabel.Location = New System.Drawing.Point(816, 377)
+        Me.inventoryNoteLabel.Name = "inventoryNoteLabel"
+        Me.inventoryNoteLabel.Size = New System.Drawing.Size(409, 72)
+        Me.inventoryNoteLabel.TabIndex = 89
+        Me.inventoryNoteLabel.Text = "Please note:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  This is only an update to the database. You still" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "need to order " & _
+    "items from your distributor."
+        Me.inventoryNoteLabel.Visible = False
+        '
+        'updateInventoryButton
+        '
+        Me.updateInventoryButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.updateInventoryButton.Location = New System.Drawing.Point(949, 452)
+        Me.updateInventoryButton.Name = "updateInventoryButton"
+        Me.updateInventoryButton.Size = New System.Drawing.Size(276, 68)
+        Me.updateInventoryButton.TabIndex = 88
+        Me.updateInventoryButton.Text = "Update inventory"
+        Me.updateInventoryButton.UseVisualStyleBackColor = True
+        Me.updateInventoryButton.Visible = False
+        '
         'DataGridView3
         '
         Me.DataGridView3.AllowUserToDeleteRows = False
@@ -1135,14 +1198,14 @@ Partial Class manager
         Me.DataGridView3.AllowUserToResizeRows = False
         Me.DataGridView3.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SkyBlue
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SkyBlue
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView3.EnableHeadersVisualStyles = False
         Me.DataGridView3.GridColor = System.Drawing.SystemColors.Control
@@ -1357,14 +1420,14 @@ Partial Class manager
         Me.DataGridView2.AllowUserToResizeRows = False
         Me.DataGridView2.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SkyBlue
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SkyBlue
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView2.ColumnHeadersVisible = False
         Me.DataGridView2.EnableHeadersVisualStyles = False
@@ -2002,59 +2065,46 @@ Partial Class manager
         Me.clockOutButton.Text = "CLOCK OUT"
         Me.clockOutButton.UseVisualStyleBackColor = True
         '
-        'updateInventoryButton
+        'resetTimeWorkedButton
         '
-        Me.updateInventoryButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.updateInventoryButton.Location = New System.Drawing.Point(949, 452)
-        Me.updateInventoryButton.Name = "updateInventoryButton"
-        Me.updateInventoryButton.Size = New System.Drawing.Size(276, 68)
-        Me.updateInventoryButton.TabIndex = 88
-        Me.updateInventoryButton.Text = "Update inventory"
-        Me.updateInventoryButton.UseVisualStyleBackColor = True
-        Me.updateInventoryButton.Visible = False
+        Me.resetTimeWorkedButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.resetTimeWorkedButton.Location = New System.Drawing.Point(1130, 407)
+        Me.resetTimeWorkedButton.Name = "resetTimeWorkedButton"
+        Me.resetTimeWorkedButton.Size = New System.Drawing.Size(97, 68)
+        Me.resetTimeWorkedButton.TabIndex = 86
+        Me.resetTimeWorkedButton.Text = "RESET TIME WORKED"
+        Me.resetTimeWorkedButton.UseVisualStyleBackColor = True
         '
-        'inventoryNoteLabel
+        'timeWorkedErrorLabel
         '
-        Me.inventoryNoteLabel.AutoSize = True
-        Me.inventoryNoteLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.inventoryNoteLabel.Location = New System.Drawing.Point(816, 377)
-        Me.inventoryNoteLabel.Name = "inventoryNoteLabel"
-        Me.inventoryNoteLabel.Size = New System.Drawing.Size(409, 72)
-        Me.inventoryNoteLabel.TabIndex = 89
-        Me.inventoryNoteLabel.Text = "Please note:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  This is only an update to the database. You still" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "need to order " & _
-    "items from your distributor."
-        Me.inventoryNoteLabel.Visible = False
+        Me.timeWorkedErrorLabel.AutoSize = True
+        Me.timeWorkedErrorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.timeWorkedErrorLabel.ForeColor = System.Drawing.Color.Firebrick
+        Me.timeWorkedErrorLabel.Location = New System.Drawing.Point(574, 446)
+        Me.timeWorkedErrorLabel.Name = "timeWorkedErrorLabel"
+        Me.timeWorkedErrorLabel.Size = New System.Drawing.Size(47, 20)
+        Me.timeWorkedErrorLabel.TabIndex = 137
+        Me.timeWorkedErrorLabel.Text = "error"
+        Me.timeWorkedErrorLabel.Visible = False
         '
-        'itemNameTextBox
+        'timeWorkedTextBox
         '
-        Me.itemNameTextBox.Location = New System.Drawing.Point(772, 51)
-        Me.itemNameTextBox.Name = "itemNameTextBox"
-        Me.itemNameTextBox.ReadOnly = True
-        Me.itemNameTextBox.Size = New System.Drawing.Size(210, 22)
-        Me.itemNameTextBox.TabIndex = 90
-        Me.itemNameTextBox.Visible = False
+        Me.timeWorkedTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.timeWorkedTextBox.Location = New System.Drawing.Point(578, 421)
+        Me.timeWorkedTextBox.MaxLength = 6
+        Me.timeWorkedTextBox.Name = "timeWorkedTextBox"
+        Me.timeWorkedTextBox.Size = New System.Drawing.Size(60, 22)
+        Me.timeWorkedTextBox.TabIndex = 136
         '
-        'itemNameLabel
+        'Label20
         '
-        Me.itemNameLabel.AutoSize = True
-        Me.itemNameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.itemNameLabel.Location = New System.Drawing.Point(769, 32)
-        Me.itemNameLabel.Name = "itemNameLabel"
-        Me.itemNameLabel.Size = New System.Drawing.Size(37, 16)
-        Me.itemNameLabel.TabIndex = 91
-        Me.itemNameLabel.Text = "Item"
-        '
-        'inventoryErrorLabel
-        '
-        Me.inventoryErrorLabel.AutoSize = True
-        Me.inventoryErrorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.inventoryErrorLabel.ForeColor = System.Drawing.Color.Firebrick
-        Me.inventoryErrorLabel.Location = New System.Drawing.Point(1090, 105)
-        Me.inventoryErrorLabel.Name = "inventoryErrorLabel"
-        Me.inventoryErrorLabel.Size = New System.Drawing.Size(47, 20)
-        Me.inventoryErrorLabel.TabIndex = 92
-        Me.inventoryErrorLabel.Text = "error"
-        Me.inventoryErrorLabel.Visible = False
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(479, 424)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(90, 16)
+        Me.Label20.TabIndex = 135
+        Me.Label20.Text = "Time Worked"
         '
         'manager
         '
@@ -2268,4 +2318,8 @@ Partial Class manager
     Friend WithEvents itemNameTextBox As System.Windows.Forms.TextBox
     Friend WithEvents itemNameLabel As System.Windows.Forms.Label
     Friend WithEvents inventoryErrorLabel As System.Windows.Forms.Label
+    Friend WithEvents resetTimeWorkedButton As System.Windows.Forms.Button
+    Friend WithEvents timeWorkedErrorLabel As System.Windows.Forms.Label
+    Friend WithEvents timeWorkedTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Label20 As System.Windows.Forms.Label
 End Class

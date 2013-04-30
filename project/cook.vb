@@ -46,6 +46,7 @@ Public Class cook
     End Sub
 
     Private Sub logoutButton_Click(sender As System.Object, e As System.EventArgs) Handles logoutButton.Click
+        login.Update()
         Me.Close()
         login.Show()
     End Sub
@@ -62,6 +63,10 @@ Public Class cook
         Finally
             connection.Close()
         End Try
+        login.timeLogout = Date.Parse(Date.Now)
+        login.sendTime(unID)
+
+        login.Update()
         Me.Close()
         login.Show()
     End Sub

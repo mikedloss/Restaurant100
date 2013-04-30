@@ -129,18 +129,9 @@ Public Class waiter
     End Sub
 
     Private Sub updateCheck()
-        Dim queryGET As String = "SELECT items FROM restaurant.tablechecks WHERE tablenum='" + tableNumber + "';"
-        'Dim getItems As String
+        Dim queryGET As String
         Using connection As New MySqlConnection(connStr)
             Dim command As New MySqlCommand(queryGET, connection)
-            'Try
-            'connection.Open()
-            'getItems = Convert.ToString(Command.ExecuteScalar())
-            'connection.Close()
-            'Catch ex As Exception
-            'Console.WriteLine(ex.Message)
-            'End Try
-            'getItems += text
             Dim querySEND As String = "UPDATE restaurant.tablechecks SET items='" + checkString + "', total='" + Convert.ToString(checkTotal) + "' WHERE tablenum='" + tableNumber + "';"
             command = New MySqlCommand(querySEND, connection)
             Try
@@ -158,7 +149,6 @@ Public Class waiter
         Dim count As Integer
         Dim i As Integer = 0
         Dim j As Integer = 0
-        'Dim queryUPDATE As String = "UPDATE restaurant.inventory SET count='" + count + "' WHERE item='" + item + "';"
         Using connection As New MySqlConnection(connStr)
             Dim queryGETNUM As String = "SELECT count FROM restaurant.inventory WHERE item='" + item + "';"
             Dim queryUPDATE As String = "UPDATE restaurant.inventory SET count='" + Convert.ToString(count) + "' WHERE item='" + item + "';"
