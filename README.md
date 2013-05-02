@@ -12,6 +12,7 @@ Installation
     1) .NET Framework 4
     2) MySQL Workbench (you can grab this through the GUI installer for Windows)
     3) MySQL Connector/NET (you can grab this through the GUI installer for Windows)
+    4) Visual Studio Powerpack version 10.0.0.0 (not required if you have Visual Studio)
     
     -NOTE: You should just do a full install of the MySQL GUI installer for Windows
     
