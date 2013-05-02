@@ -59,7 +59,11 @@ Public Class login
 
         Catch ex As Exception
             MsgBox("Connection cannot be made!")
-            Stop
+            statusLabel.Visible = True
+            statusLabel.Text = "NOT CONNECTED"
+            checkmarkPicture.Visible = False
+            xMarkPicture.Visible = True
+            connFlag = False
         End Try
     End Sub
 
