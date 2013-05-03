@@ -50,8 +50,20 @@ Public Class login
     End Sub
 
     Public Sub TestConnection()
+        Dim path As String = Application.StartupPath + "\r100cs.txt"
+
+        'read file for connection info
+        Dim read As New System.IO.StreamReader(path)
+        Dim alllines As List(Of String) = New List(Of String)
+        Do While Not read.EndOfStream
+            alllines.Add(read.ReadLine())
+        Loop
+        read.Close()
+
+        connstr = alllines(0) + vbCrLf + alllines(1) + vbCrLf + alllines(2)
+
         Try
-            Dim connection As New MySqlConnection(connStr)
+            Dim connection As New MySqlConnection(connstr)
             connection.Open()
             connection.Close()
             MsgBox("Connection is okay.")
@@ -68,7 +80,7 @@ Public Class login
     End Sub
 
     Public Sub ftevents()
-        Dim path As String = Application.StartupPath + "\r100ft.sr"
+        Dim path As String = Application.StartupPath + "\r100ft.txt"
 
         'first read file to see if it is first time or not
         't3El38cK5dl2glhsgMJ0 - first time
