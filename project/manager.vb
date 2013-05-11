@@ -205,6 +205,12 @@ Public Class manager
             TabControl2.TabPages.Add(listTab)
             TabControl2.SelectedTab = listTab
             TabControl2.TabPages.Remove(addTab)
+            firstNameTextbox.Text = ""
+            lastNameTextbox.Text = ""
+            displayNameTextbox.Text = ""
+            usernameTextbox.Text = ""
+            passwordTextbox.Text = ""
+            noteTextBox.Text = ""
         End If
     End Sub
 

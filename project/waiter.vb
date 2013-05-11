@@ -20,6 +20,7 @@ Public Class waiter
     Dim checkString As String
     Dim inventoryValues(0 To 0) As String
     Dim eightySixStuff(0 To 0) As String
+    Dim getItems As String
 
     '---------------------on load functions
     Public Sub New(ByVal table As String, ByVal connection As String)
@@ -42,7 +43,7 @@ Public Class waiter
 
     Private Sub getTableCheck()
         Dim queryGET As String = "SELECT items FROM restaurant.tablechecks WHERE tablenum='" + tableNumber + "';"
-        Dim getItems As String
+        'Dim getItems As String
         Using connection As New MySqlConnection(connStr)
             Dim command As New MySqlCommand(queryGET, connection)
             Try
@@ -54,6 +55,129 @@ Public Class waiter
             End Try
         End Using
         orderTextBox.Text = getItems
+        checkString = getItems
+        '       $5  -  BEER        '$5  -  BEER        '$5  -  BEER        '$5  -  BEER        '$2  -  MILK        '$4  -  POTATO SKINS        '$2  -  CHIPS & SALSA        '$7  -  TURKEY BLT        '$8  -  HONEY BBQ        '$7  -  BACON BURGER        '$3  -  ICE CREAM        '$3  -  ICE CREAM
+        '$5  -  BEER\r\n$5  -  BEER\r\n$5  -  BEER\r\n$5  -  BEER\r\n$2  -  MILK\r\n$4  -  POTATO SKINS\r\n$2  -  CHIPS & SALSA\r\n$7  -  TURKEY BLT\r\n$8  -  HONEY BBQ\r\n$7  -  BACON BURGER\r\n$3  -  ICE CREAM\r\n$3  -  ICE CREAM\r\n', '56'
+        Dim temparray() As String
+        Dim i As Integer = 0
+        temparray = Split(getItems, vbCrLf)
+        For i = 0 To (temparray.Length - 1)
+            If temparray(i) = "" Then
+
+            ElseIf temparray(i) + vbCrLf = alcohol1s Then
+                If checkAlc.Length = 1 Then
+                    checkAlc(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkAlc(0 To (UBound(checkAlc) + 1))
+                    checkAlc(UBound(checkAlc)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = drink1s Then
+                If checkDrinks.Length = 1 Then
+                    checkDrinks(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkDrinks(0 To (UBound(checkDrinks) + 1))
+                    checkDrinks(UBound(checkDrinks)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = drink2s Then
+                If checkDrinks.Length = 1 Then
+                    checkDrinks(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkDrinks(0 To (UBound(checkDrinks) + 1))
+                    checkDrinks(UBound(checkDrinks)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = drink3s Then
+                If checkDrinks.Length = 1 Then
+                    checkDrinks(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkDrinks(0 To (UBound(checkDrinks) + 1))
+                    checkDrinks(UBound(checkDrinks)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = drink4s Then
+                If checkDrinks.Length = 1 Then
+                    checkDrinks(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkDrinks(0 To (UBound(checkDrinks) + 1))
+                    checkDrinks(UBound(checkDrinks)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = appetizer1s Then
+                If checkApps.Length = 1 Then
+                    checkApps(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkApps(0 To (UBound(checkApps) + 1))
+                    checkApps(UBound(checkApps)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = appetizer2s Then
+                If checkApps.Length = 1 Then
+                    checkApps(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkApps(0 To (UBound(checkApps) + 1))
+                    checkApps(UBound(checkApps)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = appetizer3s Then
+                If checkApps.Length = 1 Then
+                    checkApps(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkApps(0 To (UBound(checkApps) + 1))
+                    checkApps(UBound(checkApps)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = entree1s Then
+                If checkEntrees.Length = 1 Then
+                    checkEntrees(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkEntrees(0 To (UBound(checkEntrees) + 1))
+                    checkEntrees(UBound(checkEntrees)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = entree2s Then
+                If checkEntrees.Length = 1 Then
+                    checkEntrees(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkEntrees(0 To (UBound(checkEntrees) + 1))
+                    checkEntrees(UBound(checkEntrees)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = entree3s Then
+                If checkEntrees.Length = 1 Then
+                    checkEntrees(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkEntrees(0 To (UBound(checkEntrees) + 1))
+                    checkEntrees(UBound(checkEntrees)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = dessert1s Then
+                If checkDesserts.Length = 1 Then
+                    checkDesserts(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkDesserts(0 To (UBound(checkDesserts) + 1))
+                    checkDesserts(UBound(checkDesserts)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = side1s Then
+                If checkSides.Length = 1 Then
+                    checkSides(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkSides(0 To (UBound(checkSides) + 1))
+                    checkSides(UBound(checkSides)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = side2s Then
+                If checkSides.Length = 1 Then
+                    checkSides(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkSides(0 To (UBound(checkSides) + 1))
+                    checkSides(UBound(checkSides)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = side3s Then
+                If checkSides.Length = 1 Then
+                    checkSides(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkSides(0 To (UBound(checkSides) + 1))
+                    checkSides(UBound(checkSides)) += temparray(i) + vbCrLf
+                End If
+            ElseIf temparray(i) + vbCrLf = side4s Then
+                If checkSides.Length = 1 Then
+                    checkSides(0) += temparray(i) + vbCrLf
+                Else
+                    ReDim Preserve checkSides(0 To (UBound(checkSides) + 1))
+                    checkSides(UBound(checkSides)) += temparray(i) + vbCrLf
+                End If
+            End If
+        Next
     End Sub
 
     Private Sub getTableTotal()
@@ -236,6 +360,7 @@ Public Class waiter
             End If
         End If
 
+        'checkString = getItems
         checkString = ""
         checkString += Join(checkAlc)
         checkString += Join(checkDrinks)
