@@ -77,7 +77,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             'update db if host to reflect changes
@@ -118,7 +118,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -158,7 +158,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -198,7 +198,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -238,7 +238,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -278,7 +278,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -318,7 +318,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -358,7 +358,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -398,7 +398,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -438,7 +438,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -478,7 +478,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -518,7 +518,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -558,7 +558,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -598,7 +598,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -638,7 +638,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -678,7 +678,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -718,7 +718,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -758,7 +758,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -798,7 +798,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -838,7 +838,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -878,7 +878,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -918,7 +918,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -958,7 +958,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -998,7 +998,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"
@@ -1038,7 +1038,7 @@ Public Class tables
                 Dim waiterform As New waiter(tableNum, connStr)
                 waiterform.Show()
             Else
-                MsgBox("you can't do that ;)")
+                MsgBox("You can't do that!")
             End If
         Else
             Dim queryY As String = "UPDATE restaurant.tableoccupancy SET `occupied`='y' WHERE `n`='" + Convert.ToString(tableNum) + "';"

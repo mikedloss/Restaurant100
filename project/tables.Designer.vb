@@ -129,7 +129,6 @@ Partial Class tables
         Me.addToWaitlistButton = New System.Windows.Forms.Button()
         Me.sizeTextbox = New System.Windows.Forms.TextBox()
         Me.nameTextbox = New System.Windows.Forms.TextBox()
-        Me.infoTab = New System.Windows.Forms.TabPage()
         Me.dateLabel = New System.Windows.Forms.Label()
         Me.timeLabel = New System.Windows.Forms.Label()
         Me.welcomeLabel = New System.Windows.Forms.Label()
@@ -718,7 +717,6 @@ Partial Class tables
         Me.TabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons
         Me.TabControl1.Controls.Add(Me.tablesTab)
         Me.TabControl1.Controls.Add(Me.waitlistTab)
-        Me.TabControl1.Controls.Add(Me.infoTab)
         Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabControl1.Location = New System.Drawing.Point(5, 5)
         Me.TabControl1.Name = "TabControl1"
@@ -1351,16 +1349,6 @@ Partial Class tables
         Me.nameTextbox.Size = New System.Drawing.Size(259, 26)
         Me.nameTextbox.TabIndex = 11
         '
-        'infoTab
-        '
-        Me.infoTab.Location = New System.Drawing.Point(4, 43)
-        Me.infoTab.Name = "infoTab"
-        Me.infoTab.Padding = New System.Windows.Forms.Padding(3)
-        Me.infoTab.Size = New System.Drawing.Size(1234, 529)
-        Me.infoTab.TabIndex = 1
-        Me.infoTab.Text = "INFO"
-        Me.infoTab.UseVisualStyleBackColor = True
-        '
         'dateLabel
         '
         Me.dateLabel.AutoSize = True
@@ -1501,7 +1489,6 @@ Partial Class tables
     Friend WithEvents bartenderLabel As System.Windows.Forms.Label
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents tablesTab As System.Windows.Forms.TabPage
-    Friend WithEvents infoTab As System.Windows.Forms.TabPage
     Friend WithEvents waitlistTab As System.Windows.Forms.TabPage
     Friend WithEvents sizeTextbox As System.Windows.Forms.TextBox
     Friend WithEvents nameTextbox As System.Windows.Forms.TextBox

@@ -56,8 +56,7 @@ Public Class waiter
         End Using
         orderTextBox.Text = getItems
         checkString = getItems
-        '       $5  -  BEER        '$5  -  BEER        '$5  -  BEER        '$5  -  BEER        '$2  -  MILK        '$4  -  POTATO SKINS        '$2  -  CHIPS & SALSA        '$7  -  TURKEY BLT        '$8  -  HONEY BBQ        '$7  -  BACON BURGER        '$3  -  ICE CREAM        '$3  -  ICE CREAM
-        '$5  -  BEER\r\n$5  -  BEER\r\n$5  -  BEER\r\n$5  -  BEER\r\n$2  -  MILK\r\n$4  -  POTATO SKINS\r\n$2  -  CHIPS & SALSA\r\n$7  -  TURKEY BLT\r\n$8  -  HONEY BBQ\r\n$7  -  BACON BURGER\r\n$3  -  ICE CREAM\r\n$3  -  ICE CREAM\r\n', '56'
+
         Dim temparray() As String
         Dim i As Integer = 0
         temparray = Split(getItems, vbCrLf)
@@ -237,7 +236,18 @@ Public Class waiter
     End Sub
 
     Private Sub closeTableButton_Click(sender As Object, e As EventArgs) Handles closeTableButton.Click
-
+        Dim query As String = "UPDATE restaurant.tablechecks SET items=NULL, total='0' WHERE tablenum='" + tableNumber + "';"
+        Using connection As New MySqlConnection(connStr)
+            Dim command As New MySqlCommand(query, connection)
+            Try
+                connection.Open()
+                command.ExecuteNonQuery()
+                connection.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+        End Using
+        Me.Close()
     End Sub
 
 
